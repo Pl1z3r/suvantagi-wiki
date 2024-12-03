@@ -2,8 +2,8 @@
 {"dg-publish":true,"permalink":"/Suvantagi Wiki/","tags":["gardenEntry"]}
 ---
 
-[[Acoes Diarias\|Ações Diarias]]
+[[Ações Diárias\|Ações Diárias]]
 
 > [!FAQ]- Perguntas Frequentes
 > Pergunta valida?
-> >Resposta valida, checar [[Acoes Diarias\|Ações diarias]] para mais informações
+> >Resposta valida, checar [[Ações Diárias\|Ações diarias]] para mais informações
