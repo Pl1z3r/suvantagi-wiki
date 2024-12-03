@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/Acoes Diarias/"}
+{"dg-publish":true,"permalink":"/Ações Diárias/"}
 ---
 
 
