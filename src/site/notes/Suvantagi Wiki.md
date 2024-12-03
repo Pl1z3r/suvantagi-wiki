@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/suvantagi-wiki/","tags":["gardenEntry"]}
+{"dg-publish":true,"permalink":"/Suvantagi Wiki/","tags":["gardenEntry"]}
 ---
 
 [[Acoes Diarias\|Ações Diarias]]

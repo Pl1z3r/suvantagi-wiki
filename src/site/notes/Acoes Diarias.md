@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/acoes-diarias/"}
+{"dg-publish":true,"permalink":"/Acoes Diarias/"}
 ---
 
 

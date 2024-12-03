@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/atributos/"}
+{"dg-publish":true,"permalink":"/Atributos/"}
 ---
 
 # Atributos
