@@ -6,7 +6,7 @@ São poderes de alto nível desenvolvidos pelo jogador usando uma Natureza Cósm
 
 ## Desenvolvendo Técnicas
 
-Natureza: É qualquer forma específica de manifestar o cosmo em uma habilidade de uso vasto.
+[[Naturezas Cósmicas\|Naturezas Cósmicas]]: É qualquer forma específica de manifestar o cosmo em uma habilidade de uso vasto.
 
 Técnica: Uma forma mais fixa de uso de sua Natureza, que fecha o leque de variedades, mas dá características.
 
@@ -24,7 +24,7 @@ Você desenvolve uma Natureza Cósmica, caso não tenha por antecedência, e del
 
 ### Técnica 1
 
-Depois de idealizar a Técnica, você fará o primeiro nível dela podendo colocar 2 características, que podem vir da própria Natureza usada ou da lista de Características Básicas.
+Depois de idealizar a Técnica, você fará o primeiro nível dela podendo colocar 2 características, que podem vir da própria Natureza usada ou da lista de [[Características Genéricas\|Características Genéricas]].
 
 ### Natureza 2
 
@@ -46,8 +46,6 @@ O terceiro nível da Técnica adiciona ainda mais uma característica, sendo ess
 
 Habilidades são o uso básico de uma natureza cósmica, ao conseguir dominar uma Natureza você poderá fazer demonstrações de uso, na forma de feitos simples, sem muito refino, e podendo ter apenas 1 característica por vez, que deverá ser escolhida entre as genéricas ou aquelas que já são naturais daquela Natureza Cósmica.
 
-  
-
 ## Hierarquia
 
 Durante o combate, existem diversas opções de ataques: Ataques Físicos, Habilidades e Técnicas. Dentro de cada uma dessas opções possuem regras e níveis a serem interpretados pelo juiz durante o combate, caso esses tipos de ataque venham a colidir existe uma hierarquia de efeitos a ser respeitada, onde o que está acima da hierarquia anula completamente o que está abaixo:  
@@ -64,3 +62,21 @@ Durante a colisão de habilidades, o critério determinante para definir qual é
   
 
 Já no quesito Ataques Físicos, cada golpe possui a sua mecânica própria, em suma, normalmente quando dois golpes físicos colidem entre si, ambos os jogadores serão afetados, a menos que o golpe diga o contrário
+
+
+<script src="https://giscus.app/client.js"
+        data-repo="Pl1z3r/suvantagi-wiki"
+        data-repo-id="R_kgDONYZixw"
+        data-category="Wiki Comments"
+        data-category-id="DIC_kwDONYZix84Ck34K"
+        data-mapping="pathname"
+        data-strict="1"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="preferred_color_scheme"
+        data-lang="pt"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
+</script>

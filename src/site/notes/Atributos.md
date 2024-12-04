@@ -94,7 +94,6 @@ Slots de Aprendizado
 
 Determinam a quantidade de níveis de Naturezas Cósmicas e níveis de Competências que o usuário pode ter, cada nível consumirá um slot.
 
-  
 
 O total de slots gerais são sua inteligência dividida por 2, arredondado para baixo + 1 inicial.
 
@@ -245,3 +244,21 @@ A criação deste local deve ser realizada antes do início do combate, sendo pr
   
 
 *{Outra Dimensão}*: Durante o tempo que o personagem se mantiver dentro da Outra Dimensão, a cada dia ele receberá 1 Ferimento Agravado.
+
+
+<script src="https://giscus.app/client.js"
+        data-repo="Pl1z3r/suvantagi-wiki"
+        data-repo-id="R_kgDONYZixw"
+        data-category="Wiki Comments"
+        data-category-id="DIC_kwDONYZix84Ck34K"
+        data-mapping="pathname"
+        data-strict="1"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="preferred_color_scheme"
+        data-lang="pt"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
+</script>

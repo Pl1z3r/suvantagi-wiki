@@ -41,3 +41,21 @@ Características Especiais
 Cada armadura tem sua particularidade, como o escudo do dragão, as correntes de Andrômeda ou o escudo da Medusa. Todas as características da armadura devem ser consultadas com a administração, pois cada armadura é única. Mas de maneira geral, todas as atribuições extra são influenciadas e controladas pelo atributo cosmo do usuário e usam a competência de técnica com armas.
 [[Armaduras Especiais\|Armaduras Especiais]]
 [[Evolução de Armadura\|Evolução de Armadura]]
+
+
+<script src="https://giscus.app/client.js"
+        data-repo="Pl1z3r/suvantagi-wiki"
+        data-repo-id="R_kgDONYZixw"
+        data-category="Wiki Comments"
+        data-category-id="DIC_kwDONYZix84Ck34K"
+        data-mapping="pathname"
+        data-strict="1"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="preferred_color_scheme"
+        data-lang="pt"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
+</script>

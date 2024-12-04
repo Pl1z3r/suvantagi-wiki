@@ -14,3 +14,21 @@ Ofensivas: Partes especiais com 2 características cósmicas imbuídas, permitem
 
   
 Mistas: Partes especiais com Proteção igual à da armadura, têm 2 características imbuídas, e causam dano com o maior atributo entre Força e Cosmo, mas tomam 4 pontos de Durabilidade da armadura para si.
+
+
+<script src="https://giscus.app/client.js"
+        data-repo="Pl1z3r/suvantagi-wiki"
+        data-repo-id="R_kgDONYZixw"
+        data-category="Wiki Comments"
+        data-category-id="DIC_kwDONYZix84Ck34K"
+        data-mapping="pathname"
+        data-strict="1"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="preferred_color_scheme"
+        data-lang="pt"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
+</script>

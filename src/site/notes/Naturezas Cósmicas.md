@@ -5,9 +5,11 @@
 São manifestações do seu Cosmo, que permitem que ele seja usado para influenciar na Natureza.
 
 Características relacionadas à duração ou valores semelhantes se baseiam no nível do que foi usado, seja técnica ou natureza pura. Mas há exceções que serão sinalizadas.
-[[Características Genéricas\|Características Genéricas]] são características abertas a todas as naturezas.
+
 [[Naturezas Cósmicas Básicas\|Naturezas Cósmicas Básicas]]
 [[Naturezas Cósmicas Intermediarias\|Naturezas Cósmicas Intermediarias]]
+[[Naturezas Cósmicas Avançadas\|Naturezas Cósmicas Avançadas]]
+
 
 <script src="https://giscus.app/client.js"
         data-repo="Pl1z3r/suvantagi-wiki"

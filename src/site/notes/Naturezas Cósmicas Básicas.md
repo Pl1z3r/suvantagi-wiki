@@ -4,6 +4,7 @@
 
 Naturezas de simples entendimento e treinamento. Podem ser aprendidas sem nenhum tipo de requisito especial.
 
+[[Características Genéricas\|Características Genéricas]]
 ### Calor
 
 Atrai os elétrons dos arredores, acelerando as vibrações dos átomos, e provocando aquecimento da área.

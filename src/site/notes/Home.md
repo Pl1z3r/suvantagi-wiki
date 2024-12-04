@@ -5,6 +5,7 @@
 
 
 > [!EXAMPLE]+ Indice
+> [[Ficha de Personagem\|Ficha de Personagem]]
 > [[Ações Diárias\|Ações Diárias]]
 > [[Atributos\|Atributos]]
 > [[Classificações\|Classificações]]

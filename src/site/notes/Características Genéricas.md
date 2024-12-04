@@ -30,20 +30,13 @@ Destrói a durabilidade extra do alvo igual ao nível da sua Natureza ou Técnic
 
 Distribui o dano total do ataque entre uma quantidade de golpes igual ao nível da Natureza ou Técnica +1.
 
-  
-
 ### Ataque em Área
 
 Ignora metade da esquiva, escudos e barreiras do alvo na aplicação, em grupos, o dano será dividido entre os alvos, incluindo aliados envolvidos.
 
-  
-
 ### Energizar
 
 Transfere as características da Técnica para seus ataques físicos no turno, Habilidades podem ter apenas características da Natureza usada, 1 por vez, é imune a Implacabilidade, mas as características imbuídas não.
-
-  
-  
 
 ### Dano Aumentado
 
