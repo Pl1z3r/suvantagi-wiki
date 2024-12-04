@@ -2,8 +2,6 @@
 {"dg-publish":true,"permalink":"/Evolução de Armadura/"}
 ---
 
-# Evolução de Armadura
-
 ## Efígie
 
 A sua Efígie é aquilo que te protege, normalmente a veste que lhe foi concedida a se tornar oficialmente um soldado de patente de algum deus ou líder.

@@ -2,8 +2,6 @@
 {"dg-publish":true,"permalink":"/Armaduras Especiais/"}
 ---
 
-# Armaduras Especiais
-
 Algumas armaduras tem detalhes especiais, escudos, manoplas, lâminas, espinhos e outras coisas, essas peculiaridades sempre devem fazer sentido com o estilo de sua armadura, e se dividem em 3 classes distintas.
 
   

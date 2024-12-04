@@ -2,8 +2,6 @@
 {"dg-publish":true,"permalink":"/Atributos/"}
 ---
 
-# Atributos
-
 ## Força
 
 Responsável por determinar o quanto de impacto um personagem consegue reproduzir ao atingir um alvo, influenciando diretamente na quantidade de dano de um ataque corpo a corpo.

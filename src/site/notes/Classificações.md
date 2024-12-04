@@ -2,8 +2,6 @@
 {"dg-publish":true,"permalink":"/Classificações/"}
 ---
 
-# Classificações
-
 São os níveis existenciais que categorizam os seres e limitam suas evoluções com base em sua percepção sobre o universo, ou seja, os Sentidos, que tem sempre de ser o primeiro atributo a alcançar um novo patamar.
 
 ### Humano
