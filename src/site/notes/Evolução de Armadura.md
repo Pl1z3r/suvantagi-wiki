@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/Evolução de Armadura/"}
+{"dg-publish":true,"permalink":"/evolucao-de-armadura/"}
 ---
 
 ## Efígie

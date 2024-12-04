@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/Naturezas Cósmicas Básicas/"}
+{"dg-publish":true,"permalink":"/naturezas-cosmicas-basicas/"}
 ---
 
 Naturezas de simples entendimento e treinamento. Podem ser aprendidas sem nenhum tipo de requisito especial.

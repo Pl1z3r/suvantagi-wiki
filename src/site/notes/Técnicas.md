@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/Técnicas/"}
+{"dg-publish":true,"permalink":"/tecnicas/"}
 ---
 
 São poderes de alto nível desenvolvidos pelo jogador usando uma Natureza Cósmica, podendo influenciar o inimigo ou o campo a sua volta, podem ser defensivas, ofensivas, e utilitárias, entretanto ela deve ser aprovada pela administração, será treinada pelo jogador para evoluir o grau e assim o efeito se tornará cada vez mais poderoso e variado.

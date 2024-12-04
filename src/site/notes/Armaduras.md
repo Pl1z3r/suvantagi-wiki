@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/Armaduras/"}
+{"dg-publish":true,"permalink":"/armaduras/"}
 ---
 
 A maior proteção dos cavaleiros é sua armadura, os corpos humanos são geralmente muito frágeis se comparados com a força destrutiva dos cavaleiros, devido a isso, a armadura é uma proteção crucial para lutar.
@@ -39,3 +39,5 @@ Você pode deixar sua armadura descansar dentro de sua caixa, isso leva tempo. S
 Características Especiais
 
 Cada armadura tem sua particularidade, como o escudo do dragão, as correntes de Andrômeda ou o escudo da Medusa. Todas as características da armadura devem ser consultadas com a administração, pois cada armadura é única. Mas de maneira geral, todas as atribuições extra são influenciadas e controladas pelo atributo cosmo do usuário e usam a competência de técnica com armas.
+[[Armaduras Especiais\|Armaduras Especiais]]
+[[Evolução de Armadura\|Evolução de Armadura]]

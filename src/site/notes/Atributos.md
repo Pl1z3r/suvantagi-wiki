@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/Atributos/"}
+{"dg-publish":true,"permalink":"/atributos/"}
 ---
 
 ## Força

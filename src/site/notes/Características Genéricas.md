@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/Características Genéricas/"}
+{"dg-publish":true,"permalink":"/caracteristicas-genericas/"}
 ---
 
 ### Restrição

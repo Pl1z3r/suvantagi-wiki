@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/Características Especiais/"}
+{"dg-publish":true,"permalink":"/caracteristicas-especiais/"}
 ---
 
 ### Atravessar Armadura

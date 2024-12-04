@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/Naturezas Cósmicas/"}
+{"dg-publish":true,"permalink":"/naturezas-cosmicas/"}
 ---
 
 São manifestações do seu Cosmo, que permitem que ele seja usado para influenciar na Natureza.

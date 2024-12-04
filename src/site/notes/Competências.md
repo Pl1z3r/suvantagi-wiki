@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/Competências/"}
+{"dg-publish":true,"permalink":"/competencias/"}
 ---
 
 São a representação da maestria que o guerreiro possui em cada uma das 5 principais áreas de combate, o nível de cada uma dessas competências determina sua Agilidade para uso daquela área de combate, seja atacando ou defendendo, facilitando sua esquiva e dificultando a esquiva do alvo.
