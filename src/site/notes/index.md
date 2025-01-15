@@ -2,7 +2,7 @@
 {"dg-publish":true,"permalink":"/index/","title":"Suvantagi Wiki","metatags":{"description":"Um RPG de fans para simular Saint Seiya!","og:image":"","og:title":"Suvantagi Wiki"},"tags":["gardenEntry"]}
 ---
 
-
+![main.png](/img/user/imgs/main.png)
 
 > [!EXAMPLE]+ Indice
 > [[Jogando/Ficha de Personagem\|Ficha de Personagem]]
