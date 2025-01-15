@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/index/","tags":["gardenEntry"]}
+{"dg-publish":true,"permalink":"/index/","title":"Suvantagi Wiki","metatags":{"description":"Um RPG de fans para simular Saint Seiya!","og:image":"","og:title":"Suvantagi Wiki"},"tags":["gardenEntry"]}
 ---
 
 
