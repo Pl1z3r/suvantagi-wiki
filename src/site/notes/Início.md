@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/inicio/","title":"Suvantagi Wiki","metatags":{"og:title":"Suvantagi Wiki","description":"Um RPG de fans para simular Saint Seiya!","og:image":"https://github.com/Pl1z3r/suvantagi-wiki/blob/main/src/site/img/user/imgs/main.png?raw=true"},"tags":["gardenEntry"]}
+{"dg-publish":true,"permalink":"/inicio/","title":"Suvantagi Wiki","metatags":{"og:title":"Suvantagi Wiki","description":"Um RPG de fãs para simular Saint Seiya!","og:image":"https://github.com/Pl1z3r/suvantagi-wiki/blob/main/src/site/img/user/imgs/main.png?raw=true"},"tags":["gardenEntry"]}
 ---
 
 
