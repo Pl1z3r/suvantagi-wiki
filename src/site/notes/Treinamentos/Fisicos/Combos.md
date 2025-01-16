@@ -57,6 +57,7 @@ Ducking Upper (1) > Ducking Straight (1) > Fist Sweep (2)
                                             (-1/+11)  
 Esquiva de Habilidade, Derrubada (aéreo) / Esquiva de Habilidade / Derrubada
 
+[[Treinamentos/Fisicos/Manobras\|Manobras]]
 
 <script src="https://giscus.app/client.js"
         data-repo="Pl1z3r/suvantagi-wiki"

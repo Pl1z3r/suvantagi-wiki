@@ -589,6 +589,9 @@ Postura
     
 2. (3) Zen no Mind
 
+[[Treinamentos/Fisicos/Posturas\|Posturas]]
+[[Treinamentos/Fisicos/Manobras\|Manobras]]
+[[Treinamentos/Fisicos/Combos\|Combos]]
 
 <script src="https://giscus.app/client.js"
         data-repo="Pl1z3r/suvantagi-wiki"

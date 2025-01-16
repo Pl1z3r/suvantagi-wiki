@@ -15,6 +15,13 @@ X
 Descrição
 Tipo de Manobra
 
+[[Treinamentos/Fisicos/Manobras Genéricas\|Manobras Genéricas]]
+[[Treinamentos/Fisicos/Manobras de Soco\|Manobras de Soco]]
+[[Treinamentos/Fisicos/Manobras de Chute\|Manobras de Chute]]
+[[Treinamentos/Fisicos/Manobras de Agarrão\|Manobras de Agarrão]]
+[[Treinamentos/Fisicos/Manobras de Bloqueio\|Manobras de Bloqueio]]
+[[Treinamentos/Fisicos/Manobras de Movimento\|Manobras de Movimento]]
+[[Treinamentos/Fisicos/Manobras de Arremesso\|Manobras de Arremesso]]
 
 <script src="https://giscus.app/client.js"
         data-repo="Pl1z3r/suvantagi-wiki"
