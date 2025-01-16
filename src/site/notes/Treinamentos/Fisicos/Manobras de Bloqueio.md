@@ -65,21 +65,3 @@ Tai Chi Chuan,2; Kabaddi, Kung Fu, Sumô, Wu Shu, Lerdrit, Aikido, Jiu Jitsu, Si
 Uma bloqueio como postura, baseado no ato de ficar parado, isso o imuniza para empurrões e derrubadas, assim como protege, pode ser mantido entre rodadas e turnos, mas para atacar é preciso desativá-lo.
 
 ‐Interrupção / Contínuo.
-
-
-<script src="https://giscus.app/client.js"
-        data-repo="Pl1z3r/suvantagi-wiki"
-        data-repo-id="R_kgDONYZixw"
-        data-category="Wiki Comments"
-        data-category-id="DIC_kwDONYZix84Ck34K"
-        data-mapping="pathname"
-        data-strict="1"
-        data-reactions-enabled="1"
-        data-emit-metadata="0"
-        data-input-position="top"
-        data-theme="preferred_color_scheme"
-        data-lang="pt"
-        data-loading="lazy"
-        crossorigin="anonymous"
-        async>
-</script>

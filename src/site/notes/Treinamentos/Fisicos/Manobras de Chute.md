@@ -111,20 +111,3 @@ Forças Especiais, Sumô, Aiquidô, Jiu Jitsu, Tai Chi Chuan 1; Outros 2.
 Um chute que varre toda a região ao redor girando o corpo com a perna esticada de modo a atingir em 360° com uma rasteira derrubando os alvos atingidos a menos que estejam bloqueando.  
 -Agachamento / Derrubada.
 
-
-<script src="https://giscus.app/client.js"
-        data-repo="Pl1z3r/suvantagi-wiki"
-        data-repo-id="R_kgDONYZixw"
-        data-category="Wiki Comments"
-        data-category-id="DIC_kwDONYZix84Ck34K"
-        data-mapping="pathname"
-        data-strict="1"
-        data-reactions-enabled="1"
-        data-emit-metadata="0"
-        data-input-position="top"
-        data-theme="preferred_color_scheme"
-        data-lang="pt"
-        data-loading="lazy"
-        crossorigin="anonymous"
-        async>
-</script>

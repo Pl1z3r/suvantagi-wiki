@@ -266,21 +266,3 @@ Se sua Agilidade for 2 níveis menor, o seu alvo terá gastará apenas 1 terço 
 Fórmula da Inferioridade:
 
 CE = Dano ÷ (DA + 1)
-
-
-<script src="https://giscus.app/client.js"
-        data-repo="Pl1z3r/suvantagi-wiki"
-        data-repo-id="R_kgDONYZixw"
-        data-category="Wiki Comments"
-        data-category-id="DIC_kwDONYZix84Ck34K"
-        data-mapping="pathname"
-        data-strict="1"
-        data-reactions-enabled="1"
-        data-emit-metadata="0"
-        data-input-position="top"
-        data-theme="preferred_color_scheme"
-        data-lang="pt"
-        data-loading="lazy"
-        crossorigin="anonymous"
-        async>
-</script>

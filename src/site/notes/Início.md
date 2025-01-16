@@ -21,5 +21,3 @@
 > [!FAQ]- Perguntas Frequentes
 > Pergunta valida?
 > >Resposta valida, checar [[Jogando/Ações Diárias\|Ações diarias]] para mais informações
-
-[[teste\|teste]]

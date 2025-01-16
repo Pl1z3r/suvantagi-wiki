@@ -19,21 +19,3 @@ Requisitos: Para reencarnar é preciso despertar o Arayashiki, o 8° Sentido.
 A mesma quantia total de Renome será convertida em Prestígio para que você possa trocar por vantagens na próxima vida, como uma moeda lúgubre que lhe dará recompensas que seriam praticamente impossíveis de se conseguir por outros meios.
 
 [[Treinamentos/Especial/Individualidades\|Individualidades]]
-
-
-<script src="https://giscus.app/client.js"
-        data-repo="Pl1z3r/suvantagi-wiki"
-        data-repo-id="R_kgDONYZixw"
-        data-category="Wiki Comments"
-        data-category-id="DIC_kwDONYZix84Ck34K"
-        data-mapping="pathname"
-        data-strict="1"
-        data-reactions-enabled="1"
-        data-emit-metadata="0"
-        data-input-position="top"
-        data-theme="preferred_color_scheme"
-        data-lang="pt"
-        data-loading="lazy"
-        crossorigin="anonymous"
-        async>
-</script>

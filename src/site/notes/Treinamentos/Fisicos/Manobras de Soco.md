@@ -156,21 +156,3 @@ Karate Rindo-Kan, Karate Shotokan, Kung Fu 1; Outros 2.
 
 Um soco para cima, precisa estar agachado abaixo do alvo que deve estar no ar em movimento aéreo.  
 ‐Antiaérea / Derrubada.
-
-
-<script src="https://giscus.app/client.js"
-        data-repo="Pl1z3r/suvantagi-wiki"
-        data-repo-id="R_kgDONYZixw"
-        data-category="Wiki Comments"
-        data-category-id="DIC_kwDONYZix84Ck34K"
-        data-mapping="pathname"
-        data-strict="1"
-        data-reactions-enabled="1"
-        data-emit-metadata="0"
-        data-input-position="top"
-        data-theme="preferred_color_scheme"
-        data-lang="pt"
-        data-loading="lazy"
-        crossorigin="anonymous"
-        async>
-</script>

@@ -62,21 +62,3 @@ Durante a colisão de habilidades, o critério determinante para definir qual é
   
 
 Já no quesito Ataques Físicos, cada golpe possui a sua mecânica própria, em suma, normalmente quando dois golpes físicos colidem entre si, ambos os jogadores serão afetados, a menos que o golpe diga o contrário
-
-
-<script src="https://giscus.app/client.js"
-        data-repo="Pl1z3r/suvantagi-wiki"
-        data-repo-id="R_kgDONYZixw"
-        data-category="Wiki Comments"
-        data-category-id="DIC_kwDONYZix84Ck34K"
-        data-mapping="pathname"
-        data-strict="1"
-        data-reactions-enabled="1"
-        data-emit-metadata="0"
-        data-input-position="top"
-        data-theme="preferred_color_scheme"
-        data-lang="pt"
-        data-loading="lazy"
-        crossorigin="anonymous"
-        async>
-</script>
