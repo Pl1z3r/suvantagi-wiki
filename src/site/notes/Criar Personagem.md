@@ -2,5 +2,232 @@
 {"dg-publish":true,"permalink":"/criar-personagem/"}
 ---
 
-<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><title>Gerenciador de Personagens</title><style>:root{--accent:#7c5cff;--bg:#0f1720;--card:#0b1320;--text:#e6eef8}*{box-sizing:border-box}body{font-family:Inter,system-ui,Segoe UI,Roboto,Arial; margin:16px;background:linear-gradient(180deg,#071022 0%,#081426 100%);color:var(--text)}header{display:flex;align-items:center;gap:12px;margin-bottom:16px}h1{font-size:20px;margin:0}layout{display:flex;gap:16px}aside{width:300px;background:rgba(255,255,255,0.03);padding:12px;border-radius:12px}main{flex:1;background:rgba(255,255,255,0.02);padding:12px;border-radius:12px;min-height:60vh}button,select,input[type=number]{background:var(--card);border:1px solid rgba(255,255,255,0.04);color:var(--text);padding:8px;border-radius:8px}ul{list-style:none;padding:0;margin:8px 0}li{padding:6px;border-radius:6px;display:flex;justify-content:space-between;align-items:center}pre{background:#05101a;padding:12px;border-radius:8px;overflow:auto;color:var(--text)}.controls{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}.small{font-size:13px;color:#9fb0d1}footer{margin-top:12px;font-size:13px;color:#9fb0d1}</style></head><body><header><h1>Gerenciador de Inimigos (HTML)</h1><div class="small">Baseado no script Python original — versão web</div></header><layout><aside><strong>Personagens</strong><ul id="charList"></ul><div class="controls"><button id="btnCreate">Criar</button><button id="btnRandomCreate">Criar Aleatório</button><button id="btnExport">Exportar JSON</button></div><div style="margin-top:12px"><strong>Operações</strong><div class="controls"><button id="btnShow">Mostrar Ficha</button><button id="btnDelete">Apagar</button></div></div></aside><main><section id="formArea"><div style="display:flex;gap:12px;flex-wrap:wrap"><div style="flex:1;min-width:220px"><label>Nome:<br/><input id="name"/></label></div><div style="min-width:180px"><label>Tipo:<br/><select id="typeSelect"></select></label></div><div style="min-width:180px"><label>Rank:<br/><select id="rankSelect"></select></label></div><div style="min-width:180px"><label>SubRank:<br/><select id="subRankSelect"><option>Baixo</option><option>Médio</option><option>Alto</option><option>Perfeito</option></select></label></div></div><div style="margin-top:12px"><strong>Atributos</strong><div id="attrs" style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:8px"></div></div><div style="margin-top:12px"><strong>Competências</strong><div id="comps" style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:8px"></div></div><div style="margin-top:12px"><strong>Naturezas Cósmicas</strong><div id="nacArea"></div></div><div style="margin-top:12px"><div class="controls"><button id="btnGenerate">Aplicar Dados ao Personagem</button><button id="btnClear">Limpar</button></div></div></section><section id="sheetArea" style="display:none;margin-top:12px"><pre id="sheetPre">Selecione um personagem e pressione "Mostrar Ficha"</pre></section></main></layout><footer>Notas: este é um gerador cliente, dados persistem apenas no localStorage.</footer><script>// --- Dados base (adaptados do script Python)const TYPES = {"Brutamontes":{atr:["Forca","Resis","Veloc","Vntad","Sentd","Mente","Spirt","Intel","Cosmo"],cna:[5,3,2],com:[3,3,2,2,1],car:[1,1,2,2,2,1,3]},"Artista Marcial":{atr:["Veloc","Forca","Intel","Resis","Vntad","Sentd","Mente","Spirt","Cosmo"],cna:[3,2,5],com:[2,2,1,2,1],car:[2,2,1,2,1,1,2]},"Elemental":{atr:["Cosmo","Vntad","Sentd","Intel","Resis","Veloc","Mente","Spirt","Forca"],cna:[3,5,2],com:[1,1,1,1,2],car:[1,2,1,1,2,2,1]},"Espiritualista":{atr:["Cosmo","Spirt","Vntad","Mente","Intel","Sentd","Resis","Veloc","Forca"],cna:[5,3,2],com:[1,1,1,1,2],car:[2,1,1,1,1,2,2]},"Ilusionista":{atr:["Intel","Mente","Spirt","Vntad","Sentd","Resis","Veloc","Cosmo","Forca"],cna:[5,3,2],com:[1,1,1,1,2],car:[2,1,2,1,1,2,1]}};const RANKS = {"Sobrehumano":[5,20],"Superhumano":[20,50],"Milagre":[50,70],"Divino":[90,200]};const SUBRANKS = {"Baixo":1/5,"Médio":2/5,"Alto":3/5,"Perfeito":-1};const NAC = {"Calor":["Dano Contínuo","Atravessar Armadura"],"Frio":["Atravessar Armadura","Congelamento"],"Relâmpago":["Atravessar Armadura","Ricochete","Paralisia"],"Água":["Barreira"],"Terra":["Barreira"],"Ar":["Barreira"],"Luz":["Atravessar Armadura","Camuflagem"],"Trevas":["Atravessar Armadura","Paralisia","Camuflagem"]};const DEFAULT_ATR = {Forca:1,Resis:1,Veloc:1,Intel:1,Vntad:1,Mente:1,Spirt:1,Sentd:1,Cosmo:0};const DEFAULT_COM = {Socos:0,Chute:0,Armso:0,Armas:0,Psque:0};// --- Estado e utilitárioslet state = {chars:{}};function save(){localStorage.setItem('chars',JSON.stringify(state.chars));}function load(){const raw=localStorage.getItem('chars'); if(raw) state.chars=JSON.parse(raw);}function uid(prefix='id'){return prefix+Math.random().toString(36).slice(2,9);}function fillSelectors(){const typeSel=document.getElementById('typeSelect');typeSel.innerHTML='';Object.keys(TYPES).forEach(t=>{const o=document.createElement('option');o.textContent=t;typeSel.appendChild(o)});const rankSel=document.getElementById('rankSelect');rankSel.innerHTML='';Object.keys(RANKS).forEach(r=>{const o=document.createElement('option');o.textContent=r;rankSel.appendChild(o)});}function renderCharList(){const ul=document.getElementById('charList');ul.innerHTML='';Object.keys(state.chars).forEach(k=>{const li=document.createElement('li');li.dataset.key=k;li.innerHTML=`<span style="font-weight:600">${k}</span><span class="small">${state.chars[k].type[0]||'-'} ${state.chars[k].rank||''} ${state.chars[k].subRank||''}</span>`;li.onclick=()=>{Array.from(ul.children).forEach(x=>x.style.background='');li.style.background='rgba(255,255,255,0.03)';ul.dataset.selected=k;};ul.appendChild(li)});}function makeDefaultNPC(){return {name:'',rank:'None',rankLimits:[0,0],atr:JSON.parse(JSON.stringify(DEFAULT_ATR)),com:JSON.parse(JSON.stringify(DEFAULT_COM)),nac:{},car:{Genericas:['Restrição','Efeito Contínuo','Poder Passivo','Destruição de Durabilidade','Ataque Múltiplo','Ataque em Área','Energizar']},tec:[],type:['None']};}// --- Form renderingfunction renderAttrsForm(data){const container=document.getElementById('attrs');container.innerHTML='';Object.keys(data).forEach(k=>{const div=document.createElement('div');div.innerHTML=`<label>${k}<br/><input type="number" min="0" id="atr_${k}" value="${data[k]}"/></label>`;container.appendChild(div)});}function renderCompsForm(data){const container=document.getElementById('comps');container.innerHTML='';Object.keys(data).forEach(k=>{const div=document.createElement('div');div.innerHTML=`<label>${k}<br/><input type="number" min="0" max="5" id="com_${k}" value="${data[k]}"/></label>`;container.appendChild(div)});}function readFormToNPC(){const npc=makeDefaultNPC();npc.name=document.getElementById('name').value||'Unnamed';const t=document.getElementById('typeSelect').value;npc.type=[t,TYPES[t]];npc.rank=document.getElementById('rankSelect').value;npc.subRank=document.getElementById('subRankSelect').value;Object.keys(npc.atr).forEach(k=>{const el=document.getElementById('atr_'+k); if(el) npc.atr[k]=Number(el.value)});Object.keys(npc.com).forEach(k=>{const el=document.getElementById('com_'+k); if(el) npc.com[k]=Number(el.value)});return npc;}function showSheet(key){const pre=document.getElementById('sheetPre');const npc=state.chars[key]; if(!npc){pre.textContent='Nenhum personagem selecionado.';return;} let out='*[FICHA DE INIMIGO]*\n\n*Classe:*\n- '+npc.type[0]+'\n*Rank:*\n- '+(npc.rank||'None')+' '+(npc.subRank||'')+'\n\n*Atributos:*\n';Object.keys(npc.atr).forEach(a=>{out+=`-${a}: ${npc.atr[a]}\n`});out+='\n*Competências:*\n';Object.keys(npc.com).forEach(c=>{out+=`-${c}: ${npc.com[c]}\n`});out+='\n*Naturezas Cósmicas:*\n';if(Object.keys(npc.nac).length){Object.keys(npc.nac).forEach(n=>{out+=`-${n}: ${npc.nac[n]}\n`})}else{out+='-\n'}out+='\n*Técnicas:*\n';if(npc.tec.length){npc.tec.forEach(t=>{out+=`-${t[0]}: ${t[1].join(', ')}\n`})}else out+='-\n';pre.textContent=out;document.getElementById('sheetArea').style.display='block';}function selectListFirst(){const ul=document.getElementById('charList');if(ul.children.length) {ul.children[0].click();}}// --- Creation logic (randomized, simplified to mirror Python)function calculateSubRankLimit(rankLimits,subRank){if(SUBRANKS[subRank]===-1) return Math.ceil((rankLimits[1]-rankLimits[0])*9);return Math.ceil((rankLimits[1]-rankLimits[0])*9*SUBRANKS[subRank]);}function randomCreate(name){const npc=makeDefaultNPC();const types=Object.keys(TYPES);const chosenType=types[Math.floor(Math.random()*types.length)];npc.type=[chosenType,TYPES[chosenType]];const ranks=Object.keys(RANKS);const r=ranks[Math.floor(Math.random()*ranks.length)];npc.rank=r;npc.rankLimits=RANKS[r];const subs=Object.keys(SUBRANKS);const sr=subs[Math.floor(Math.random()*subs.length)];npc.subRank=sr;npc.subRankLimit=calculateSubRankLimit(npc.rankLimits,sr); // distribute attributeslet left=npc.subRankLimit; for(const key of npc.type[1].atr){ if(left<=-1){npc.atr[key]=npc.rankLimits[1]; continue} if(left===0) break; npc.atr[key]=npc.rankLimits[0]; const amount=Math.min(Math.floor(Math.random()*(Math.max(1,Math.floor(left/2))+1)), npc.rankLimits[1]-npc.atr[key]); npc.atr[key]+=amount; left-=amount;} // distribute intel pointslet leftI=Math.ceil(npc.atr.Intel/2);const options=['Competencias','Naturezas Cosmicas','Artes Marciais'];while(leftI>0){const choice=options[Math.floor(Math.random()*options.length)]; if(choice==='Competencias'){const keys=Object.keys(npc.com);const com=keys[Math.floor(Math.random()*keys.length)]; if(npc.com[com]<5){npc.com[com]+=1; leftI-=1}} else if(choice==='Naturezas Cosmicas'){ if(Math.random()<0.5 && Object.keys(npc.nac).length>0){const keys=Object.keys(npc.nac);const sel=keys[Math.floor(Math.random()*keys.length)]; npc.nac[sel]=Math.min(npc.nac[sel]+1,3); leftI-=1 } else {const nacKeys=Object.keys(NAC);const sel=nacKeys[Math.floor(Math.random()*nacKeys.length)]; if(npc.nac[sel]){npc.nac[sel]=Math.min(npc.nac[sel]+1,3)} else {npc.nac[sel]=1; npc.car[sel]=NAC[sel]} leftI-=1 } } else { leftI-=1 } } // generate techs if(npc.nac){for(let i=0;i<Math.floor(npc.atr.Intel/10);i++){const nacKeys=Object.keys(npc.nac); if(nacKeys.length===0) break; const chosen=nacKeys[Math.floor(Math.random()*nacKeys.length)]; const car= npc.car['Genericas'].concat(npc.car[chosen]||[]); const tec=[chosen,[]]; const k=npc.nac[chosen]+1; for(let j=0;j<k;j++){ let pick=car[Math.floor(Math.random()*car.length)]; if(tec[1].includes(pick)) pick='Potencializar Dano'; tec[1].push(pick);} npc.tec.push(tec);} } npc.name=name||('NPC_'+Math.random().toString(36).slice(2,6)); return npc;} // --- UI wiringdocument.getElementById('btnRandomCreate').onclick=()=>{const name=prompt('Nome do personagem (ou deixe em branco):');const npc=randomCreate(name); state.chars[npc.name]=npc; save(); renderCharList(); selectListFirst();};document.getElementById('btnCreate').onclick=()=>{const base=makeDefaultNPC();document.getElementById('name').value='';fillSelectors();renderAttrsForm(base.atr);renderCompsForm(base.com);document.getElementById('sheetArea').style.display='none';};document.getElementById('btnGenerate').onclick=()=>{const npc=readFormToNPC(); npc.name=npc.name||('NPC_'+Math.random().toString(36).slice(2,6)); state.chars[npc.name]=npc; save(); renderCharList(); alert('Personagem criado: '+npc.name);};document.getElementById('btnShow').onclick=()=>{const ul=document.getElementById('charList');const sel=ul.dataset.selected; if(!sel){alert('Selecione um personagem na lista');return;} showSheet(sel);};document.getElementById('btnDelete').onclick=()=>{const ul=document.getElementById('charList');const sel=ul.dataset.selected; if(!sel){alert('Selecione um personagem para apagar');return} if(confirm('Apagar '+sel+'?')){delete state.chars[sel];save();renderCharList();document.getElementById('sheetPre').textContent='Selecione um personagem e pressione "Mostrar Ficha"';}};document.getElementById('btnExport').onclick=()=>{const data=JSON.stringify(state.chars,null,2); const blob=new Blob([data],{type:'application/json'}); const url=URL.createObjectURL(blob); const a=document.createElement('a'); a.href=url; a.download='chars.json'; a.click(); URL.revokeObjectURL(url);};// initload();fillSelectors();renderAttrsForm(DEFAULT_ATR);renderCompsForm(DEFAULT_COM);renderCharList();</script></body></html>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Character Manager</title>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&display=swap" rel="stylesheet">
 
+  <style>
+    body {
+      font-family: "JetBrains Mono", monospace;
+      background: #f4f4f4;
+      padding: 20px;
+      line-height: 1.6;
+    }
+
+    h1 {
+      margin-bottom: 20px;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: auto;
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    .campo {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+      gap: 8px;
+    }
+
+    .section {
+      margin-bottom: 25px;
+      padding-bottom: 20px;
+      border-bottom: 2px solid #ccc;
+    }
+
+    label {
+      display: block;
+      margin-top: 10px;
+      font-weight: bold;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      border-radius: 5px;
+      border: 1px solid #999;
+    }
+
+    button {
+      margin-top: 15px;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 6px;
+      background: #333;
+      color: white;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #555;
+    }
+
+    .character-card {
+      background: #fafafa;
+      border: 1px solid #ddd;
+      padding: 15px;
+      margin-bottom: 15px;
+      border-radius: 8px;
+      white-space: pre-wrap;
+    }
+
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h1>Criador de Personagens</h1>
+      <div class="section">
+        <label>Nome</label>
+          <div class="campo">
+            <input id="name"/>
+          </div>
+
+        <label>Rank</label>
+          <select id= "rank">
+            <option value="20">Sobrehumano</option>
+            <option value="50">Superhumano</option>
+            <option value="70">Milagre</option>
+            <option value="200">Deus</option>
+          </select>
+    
+        <label>SubRank</label>
+          <select id= "subrank">
+            <option value="0.2">Baixo</option>
+            <option value="0.4">Medio</option>
+            <option value="0.6">Alto</option>
+            <option value="1.0">Perfeito</option>
+          </select>
+      </div>
+      <div class="section">
+        <label>Atributos</label> 
+        <button onclick="spreadAtr()">Aleatorizar</button>
+        <p></p>
+        <label id="labelAtributos">20 pontos restantes</label>
+          <div class="campo">
+            <label>For:</label>
+            <input id="for" value="1"/>
+          </div>
+          <div class="campo">
+            <label>Res:</label>
+            <input id="res" value="1"/>
+          </div>
+          <div class="campo">
+            <label>Vel:</label>
+            <input id="vel" value="1"/>
+          </div>
+          <div class="campo">
+            <label>Int:</label>
+            <input id="int" value="1"/>
+          </div>
+          <div class="campo">
+            <label>Von:</label>
+            <input id="von" value="1"/>
+          </div>
+          <div class="campo">
+            <label>Men:</label>
+            <input id="men" value="1"/>
+          </div>
+          <div class="campo">
+            <label>Esp:</label>
+            <input id="esp" value="1"/>
+          </div>
+          <div class="campo">
+            <label>Sen:</label>
+            <input id="sen" value="1"/>
+          </div>
+          <div class="campo">
+            <label>Cos:</label>
+            <input id="cos" value="0"/>
+          </div>
+
+      </div>
+      <div class="section">
+        <label>Competencias</label>
+          <button onclick="spreadCom()">Aleatorizar</button>
+        <p></p>
+        <label id="pontosRestantes">20 pontos restantes</label>
+        <div class="campo">
+            <label>Socos:</label>
+            <input id="socos" value="0"/>
+          </div>
+          <div class="campo">
+            <label>Chute:</label>
+            <input id="chute" value="0"/>
+          </div>
+          <div class="campo">
+            <label>Armso:</label>
+            <input id="armso" value="0"/>
+          </div>
+          <div class="campo">
+            <label>Armas:</label>
+            <input id="armas" value="0"/>
+          </div>
+          <div class="campo">
+            <label>Psque:</label>
+            <input id="psque" value="0"/>
+          </div>
+
+      </div>
+      <div class="section">
+        <label>Naturezas</label>
+          <button onclick="spreadCom()">Aleatorizar</button>
+        <p></p>
+        <label id="labelNaturezas"></label>
+        <select id="selecNaturezas">
+          <option value="">-- escolha --</option>
+          <option value="calor">Calor</option>
+          <option value="frio">Frio</option>
+          <option value="relampago">Relampago</option>
+          <option value="agua">Água</option>
+          <option value="terra">Terra</option>
+          <option value="ar">Ar</option>
+          <option value="luz">Luz</option>
+          <option value="sombras">Sombras</option>
+          <option value="destruicaoImperfeita">Destruição Imperfeita</option>
+          <option value="destuicaoPerfeita">Destruição Perfeita</option>
+          <option value="cosmoPuro">Cosmo Puro</option>
+        </select>
+        <button onclick="adcionarNatureza()">Adcionar</button>
+        <p></p>
+      </div>
+
+
+  
+</div>
+
+<script>
+  let rank = "20";
+  let subrank = "0.2";
+  function update() {
+    rank = document.getElementById("rank").value;
+    subrank = document.getElementById("subrank").value;
+    document.getElementById("labelAtributos").textContent = rank*subrank*9+" pontos restantes";
+    }
+
+  document.getElementById("rank").addEventListener("change", function() {
+    update();
+  }); 
+   document.getElementById("subrank").addEventListener("change", function() {
+    update();
+  });
+   document.getElementById("int").addEventListener("change", function() {
+    update();
+  });
+  document.getElementById("sen").addEventListener("change", function() {
+    update();
+  });
+</script>
+
+</body>
+</html>
