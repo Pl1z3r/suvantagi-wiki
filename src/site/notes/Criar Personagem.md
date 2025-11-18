@@ -13,7 +13,7 @@
   <style>
     body {
       font-family: "JetBrains Mono", monospace;
-      background: #f4f4f4;
+      background: #201f1f;
       padding: 20px;
       line-height: 1.6;
     }
