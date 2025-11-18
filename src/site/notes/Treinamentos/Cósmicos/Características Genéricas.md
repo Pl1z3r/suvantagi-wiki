@@ -22,7 +22,7 @@ Pode ser ativada ou desativada sem custar pontos de Técnica ou chances de ataqu
 
 ### Destruição de Durabilidade
 
-Destrói a durabilidade extra do alvo igual ao nível da sua Natureza ou Técnica se a Proteção do alvo chegar a 0 neste ataque.
+Destrói durabilidade extra do alvo igual ao nível da sua Natureza ou Técnica se a Proteção do alvo chegar a 0 neste ataque.
 
 * Efeito de Contato
 

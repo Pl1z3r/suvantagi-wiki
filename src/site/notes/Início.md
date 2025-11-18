@@ -21,3 +21,5 @@
 > [!FAQ]- Perguntas Frequentes
 > Pergunta valida?
 > >Resposta valida, checar [[Jogando/Ações Diárias\|Ações diarias]] para mais informações
+
+[[Criar Personagem\|Criar Personagem]]
