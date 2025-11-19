@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/criar-personagem/","updated":"2025-11-19T02:32:01.843-03:00"}
+{"dg-publish":true,"permalink":"/criar-personagem/","updated":"2025-11-19T02:32:45.346-03:00"}
 ---
 
 <!DOCTYPE html>
@@ -51,8 +51,8 @@
 ;
     }
 
-    input:focus,
-    select:focus {
+    input:hover,
+    select:hover {
       outline: none;
       border-color: var(--text-normal);
       filter: brightness(0.85);
