@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/criar-personagem/","updated":"2025-11-19T01:42:30.542-03:00"}
+{"dg-publish":true,"permalink":"/criar-personagem/","updated":"2025-11-19T01:55:34.744-03:00"}
 ---
 
 <!DOCTYPE html>
@@ -16,7 +16,8 @@
       background: var(--background-primary);
       color: var(--text-normal);
       line-height: 1.6;
-      padding: 20%;
+      display: flex;
+      max-width: 700px;
     }
 
     h1 {
@@ -64,7 +65,7 @@
     input:focus,
     select:focus {
       outline: none;
-      border-color: var(--interactive-accent);
+      border-color: var(--text-normal);
     }
 
     button {
@@ -78,7 +79,7 @@
     }
 
     button:hover {
-      background: var(--interactive-hover);
+      background: #121212;
     }
   </style>
 </head>
