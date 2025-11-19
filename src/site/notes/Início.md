@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/inicio/","title":"Suvantagi Wiki","metatags":{"og:title":"Suvantagi Wiki","description":"Um RPG de fãs para simular Saint Seiya!","og:image":"https://github.com/Pl1z3r/suvantagi-wiki/blob/main/src/site/img/user/imgs/main.png?raw=true"},"tags":["gardenEntry"],"updated":"2025-11-18T22:52:48.919-03:00"}
+{"dg-publish":true,"permalink":"/inicio/","title":"Suvantagi Wiki","metatags":{"og:title":"Suvantagi Wiki","description":"Um RPG de fãs para simular Saint Seiya!","og:image":"https://github.com/Pl1z3r/suvantagi-wiki/blob/main/src/site/img/user/imgs/main.png?raw=true"},"tags":["gardenEntry"],"updated":"2025-11-19T02:54:42.454-03:00"}
 ---
 
 
@@ -22,4 +22,4 @@
 > Pergunta valida?
 > >Resposta valida, checar [[Jogando/Ações Diárias\|Ações diarias]] para mais informações
 
-[[Criar Personagem\|Criar Personagem]]
+[[Gerador de Inimigos\|Gerador de Inimigos]]
