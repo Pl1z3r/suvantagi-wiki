@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/jogando/missoes/"}
+{"dg-publish":true,"permalink":"/jogando/missoes/","updated":"2025-11-18T22:52:48.919-03:00"}
 ---
 
 São diversos eventos com objetivos a serem cumpridos, que são informados previamente ao guerreiro que irá se encarregar deste.

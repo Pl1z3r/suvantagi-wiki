@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/treinamentos/fisicos/manobras-de-movimento/"}
+{"dg-publish":true,"permalink":"/treinamentos/fisicos/manobras-de-movimento/","updated":"2025-11-18T22:52:48.921-03:00"}
 ---
 
 Backflip

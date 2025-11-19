@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/exercitos/devocao/"}
+{"dg-publish":true,"permalink":"/exercitos/devocao/","updated":"2025-11-18T22:52:48.918-03:00"}
 ---
 
 Devoção é a conexão do indivíduo com seu Deus, quanto maior mais influente é o Deus na vida daquele cavaleiro. Todo Deus tem um Código representando os ideais dele, que ao serem seguidos permite a devoção ser aumentada.

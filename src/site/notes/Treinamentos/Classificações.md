@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/treinamentos/classificacoes/"}
+{"dg-publish":true,"permalink":"/treinamentos/classificacoes/","updated":"2025-11-18T22:52:48.919-03:00"}
 ---
 
 São os níveis existenciais que categorizam os seres e limitam suas evoluções com base em sua percepção sobre o universo, ou seja, os Sentidos, que tem sempre de ser o primeiro atributo a alcançar um novo patamar.

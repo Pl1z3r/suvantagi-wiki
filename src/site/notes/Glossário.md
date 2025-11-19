@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/glossario/"}
+{"dg-publish":true,"permalink":"/glossario/","updated":"2025-11-18T22:52:48.919-03:00"}
 ---
 
 

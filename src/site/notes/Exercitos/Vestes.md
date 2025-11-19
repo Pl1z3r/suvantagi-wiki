@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/exercitos/vestes/"}
+{"dg-publish":true,"permalink":"/exercitos/vestes/","updated":"2025-11-18T22:52:48.919-03:00"}
 ---
 
 Cada exército tem sua veste, com suas próprias atribuições e qualidades.

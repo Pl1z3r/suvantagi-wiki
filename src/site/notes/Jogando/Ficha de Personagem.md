@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/jogando/ficha-de-personagem/"}
+{"dg-publish":true,"permalink":"/jogando/ficha-de-personagem/","updated":"2025-11-18T22:52:48.919-03:00"}
 ---
 
 ## Nome:

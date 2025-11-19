@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/treinamentos/fisicos/combos/"}
+{"dg-publish":true,"permalink":"/treinamentos/fisicos/combos/","updated":"2025-11-18T22:52:48.920-03:00"}
 ---
 
 A função dos combos é juntar uma série de movimentos físicos com o intuito de atacar o oponente, cada golpe possui suas mecânicas próprias que serão mais detalhadas a frente, entretanto, dentro de um combo, esses movimentos são considerados como um único ataque, desta forma, todos os modificadores dos golpes presentes no combo, são somados e computados na ficha do jogador.

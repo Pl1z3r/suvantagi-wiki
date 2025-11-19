@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/treinamentos/cosmicos/caracteristicas-genericas/"}
+{"dg-publish":true,"permalink":"/treinamentos/cosmicos/caracteristicas-genericas/","updated":"2025-11-18T22:52:48.920-03:00"}
 ---
 
 ### Restrição

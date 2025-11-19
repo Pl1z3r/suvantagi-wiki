@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/treinamentos/cosmicos/naturezas-cosmicas-intermediarias/"}
+{"dg-publish":true,"permalink":"/treinamentos/cosmicos/naturezas-cosmicas-intermediarias/","updated":"2025-11-18T22:52:48.920-03:00"}
 ---
 
 As Limitações Especiais dão detalhes sobre o uso e interações das naturezas cósmicas.

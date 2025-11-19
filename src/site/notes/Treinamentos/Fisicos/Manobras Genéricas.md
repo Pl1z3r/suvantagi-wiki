@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/treinamentos/fisicos/manobras-genericas/"}
+{"dg-publish":true,"permalink":"/treinamentos/fisicos/manobras-genericas/","updated":"2025-11-18T22:52:48.920-03:00"}
 ---
 
 ### Block (Bloqueio)

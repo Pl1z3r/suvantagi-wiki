@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/treinamentos/fisicos/manobras-de-bloqueio/"}
+{"dg-publish":true,"permalink":"/treinamentos/fisicos/manobras-de-bloqueio/","updated":"2025-11-18T22:52:48.921-03:00"}
 ---
 
 #### Counter Attack (Contra-Ataque)

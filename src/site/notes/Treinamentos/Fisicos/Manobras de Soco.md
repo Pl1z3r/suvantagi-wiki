@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/treinamentos/fisicos/manobras-de-soco/"}
+{"dg-publish":true,"permalink":"/treinamentos/fisicos/manobras-de-soco/","updated":"2025-11-18T22:52:48.921-03:00"}
 ---
 
 BANISHING FLAT (Banimento Planar)

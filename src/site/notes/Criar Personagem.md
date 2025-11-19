@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/criar-personagem/"}
+{"dg-publish":true,"permalink":"/criar-personagem/","updated":"2025-11-19T01:42:30.542-03:00"}
 ---
 
 <!DOCTYPE html>
@@ -11,74 +11,75 @@
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&display=swap" rel="stylesheet">
 
   <style>
-  body {
-    font-family: "JetBrains Mono", monospace;
-    background: var(--background-primary);
-    color: var(--text-normal);
-    line-height: 1.6;
-  }
+    body {
+      font-family: "JetBrains Mono", monospace;
+      background: var(--background-primary);
+      color: var(--text-normal);
+      line-height: 1.6;
+      padding: 20%;
+    }
 
-  h1 {
-    margin-bottom: 20px;
-    color: var(--text-accent);
-  }
+    h1 {
+      margin-bottom: 20px;
+      color: var(--text-accent);
+    }
 
-  .container {
-    max-width: 900px;
-    margin: auto;
-    background: var(--background-primary);
-  }
+    .container {
+      max-width: 900px;
+      margin: auto;
+      background: var(--background-primary);
+    }
 
-  .campo {
-    display: flex;
-    align-items: center;
-    margin-bottom: 10px;
-    gap: 8px;
-  }
+    .campo {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+      gap: 8px;
+    }
 
-  .section {
-    margin-bottom: 25px;
-    padding-bottom: 20px;
-    border-bottom: 2px solid var(--background-modifier-border);
-  }
+    .section {
+      margin-bottom: 25px;
+      padding-bottom: 20px;
+      border-bottom: 2px solid var(--background-modifier-border);
+    }
 
-  label {
-    display: block;
-    margin-top: 10px;
-    font-weight: bold;
-    color: var(--text-normal);
-  }
+    label {
+      display: block;
+      margin-top: 10px;
+      font-weight: bold;
+      color: var(--text-normal);
+    }
 
-  input,
-  select {
-    width: 100%;
-    padding: 8px;
-    margin-top: 5px;
-    border-radius: 5px;
-    background: var(--background-secondary);
-    color: var(--text-normal);
-    border: 1px solid var(--background-modifier-border);
-  }
+    input,
+    select {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      border-radius: 5px;
+      background: var(--background-secondary);
+      color: var(--text-normal);
+      border: 1px solid var(--background-modifier-border);
+    }
 
-  input:focus,
-  select:focus {
-    outline: none;
-    border-color: var(--interactive-accent);
-  }
+    input:focus,
+    select:focus {
+      outline: none;
+      border-color: var(--interactive-accent);
+    }
 
-  button {
-    margin-top: 15px;
-    padding: 10px 15px;
-    border: none;
-    border-radius: 6px;
-    background: var(--interactive-normal);
-    color: var(--text-normal);
-    cursor: pointer;
-  }
+    button {
+      margin-top: 15px;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 6px;
+      background: var(--interactive-normal);
+      color: var(--text-normal);
+      cursor: pointer;
+    }
 
-  button:hover {
-    background: var(--interactive-hover);
-  }
+    button:hover {
+      background: var(--interactive-hover);
+    }
   </style>
 </head>
 <body>
@@ -93,8 +94,6 @@
           <option value="elemental">Elemental</option>
           <option value="espiritualista">Espiritualista</option>
           <option value="ilusionista">Ilusionista</option>
-
-
         </select>
 
         <label>Rank</label>

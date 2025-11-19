@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/treinamentos/cosmicos/naturezas-cosmicas-avancadas/"}
+{"dg-publish":true,"permalink":"/treinamentos/cosmicos/naturezas-cosmicas-avancadas/","updated":"2025-11-18T22:52:48.920-03:00"}
 ---
 
 Todas as naturezas aqui descritas só estão disponíveis para serem aprendidas por aqueles que já tenham despertado o 7º sentido completo.

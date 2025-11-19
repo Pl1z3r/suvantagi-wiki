@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/exercitos/deuses/"}
+{"dg-publish":true,"permalink":"/exercitos/deuses/","updated":"2025-11-18T22:52:48.918-03:00"}
 ---
 
 Aqui serão apresentados os deuses, os exércitos que governam, e as bênçãos especiais que são fornecidas aos mais devotos servos, de acordo com seu nível de [[Exercitos/Devoção\|Devoção]]. Alguns níveis fornecem objetos como recompensa, estes, se forem perdidos, precisam ser recuperados, repetindo o requisito.
