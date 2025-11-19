@@ -13,6 +13,7 @@
   <style>
     body {
       font-family: "JetBrains Mono", monospace;
+      color: white;
       background: #201f1f;
       padding: 20px;
       line-height: 1.6;
@@ -25,7 +26,7 @@
     .container {
       max-width: 900px;
       margin: auto;
-      background: white;
+      background: #201f1f;
       padding: 20px;
       border-radius: 10px;
       box-shadow: 0 0 10px rgba(0,0,0,0.1);
@@ -73,7 +74,7 @@
     }
 
     .character-card {
-      background: #fafafa;
+      background: #201f1f;
       border: 1px solid #ddd;
       padding: 15px;
       margin-bottom: 15px;
@@ -116,39 +117,39 @@
         <label id="labelAtributos">20 pontos restantes</label>
           <div class="campo">
             <label>For:</label>
-            <input id="for" value="1"/>
+            <input type="number" id="for" value="1"/>
           </div>
           <div class="campo">
             <label>Res:</label>
-            <input id="res" value="1"/>
+            <input type="number" id="res" value="1"/>
           </div>
           <div class="campo">
             <label>Vel:</label>
-            <input id="vel" value="1"/>
+            <input type="number" id="vel" value="1"/>
           </div>
           <div class="campo">
             <label>Int:</label>
-            <input id="int" value="1"/>
+            <input type="number" id="int" value="1"/>
           </div>
           <div class="campo">
             <label>Von:</label>
-            <input id="von" value="1"/>
+            <input type="number" id="von" value="1"/>
           </div>
           <div class="campo">
             <label>Men:</label>
-            <input id="men" value="1"/>
+            <input type="number" id="men" value="1"/>
           </div>
           <div class="campo">
             <label>Esp:</label>
-            <input id="esp" value="1"/>
+            <input type="number" id="esp" value="1"/>
           </div>
           <div class="campo">
             <label>Sen:</label>
-            <input id="sen" value="1"/>
+            <input type="number" id="sen" value="1"/>
           </div>
           <div class="campo">
             <label>Cos:</label>
-            <input id="cos" value="0"/>
+            <input type="number" id="cos" value="0"/>
           </div>
 
       </div>
@@ -156,26 +157,26 @@
         <label>Competencias</label>
           <button onclick="spreadCom()">Aleatorizar</button>
         <p></p>
-        <label id="pontosRestantes">20 pontos restantes</label>
+        <label id="labelCompetencias">pontos restantes</label>
         <div class="campo">
             <label>Socos:</label>
-            <input id="socos" value="0"/>
+            <input type="number" id="socos" value="0"/>
           </div>
           <div class="campo">
             <label>Chute:</label>
-            <input id="chute" value="0"/>
+            <input type="number" id="chute" value="0"/>
           </div>
           <div class="campo">
             <label>Armso:</label>
-            <input id="armso" value="0"/>
+            <input type="number" id="armso" value="0"/>
           </div>
           <div class="campo">
             <label>Armas:</label>
-            <input id="armas" value="0"/>
+            <input type="number" id="armas" value="0"/>
           </div>
           <div class="campo">
             <label>Psque:</label>
-            <input id="psque" value="0"/>
+            <input type="number" id="psque" value="0"/>
           </div>
 
       </div>
@@ -183,7 +184,7 @@
         <label>Naturezas</label>
           <button onclick="spreadCom()">Aleatorizar</button>
         <p></p>
-        <label id="labelNaturezas"></label>
+        <label id="labelNaturezas">...</label>
         <select id="selecNaturezas">
           <option value="">-- escolha --</option>
           <option value="calor">Calor</option>
@@ -207,26 +208,75 @@
 </div>
 
 <script>
-  let rank = "20";
-  let subrank = "0.2";
+  let nome, rank, subrank = "";
+  let atrFor, atrRes, atrVel,
+      atrInt, atrVon, atrMen,
+      atrEsp, atrSen, atrCos = 0;;
+  const minAtr = {
+    "20": 5,   // Sobrehumano
+    "50": 20,  // Superhumano
+    "70": 50,  // Milagre
+    "200": 70  // Deus
+  };
   function update() {
-    rank = document.getElementById("rank").value;
-    subrank = document.getElementById("subrank").value;
-    document.getElementById("labelAtributos").textContent = rank*subrank*9+" pontos restantes";
-    }
+    // coleta de variaveis
+    let rank = Number(document.getElementById("rank")?.value || 0);
+    let subrank = Number(document.getElementById("subrank")?.value || 0);
 
-  document.getElementById("rank").addEventListener("change", function() {
-    update();
-  }); 
-   document.getElementById("subrank").addEventListener("change", function() {
+    let atrFor = Number(document.getElementById("for")?.value || 1);
+    let atrRes = Number(document.getElementById("res")?.value || 1);
+    let atrVel = Number(document.getElementById("vel")?.value || 1);
+    let atrInt = Number(document.getElementById("int")?.value || 1);
+    let atrVon = Number(document.getElementById("von")?.value || 1);
+    let atrMen = Number(document.getElementById("men")?.value || 1);
+    let atrEsp = Number(document.getElementById("esp")?.value || 1);
+    let atrSen = Number(document.getElementById("sen")?.value || 1);
+    let atrCos = Number(document.getElementById("cos")?.value || 0);
+
+    let socos = Number(document.getElementById("socos")?.value || 0);
+    let chute = Number(document.getElementById("chute")?.value || 0);
+    let armso = Number(document.getElementById("armso")?.value || 0);
+    let armas = Number(document.getElementById("armas")?.value || 0);
+    let psque = Number(document.getElementById("psque")?.value || 0);
+
+    // aplicando limites de sentido
+    atrSen = Math.min(Math.max(atrSen, minAtr[rank], rank), atrSen);
+    atrFor = Math.min(Math.max(atrFor, minAtr[rank]), atrSen);
+    atrRes = Math.min(Math.max(atrRes, minAtr[rank]), atrSen);
+    atrVel = Math.min(Math.max(atrVel, minAtr[rank]), atrSen);
+    atrInt = Math.min(Math.max(atrInt, minAtr[rank]), atrSen);
+    atrVon = Math.min(Math.max(atrVon, minAtr[rank]), atrSen);
+    atrMen = Math.min(Math.max(atrMen, minAtr[rank]), atrSen);
+    atrEsp = Math.min(Math.max(atrEsp, minAtr[rank]), atrSen);
+    atrCos = Math.min(Math.max(atrCos, minAtr[rank]), atrSen);
+
+    document.getElementById("for").value = atrFor;
+    document.getElementById("res").value = atrRes;
+    document.getElementById("vel").value = atrVel;
+    document.getElementById("int").value = atrInt;
+    document.getElementById("von").value = atrVon;
+    document.getElementById("men").value = atrMen;
+    document.getElementById("esp").value = atrEsp;
+    document.getElementById("sen").value = atrSen;
+    document.getElementById("cos").value = atrCos;
+
+    let atrTotal = atrFor + atrRes + atrVel + atrInt + atrVon + atrMen + atrEsp + atrSen +  atrCos;
+    let ptsIntTotal = socos + chute + armso + armas + psque;
+
+    let atrRestantes = (rank*subrank*9) - atrTotal;
+    let ptsIntRestantes = Math.floor(atrInt/2) - ptsIntTotal;
+
+    document.getElementById("labelAtributos").textContent =  atrRestantes+" pontos de atributos restantes";
+    document.getElementById("labelCompetencias").textContent = ptsIntRestantes+" pontos de aprendizagem restantes";
+    document.getElementById("labelNaturezas").textContent = ptsIntRestantes+" pontos de aprendizagem restantes";
+
+
+
+  }
+  document.addEventListener("change", function() {
     update();
   });
-   document.getElementById("int").addEventListener("change", function() {
-    update();
-  });
-  document.getElementById("sen").addEventListener("change", function() {
-    update();
-  });
+  update();
 </script>
 
 </body>
