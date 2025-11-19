@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/criar-personagem/","updated":"2025-11-19T02:27:10.610-03:00"}
+{"dg-publish":true,"permalink":"/criar-personagem/","updated":"2025-11-19T02:32:01.843-03:00"}
 ---
 
 <!DOCTYPE html>
@@ -74,100 +74,97 @@
 </head>
 <body>
 
-<div>
-  <div class="section">
-    <label>Classe</label>
-    <select id="classe">
-      <option value="aleatorio">aleatorio</option>
-      <option value="brutamontes">Brutamontes</option>
-      <option value="artista marcial">Artista Marcial</option>
-      <option value="elemental">Elemental</option>
-      <option value="espiritualista">Espiritualista</option>
-      <option value="ilusionista">Ilusionista</option>
+<div class="section">
+  <h2>Classe</h2>
+  <select id="classe">
+    <option value="aleatorio">aleatorio</option>
+    <option value="brutamontes">Brutamontes</option>
+    <option value="artista marcial">Artista Marcial</option>
+    <option value="elemental">Elemental</option>
+    <option value="espiritualista">Espiritualista</option>
+    <option value="ilusionista">Ilusionista</option>
+  </select>
+  <h2>Rank</h2>
+    <select id= "rank">
+      <option value="20">Sobrehumano</option>
+      <option value="50">Superhumano</option>
+      <option value="70">Milagre</option>
+      <option value="200">Deus</option>
     </select>
-    <label>Rank</label>
-      <select id= "rank">
-        <option value="20">Sobrehumano</option>
-        <option value="50">Superhumano</option>
-        <option value="70">Milagre</option>
-        <option value="200">Deus</option>
-      </select>
-    <label>SubRank</label>
-      <select id= "subrank">
-        <option value="0.2">Baixo</option>
-        <option value="0.4">Medio</option>
-        <option value="0.6">Alto</option>
-        <option value="1.0">Perfeito</option>
-      </select>
-  </div>
-  <div class="section">
-    <label>Atributos</label> 
-    <button onclick="spreadAtr()">Aleatorizar</button>
-    <p></p>
-    <label id="labelAtributos">20 pontos restantes</label>
-      <div class="campo">
-        <label>For:</label>
-        <input type="number" id="for" value="1"/>
-      </div>
-      <div class="campo">
-        <label>Res:</label>
-        <input type="number" id="res" value="1"/>
-      </div>
-      <div class="campo">
-        <label>Vel:</label>
-        <input type="number" id="vel" value="1"/>
-      </div>
-      <div class="campo">
-        <label>Int:</label>
-        <input type="number" id="int" value="1"/>
-      </div>
-      <div class="campo">
-        <label>Von:</label>
-        <input type="number" id="von" value="1"/>
-      </div>
-      <div class="campo">
-        <label>Men:</label>
-        <input type="number" id="men" value="1"/>
-      </div>
-      <div class="campo">
-        <label>Esp:</label>
-        <input type="number" id="esp" value="1"/>
-      </div>
-      <div class="campo">
-        <label>Sen:</label>
-        <input type="number" id="sen" value="1"/>
-      </div>
-      <div class="campo">
-        <label>Cos:</label>
-        <input type="number" id="cos" value="0"/>
-      </div>
+  <h2>SubRank</h2>
+    <select id= "subrank">
+      <option value="0.2">Baixo</option>
+      <option value="0.4">Medio</option>
+      <option value="0.6">Alto</option>
+      <option value="1.0">Perfeito</option>
+    </select>
+</div>
+<div class="section">
+  <h2>Atributos</h2> 
+  <button onclick="spreadAtr()">Aleatorizar</button>
+  <label id="labelAtributos">20 pontos restantes</label>
+    <div class="campo">
+      <label>For:</label>
+      <input type="number" id="for" value="1"/>
+    </div>
+    <div class="campo">
+      <label>Res:</label>
+      <input type="number" id="res" value="1"/>
+    </div>
+    <div class="campo">
+      <label>Vel:</label>
+      <input type="number" id="vel" value="1"/>
+    </div>
+    <div class="campo">
+      <label>Int:</label>
+      <input type="number" id="int" value="1"/>
+    </div>
+    <div class="campo">
+      <label>Von:</label>
+      <input type="number" id="von" value="1"/>
+    </div>
+    <div class="campo">
+      <label>Men:</label>
+      <input type="number" id="men" value="1"/>
+    </div>
+    <div class="campo">
+      <label>Esp:</label>
+      <input type="number" id="esp" value="1"/>
+    </div>
+    <div class="campo">
+      <label>Sen:</label>
+      <input type="number" id="sen" value="1"/>
+    </div>
+    <div class="campo">
+      <label>Cos:</label>
+      <input type="number" id="cos" value="0"/>
+    </div>
 
-    <label>Competencias</label>
-      <button onclick="spreadCom()">Aleatorizar</button>
+  <h2>Competencias</h2>
+    <button onclick="spreadCom()">Aleatorizar</button>
     <label id="labelCompetencias">pontos restantes</label>
     <div class="campo">
-        <label>Socos:</label>
-        <input type="number" id="socos" value="0"/>
-      </div>
-      <div class="campo">
-        <label>Chute:</label>
-        <input type="number" id="chute" value="0"/>
-      </div>
-      <div class="campo">
-        <label>Armso:</label>
-        <input type="number" id="armso" value="0"/>
-      </div>
-      <div class="campo">
-        <label>Armas:</label>
-        <input type="number" id="armas" value="0"/>
-      </div>
-      <div class="campo">
-        <label>Psque:</label>
-        <input type="number" id="psque" value="0"/>
-      </div>
-
-    <label>Naturezas</label>
-      <button onclick="spreadCom()">Aleatorizar</button>
+      <label>Socos:</label>
+      <input type="number" id="socos" value="0"/>
+    </div>
+    <div class="campo">
+      <label>Chute:</label>
+      <input type="number" id="chute" value="0"/>
+    </div>
+    <div class="campo">
+      <label>Armso:</label>
+      <input type="number" id="armso" value="0"/>
+    </div>
+    <div class="campo">
+      <label>Armas:</label>
+      <input type="number" id="armas" value="0"/>
+    </div>
+    <div class="campo">
+      <label>Psque:</label>
+      <input type="number" id="psque" value="0"/>
+    </div>
+  <h2>Naturezas</h2>
+    <button onclick="spreadCom()">Aleatorizar</button>
     <label id="labelNaturezas">...</label>
     <select id="selecNaturezas">
       <option value="">-- escolha --</option>
@@ -184,7 +181,6 @@
       <option value="cosmoPuro">Cosmo Puro</option>
     </select>
     <button onclick="adcionarNatureza()">Adcionar</button>
-  </div>
 </div>
 
 <script>
