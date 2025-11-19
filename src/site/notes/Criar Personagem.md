@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/criar-personagem/","updated":"2025-11-19T02:32:45.346-03:00"}
+{"dg-publish":true,"permalink":"/criar-personagem/","updated":"2025-11-19T02:37:41.580-03:00"}
 ---
 
 <!DOCTYPE html>
@@ -256,7 +256,7 @@
     let atrTotal = atrFor + atrRes + atrVel + atrInt + atrVon + atrMen + atrEsp + atrSen +  atrCos;
     let ptsIntTotal = socos + chute + armso + armas + psque;
 
-    let atrRestantes = (minAtr[rank]*9)+(rank*subrank*9) - atrTotal;
+    let atrRestantes = (5*9)+(rank*subrank*9) - atrTotal;
     let ptsIntRestantes = Math.floor(atrInt/2) - ptsIntTotal;
 
     if (atrRestantes < 0) {
