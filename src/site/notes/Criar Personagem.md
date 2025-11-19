@@ -27,9 +27,6 @@
       max-width: 900px;
       margin: auto;
       background: #201f1f;
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
     }
 
     .campo {
@@ -64,7 +61,7 @@
       padding: 10px 15px;
       border: none;
       border-radius: 6px;
-      background: #333;
+      background: #393838;
       color: white;
       cursor: pointer;
     }
@@ -72,27 +69,23 @@
     button:hover {
       background: #555;
     }
-
-    .character-card {
-      background: #201f1f;
-      border: 1px solid #ddd;
-      padding: 15px;
-      margin-bottom: 15px;
-      border-radius: 8px;
-      white-space: pre-wrap;
-    }
-
   </style>
 </head>
 <body>
 
 <div class="container">
-  <h1>Criador de Personagens</h1>
       <div class="section">
-        <label>Nome</label>
-          <div class="campo">
-            <input id="name"/>
-          </div>
+        <label>Classe</label>
+        <select id="classe">
+          <option value="aleatorio">aleatorio</option>
+          <option value="brutamontes">Brutamontes</option>
+          <option value="artista marcial">Artista Marcial</option>
+          <option value="elemental">Elemental</option>
+          <option value="espiritualista">Espiritualista</option>
+          <option value="ilusionista">Ilusionista</option>
+
+
+        </select>
 
         <label>Rank</label>
           <select id= "rank">
@@ -202,9 +195,6 @@
         <button onclick="adcionarNatureza()">Adcionar</button>
         <p></p>
       </div>
-
-
-  
 </div>
 
 <script>
@@ -218,7 +208,12 @@
     "70": 50,  // Milagre
     "200": 70  // Deus
   };
-  function update() {
+  function update(alvo) {
+    if (document.getElementById("classe").value == "aleatorio") {
+      const total = document.getElementById("classe").length;
+      const index = Math.floor(Math.random() * (total -1)) + 1; 
+      document.getElementById("classe").selectedIndex = index;
+    }
     // coleta de variaveis
     let rank = Number(document.getElementById("rank")?.value || 0);
     let subrank = Number(document.getElementById("subrank")?.value || 0);
@@ -239,8 +234,8 @@
     let armas = Number(document.getElementById("armas")?.value || 0);
     let psque = Number(document.getElementById("psque")?.value || 0);
 
-    // aplicando limites de sentido
-    atrSen = Math.min(Math.max(atrSen, minAtr[rank], rank), atrSen);
+    // validando
+    atrSen = Math.min(Math.max(atrSen, minAtr[rank]), rank);
     atrFor = Math.min(Math.max(atrFor, minAtr[rank]), atrSen);
     atrRes = Math.min(Math.max(atrRes, minAtr[rank]), atrSen);
     atrVel = Math.min(Math.max(atrVel, minAtr[rank]), atrSen);
@@ -260,11 +255,33 @@
     document.getElementById("sen").value = atrSen;
     document.getElementById("cos").value = atrCos;
 
+    socos = Math.min(Math.max(socos, 0), 5);
+    chute = Math.min(Math.max(chute, 0), 5);
+    armso = Math.min(Math.max(armso, 0), 5);
+    armas = Math.min(Math.max(armas, 0), 5);
+    psque = Math.min(Math.max(psque, 0), 5);
+
+    document.getElementById("socos").value = socos;
+    document.getElementById("chute").value = chute;
+    document.getElementById("armso").value = armso;
+    document.getElementById("armas").value = armas;
+    document.getElementById("psque").value = psque;
+
     let atrTotal = atrFor + atrRes + atrVel + atrInt + atrVon + atrMen + atrEsp + atrSen +  atrCos;
     let ptsIntTotal = socos + chute + armso + armas + psque;
 
-    let atrRestantes = (rank*subrank*9) - atrTotal;
+    let atrRestantes = (minAtr[rank]*9)+(rank*subrank*9) - atrTotal;
     let ptsIntRestantes = Math.floor(atrInt/2) - ptsIntTotal;
+
+    if (atrRestantes < 0) {
+      alvo.value = Number(alvo.value) + atrRestantes;
+      atrRestantes = 0;
+    }
+
+    if (ptsIntRestantes < 0) {
+      alvo.value = Number(alvo.value) + ptsIntRestantes;
+      ptsIntRestantes = 0;
+    }
 
     document.getElementById("labelAtributos").textContent =  atrRestantes+" pontos de atributos restantes";
     document.getElementById("labelCompetencias").textContent = ptsIntRestantes+" pontos de aprendizagem restantes";
@@ -273,8 +290,13 @@
 
 
   }
-  document.addEventListener("change", function() {
-    update();
+  document.addEventListener("change", function(event) {
+    if (event.target.id == "rank"){
+      document.querySelectorAll("input").forEach(el => {
+        el.value = 0;
+      });
+    }
+    update(event.target);
   });
   update();
 </script>
