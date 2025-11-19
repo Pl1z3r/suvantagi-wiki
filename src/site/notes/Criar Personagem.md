@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/criar-personagem/","updated":"2025-11-19T02:18:12.798-03:00"}
+{"dg-publish":true,"permalink":"/criar-personagem/","updated":"2025-11-19T02:21:15.489-03:00"}
 ---
 
 <!DOCTYPE html>
@@ -55,6 +55,7 @@
     select:focus {
       outline: none;
       border-color: var(--text-normal);
+      filter: brightness(0.85);
     }
 
     button {
@@ -67,7 +68,7 @@
     }
 
     button:hover {
-      background: #121212;
+      filter: brightness(0.85);
     }
   </style>
 </head>
