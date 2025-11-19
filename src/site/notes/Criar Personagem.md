@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/criar-personagem/","updated":"2025-11-19T02:24:14.104-03:00"}
+{"dg-publish":true,"permalink":"/criar-personagem/","updated":"2025-11-19T02:27:10.610-03:00"}
 ---
 
 <!DOCTYPE html>
@@ -144,7 +144,6 @@
 
     <label>Competencias</label>
       <button onclick="spreadCom()">Aleatorizar</button>
-    <p></p>
     <label id="labelCompetencias">pontos restantes</label>
     <div class="campo">
         <label>Socos:</label>
@@ -169,7 +168,6 @@
 
     <label>Naturezas</label>
       <button onclick="spreadCom()">Aleatorizar</button>
-    <p></p>
     <label id="labelNaturezas">...</label>
     <select id="selecNaturezas">
       <option value="">-- escolha --</option>
@@ -186,7 +184,6 @@
       <option value="cosmoPuro">Cosmo Puro</option>
     </select>
     <button onclick="adcionarNatureza()">Adcionar</button>
-    <p></p>
   </div>
 </div>
 
