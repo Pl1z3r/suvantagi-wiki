@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/criar-personagem/","updated":"2025-11-19T02:21:15.489-03:00"}
+{"dg-publish":true,"permalink":"/criar-personagem/","updated":"2025-11-19T02:24:14.104-03:00"}
 ---
 
 <!DOCTYPE html>
@@ -85,7 +85,6 @@
       <option value="espiritualista">Espiritualista</option>
       <option value="ilusionista">Ilusionista</option>
     </select>
-
     <label>Rank</label>
       <select id= "rank">
         <option value="20">Sobrehumano</option>
@@ -93,7 +92,6 @@
         <option value="70">Milagre</option>
         <option value="200">Deus</option>
       </select>
-
     <label>SubRank</label>
       <select id= "subrank">
         <option value="0.2">Baixo</option>
@@ -144,8 +142,6 @@
         <input type="number" id="cos" value="0"/>
       </div>
 
-  </div>
-  <div class="section">
     <label>Competencias</label>
       <button onclick="spreadCom()">Aleatorizar</button>
     <p></p>
@@ -171,8 +167,6 @@
         <input type="number" id="psque" value="0"/>
       </div>
 
-  </div>
-  <div class="section">
     <label>Naturezas</label>
       <button onclick="spreadCom()">Aleatorizar</button>
     <p></p>
