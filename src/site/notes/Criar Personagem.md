@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/criar-personagem/","updated":"2025-11-19T02:15:26.148-03:00"}
+{"dg-publish":true,"permalink":"/criar-personagem/","updated":"2025-11-19T02:16:52.877-03:00"}
 ---
 
 <!DOCTYPE html>
@@ -60,7 +60,12 @@
       padding: 10px 15px;
       border: none;
       border-radius: 6px;
+      background: var(--background-secondary);
       cursor: pointer;
+    }
+
+    button:hover {
+      background: #121212;
     }
   </style>
 </head>
