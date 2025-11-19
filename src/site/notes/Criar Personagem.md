@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/criar-personagem/","updated":"2025-11-19T02:12:02.995-03:00"}
+{"dg-publish":true,"permalink":"/criar-personagem/","updated":"2025-11-19T02:15:26.148-03:00"}
 ---
 
 <!DOCTYPE html>
@@ -10,7 +10,59 @@
   <title>Character Manager</title>
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&display=swap" rel="stylesheet">
 
+  <style>
+    body {
+      font-family: "JetBrains Mono", monospace;
+    }
 
+    h1 {
+      margin-bottom: 20px;
+
+    }
+
+    .campo {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+      gap: 8px;
+    }
+
+    .section {
+      margin-bottom: 25px;
+      padding-bottom: 20px;
+      border-bottom: 2px solid var(--background-modifier-border);
+    }
+
+    label {
+      display: block;
+      margin-top: 10px;
+      font-weight: bold;
+    }
+
+    input,
+    select {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      border-radius: 5px;
+      color: var(--text-normal);
+      border: 1px solid var(--background-modifier-border);
+    }
+
+    input:focus,
+    select:focus {
+      outline: none;
+      border-color: var(--text-normal);
+    }
+
+    button {
+      margin-top: 15px;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+  </style>
 </head>
 <body>
 
