@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/criar-personagem/","updated":"2025-11-19T02:04:43.247-03:00"}
+{"dg-publish":true,"permalink":"/criar-personagem/","updated":"2025-11-19T02:08:15.215-03:00"}
 ---
 
 <!DOCTYPE html>
@@ -72,7 +72,7 @@
       padding: 10px 15px;
       border: none;
       border-radius: 6px;
-      background: var(--interactive-normal);
+      background: var(--background-secondary);
       color: var(--text-normal);
       cursor: pointer;
     }
