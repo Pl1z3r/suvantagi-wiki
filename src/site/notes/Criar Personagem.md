@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/criar-personagem/","updated":"2025-11-19T01:55:34.744-03:00"}
+{"dg-publish":true,"permalink":"/criar-personagem/","updated":"2025-11-19T01:58:25.380-03:00"}
 ---
 
 <!DOCTYPE html>
@@ -17,6 +17,7 @@
       color: var(--text-normal);
       line-height: 1.6;
       display: flex;
+      align-items: center;
       max-width: 700px;
     }
 
