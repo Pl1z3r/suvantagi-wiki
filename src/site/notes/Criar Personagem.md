@@ -11,64 +11,74 @@
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&display=swap" rel="stylesheet">
 
   <style>
-    body {
-      font-family: "JetBrains Mono", monospace;
-      color: white;
-      background: #201f1f;
-      padding: 20px;
-      line-height: 1.6;
-    }
+  body {
+    font-family: "JetBrains Mono", monospace;
+    background: var(--background-primary);
+    color: var(--text-normal);
+    line-height: 1.6;
+  }
 
-    h1 {
-      margin-bottom: 20px;
-    }
+  h1 {
+    margin-bottom: 20px;
+    color: var(--text-accent);
+  }
 
-    .container {
-      max-width: 900px;
-      margin: auto;
-      background: #201f1f;
-    }
+  .container {
+    max-width: 900px;
+    margin: auto;
+    background: var(--background-primary);
+  }
 
-    .campo {
-      display: flex;
-      align-items: center;
-      margin-bottom: 10px;
-      gap: 8px;
-    }
+  .campo {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    gap: 8px;
+  }
 
-    .section {
-      margin-bottom: 25px;
-      padding-bottom: 20px;
-      border-bottom: 2px solid #ccc;
-    }
+  .section {
+    margin-bottom: 25px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid var(--background-modifier-border);
+  }
 
-    label {
-      display: block;
-      margin-top: 10px;
-      font-weight: bold;
-    }
+  label {
+    display: block;
+    margin-top: 10px;
+    font-weight: bold;
+    color: var(--text-normal);
+  }
 
-    input, select {
-      width: 100%;
-      padding: 8px;
-      margin-top: 5px;
-      border-radius: 5px;
-      border: 1px solid #999;
-    }
+  input,
+  select {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border-radius: 5px;
+    background: var(--background-secondary);
+    color: var(--text-normal);
+    border: 1px solid var(--background-modifier-border);
+  }
 
-    button {
-      margin-top: 15px;
-      padding: 10px 15px;
-      border: none;
-      border-radius: 6px;
-      background: #393838;
-      color: white;
-      cursor: pointer;
-    }
+  input:focus,
+  select:focus {
+    outline: none;
+    border-color: var(--interactive-accent);
+  }
 
-    button:hover {
-      background: #555;
-    }
+  button {
+    margin-top: 15px;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 6px;
+    background: var(--interactive-normal);
+    color: var(--text-normal);
+    cursor: pointer;
+  }
+
+  button:hover {
+    background: var(--interactive-hover);
+  }
   </style>
 </head>
 <body>
