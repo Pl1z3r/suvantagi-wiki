@@ -293,9 +293,9 @@
       ordem.forEach(atr => {
         if (atrRestantes <= 0) return;
 
-        let r = (Math.random() + Math.random()) / 2; 
-        let gasto = Math.ceil(Math.pow(r, 0.8) * (atrRestantes / 2));
-      
+        // let r = (Math.random() + Math.random()) / 2; 
+        // let gasto = Math.ceil(Math.pow(r, 0.8) * (atrRestantes / 2));
+        let gasto = Math.ceil((1 - Math.pow(Math.random(), 2))*(atrRestantes / 2));
         aplicarPonto(atr, gasto);
         Object.keys(valores).forEach(a => {
           document.getElementById(a).value = valores[a];
