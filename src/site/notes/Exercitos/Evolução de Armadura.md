@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/exercitos/evolucao-de-armadura/","updated":"2025-11-18T22:52:48.918-03:00"}
+{"dg-publish":true,"permalink":"/exercitos/evolucao-de-armadura/"}
 ---
 
 As armaduras não se mantêm em um nível igual ao de sua origem, elas podem ser melhoradas, evoluírem ou se tornarem mais próximas do usuário, deste modo sendo fortalecidas além das suas capacidades de origem.

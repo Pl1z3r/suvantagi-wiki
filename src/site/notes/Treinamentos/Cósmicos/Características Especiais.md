@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/treinamentos/cosmicos/caracteristicas-especiais/","updated":"2025-11-18T22:52:48.919-03:00"}
+{"dg-publish":true,"permalink":"/treinamentos/cosmicos/caracteristicas-especiais/"}
 ---
 
 ### Atravessar Armadura

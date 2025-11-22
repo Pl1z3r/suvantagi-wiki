@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/exercitos/exercitos/","updated":"2025-11-18T22:52:48.918-03:00"}
+{"dg-publish":true,"permalink":"/exercitos/exercitos/"}
 ---
 
 ## Aspirando uma [[Exercitos/Vestes\|Veste]]

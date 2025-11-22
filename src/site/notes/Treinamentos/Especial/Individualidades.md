@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/treinamentos/especial/individualidades/","updated":"2025-11-18T22:52:48.920-03:00"}
+{"dg-publish":true,"permalink":"/treinamentos/especial/individualidades/"}
 ---
 
 As individualidades serão as recompensas que você pode optar usando a moeda do Prestígio, mas cada uma delas tem um preço…

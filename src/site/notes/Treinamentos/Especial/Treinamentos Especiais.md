@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/treinamentos/especial/treinamentos-especiais/","updated":"2025-11-18T22:52:48.920-03:00"}
+{"dg-publish":true,"permalink":"/treinamentos/especial/treinamentos-especiais/"}
 ---
 
 São treinamentos únicos de capacidades extremas e específicas, são raros e difíceis de serem desenvolvidos, dependendo unicamente de seu esforço próprio e experiência de vida.

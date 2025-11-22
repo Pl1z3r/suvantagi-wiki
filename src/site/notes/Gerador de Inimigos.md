@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/gerador-de-inimigos/","updated":"2025-11-19T02:52:22.959-03:00"}
+{"dg-publish":true,"permalink":"/gerador-de-inimigos/"}
 ---
 
 <!DOCTYPE html>
@@ -79,7 +79,7 @@
   <select id="classe">
     <option value="aleatorio">aleatorio</option>
     <option value="brutamontes">Brutamontes</option>
-    <option value="artista marcial">Artista Marcial</option>
+    <option value="artistaMarcial">Artista Marcial</option>
     <option value="elemental">Elemental</option>
     <option value="espiritualista">Espiritualista</option>
     <option value="ilusionista">Ilusionista</option>
@@ -98,10 +98,11 @@
       <option value="0.6">Alto</option>
       <option value="1.0">Perfeito</option>
     </select>
+    <button onclick="gerar()">Gerar aleatoriamente...</button>
+
 </div>
 <div class="section">
   <h2>Atributos</h2> 
-  <button onclick="spreadAtr()">Aleatorizar</button>
   <label id="labelAtributos">20 pontos restantes</label>
     <div class="campo">
       <label>For:</label>
@@ -141,7 +142,6 @@
     </div>
 
   <h2>Competencias</h2>
-    <button onclick="spreadCom()">Aleatorizar</button>
     <label id="labelCompetencias">pontos restantes</label>
     <div class="campo">
       <label>Socos:</label>
@@ -164,7 +164,6 @@
       <input type="number" id="psque" value="0"/>
     </div>
   <h2>Naturezas</h2>
-    <button onclick="spreadCom()">Aleatorizar</button>
     <label id="labelNaturezas">...</label>
     <select id="selecNaturezas">
       <option value="">-- escolha --</option>
@@ -180,20 +179,133 @@
       <option value="destuicaoPerfeita">Destruição Perfeita</option>
       <option value="cosmoPuro">Cosmo Puro</option>
     </select>
-    <button onclick="adcionarNatureza()">Adcionar</button>
 </div>
 
 <script>
-  let nome, rank, subrank = "";
-  let atrFor, atrRes, atrVel,
-      atrInt, atrVon, atrMen,
-      atrEsp, atrSen, atrCos = 0;;
+  let rank = Number(document.getElementById("rank")?.value || 20);
+  let subrank = Number(document.getElementById("subrank")?.value || 0.2);
+  let classe = String(document.getElementById("classe")?.value || "brutamontes");
   const minAtr = {
     "20": 5,   // Sobrehumano
     "50": 20,  // Superhumano
     "70": 50,  // Milagre
     "200": 70  // Deus
   };
+
+  let atrFor = Number(document.getElementById("for")?.value || 1);
+  let atrRes = Number(document.getElementById("res")?.value || 1);
+  let atrVel = Number(document.getElementById("vel")?.value || 1);
+  let atrInt = Number(document.getElementById("int")?.value || 1);
+  let atrVon = Number(document.getElementById("von")?.value || 1);
+  let atrMen = Number(document.getElementById("men")?.value || 1);
+  let atrEsp = Number(document.getElementById("esp")?.value || 1);
+  let atrSen = Number(document.getElementById("sen")?.value || 1);
+  let atrCos = Number(document.getElementById("cos")?.value || 0);
+
+  let valores = {
+    get ["for"]() { return atrFor; },
+    set ["for"](v) { atrFor = v; },
+
+    get ["res"]() { return atrRes; },
+    set ["res"](v) { atrRes = v; },
+
+    get ["vel"]() { return atrVel; },
+    set ["vel"](v) { atrVel = v; },
+
+    get ["int"]() { return atrInt; },
+    set ["int"](v) { atrInt = v; },
+
+    get ["von"]() { return atrVon; },
+    set ["von"](v) { atrVon = v; },
+
+    get ["men"]() { return atrMen; },
+    set ["men"](v) { atrMen = v; },
+
+    get ["esp"]() { return atrEsp; },
+    set ["esp"](v) { atrEsp = v; },
+
+    get ["sen"]() { return atrSen; },
+    set ["sen"](v) { atrSen = v; },
+
+    get ["cos"]() { return atrCos; },
+    set ["cos"](v) { atrCos = v; }
+  };
+
+  let socos = Number(document.getElementById("socos")?.value || 0);
+  let chute = Number(document.getElementById("chute")?.value || 0);
+  let armso = Number(document.getElementById("armso")?.value || 0);
+  let armas = Number(document.getElementById("armas")?.value || 0);
+  let psque = Number(document.getElementById("psque")?.value || 0);
+  
+  let atrTotal = atrFor + atrRes + atrVel + atrInt + atrVon + atrMen + atrEsp + atrSen +  atrCos;
+  let ptsIntTotal = socos + chute + armso + armas + psque;
+
+  let atrRestantes = Math.min(Math.max(((rank-minAtr[rank])*9*subrank)+minAtr[rank]*9, minAtr[rank]*9), rank*9)-atrTotal;
+  let ptsIntRestantes = Math.floor(atrInt/2) - ptsIntTotal;
+
+  const classes = {
+    "brutamontes": {
+      "ordemAtr": ["for", "res", "vel", "von", "men", "esp", "int", "cos"],
+      "proporcaoCompNatArtes": [5,1,3],
+      "proporcaoComp": [3,3,2,1,1]
+    },
+    "artistaMarcial": {
+      "ordemAtr": ["vel", "for", "int", "res", "von", "men", "esp", "cos"],
+      "proporcaoCompNatArtes": [3,1,5],
+      "proporcaoComp": [2,2,1,2,1]
+    },
+    "elemental": {
+      "ordemAtr": ["cos", "von", "int", "res", "vel", "men", "esp", "for"],
+      "proporcaoCompNatArtes": [3,5,1],
+      "proporcaoComp": [1,1,1,1,3]
+    },
+    "espiritualista": {
+      "ordemAtr": ["cos", "esp", "von", "men", "int", "res", "vel", "for"],
+      "proporcaoCompNatArtes": [5,3,1],
+      "proporcaoComp": [1,1,1,1,3]
+    },
+    "ilusionista": {
+      "ordemAtr": ["int", "men", "esp", "von", "res", "vel", "cos", "for"],
+      "proporcaoCompNatArtes": [5,3,1],
+      "proporcaoComp": [1,1,1,1,3]
+    }
+  };
+  function gerar() {
+    document.querySelectorAll("input").forEach(el => {
+      el.value = 0;
+    });
+    update(document.body);
+
+    const ordem = classes[classe].ordemAtr;
+
+    function aplicarPonto(atr, qtd)
+    {
+      valores[atr] = Math.min(valores[atr]+qtd,rank);
+
+      if (valores[atr] > valores["sen"]) {
+        let excedente = valores[atr] - valores["sen"];
+        valores["sen"] = Math.min(rank, Math.ceil(valores["sen"] + excedente));
+      }
+      return true;
+    }
+    while (atrRestantes > 0)
+    {
+      ordem.forEach(atr => {
+        if (atrRestantes <= 0) return;
+
+        let r = (Math.random() + Math.random()) / 2; 
+        let gasto = Math.ceil(Math.pow(r, 0.8) * (atrRestantes / 2));
+      
+        aplicarPonto(atr, gasto);
+        Object.keys(valores).forEach(a => {
+          document.getElementById(a).value = valores[a];
+        });
+
+        update(document.body);
+      });
+    }
+  }
+
   function update(alvo) {
     if (document.getElementById("classe").value == "aleatorio") {
       const total = document.getElementById("classe").length;
@@ -201,45 +313,28 @@
       document.getElementById("classe").selectedIndex = index;
     }
     // coleta de variaveis
-    let rank = Number(document.getElementById("rank")?.value || 0);
-    let subrank = Number(document.getElementById("subrank")?.value || 0);
+    rank = Number(document.getElementById("rank")?.value || 20);
+    subrank = Number(document.getElementById("subrank")?.value || 0.2);
+    classe = String(document.getElementById("classe")?.value || "aleatorio");
 
-    let atrFor = Number(document.getElementById("for")?.value || 1);
-    let atrRes = Number(document.getElementById("res")?.value || 1);
-    let atrVel = Number(document.getElementById("vel")?.value || 1);
-    let atrInt = Number(document.getElementById("int")?.value || 1);
-    let atrVon = Number(document.getElementById("von")?.value || 1);
-    let atrMen = Number(document.getElementById("men")?.value || 1);
-    let atrEsp = Number(document.getElementById("esp")?.value || 1);
-    let atrSen = Number(document.getElementById("sen")?.value || 1);
-    let atrCos = Number(document.getElementById("cos")?.value || 0);
+    Object.keys(valores).forEach(a => {
+      valores[a] = Number(document.getElementById(a)?.value || 1);
+    });
 
-    let socos = Number(document.getElementById("socos")?.value || 0);
-    let chute = Number(document.getElementById("chute")?.value || 0);
-    let armso = Number(document.getElementById("armso")?.value || 0);
-    let armas = Number(document.getElementById("armas")?.value || 0);
-    let psque = Number(document.getElementById("psque")?.value || 0);
+    socos = Number(document.getElementById("socos")?.value || 0);
+    chute = Number(document.getElementById("chute")?.value || 0);
+    armso = Number(document.getElementById("armso")?.value || 0);
+    armas = Number(document.getElementById("armas")?.value || 0);
+    psque = Number(document.getElementById("psque")?.value || 0);
 
     // validando
-    atrSen = Math.min(Math.max(atrSen, minAtr[rank]), rank);
-    atrFor = Math.min(Math.max(atrFor, minAtr[rank]), atrSen);
-    atrRes = Math.min(Math.max(atrRes, minAtr[rank]), atrSen);
-    atrVel = Math.min(Math.max(atrVel, minAtr[rank]), atrSen);
-    atrInt = Math.min(Math.max(atrInt, minAtr[rank]), atrSen);
-    atrVon = Math.min(Math.max(atrVon, minAtr[rank]), atrSen);
-    atrMen = Math.min(Math.max(atrMen, minAtr[rank]), atrSen);
-    atrEsp = Math.min(Math.max(atrEsp, minAtr[rank]), atrSen);
-    atrCos = Math.min(Math.max(atrCos, minAtr[rank]), atrSen);
-
-    document.getElementById("for").value = atrFor;
-    document.getElementById("res").value = atrRes;
-    document.getElementById("vel").value = atrVel;
-    document.getElementById("int").value = atrInt;
-    document.getElementById("von").value = atrVon;
-    document.getElementById("men").value = atrMen;
-    document.getElementById("esp").value = atrEsp;
-    document.getElementById("sen").value = atrSen;
-    document.getElementById("cos").value = atrCos;
+    valores["sen"] = Math.min(Math.max(atrSen, minAtr[rank]), rank);
+    Object.keys(valores).forEach(a => {
+      valores[a] = Math.min(Math.max(valores[a], minAtr[rank]), atrSen);
+    });
+    Object.keys(valores).forEach(a => {
+      document.getElementById(a).value = valores[a];
+    });
 
     socos = Math.min(Math.max(socos, 0), 5);
     chute = Math.min(Math.max(chute, 0), 5);
@@ -253,11 +348,11 @@
     document.getElementById("armas").value = armas;
     document.getElementById("psque").value = psque;
 
-    let atrTotal = atrFor + atrRes + atrVel + atrInt + atrVon + atrMen + atrEsp + atrSen +  atrCos;
-    let ptsIntTotal = socos + chute + armso + armas + psque;
+    atrTotal = atrFor + atrRes + atrVel + atrInt + atrVon + atrMen + atrEsp + atrSen +  atrCos;
+    ptsIntTotal = socos + chute + armso + armas + psque;
 
-    let atrRestantes = (minAtr[rank]*7)+(rank*subrank*9) - atrTotal;
-    let ptsIntRestantes = Math.floor(atrInt/2) - ptsIntTotal;
+    atrRestantes = Math.min(Math.max(((rank-minAtr[rank])*9*subrank)+minAtr[rank]*9, minAtr[rank]*9), rank*9)-atrTotal;
+    ptsIntRestantes = Math.floor(atrInt/2) - ptsIntTotal;
 
     if (atrRestantes < 0) {
       alvo.value = Number(alvo.value) + atrRestantes;
@@ -268,24 +363,19 @@
       alvo.value = Number(alvo.value) + ptsIntRestantes;
       ptsIntRestantes = 0;
     }
-
     document.getElementById("labelAtributos").textContent =  atrRestantes+" pontos de atributos restantes";
     document.getElementById("labelCompetencias").textContent = ptsIntRestantes+" pontos de aprendizagem restantes";
     document.getElementById("labelNaturezas").textContent = ptsIntRestantes+" pontos de aprendizagem restantes";
-
-
-
   }
   document.addEventListener("change", function(event) {
-    if (event.target.id == "rank"){
+    if (event.target.id == "rank" | event.target.id == "subrank" | event.target.id == "classe"){
       document.querySelectorAll("input").forEach(el => {
         el.value = 0;
       });
     }
     update(event.target);
   });
-  update();
+  update(document.body);
 </script>
-
 </body>
 </html>
