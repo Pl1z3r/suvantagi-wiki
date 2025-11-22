@@ -77,7 +77,7 @@
 <div class="section">
   <h2>Classe</h2>
   <select id="classe">
-    <option value="aleatorio">aleatorio</option>
+    <option value="aleatorio">Aleatório</option>
     <option value="brutamontes">Brutamontes</option>
     <option value="artistaMarcial">Artista Marcial</option>
     <option value="elemental">Elemental</option>
@@ -94,11 +94,11 @@
   <h2>SubRank</h2>
     <select id= "subrank">
       <option value="0.2">Baixo</option>
-      <option value="0.4">Medio</option>
+      <option value="0.4">Médio</option>
       <option value="0.6">Alto</option>
       <option value="1.0">Perfeito</option>
     </select>
-    <button onclick="gerar()">Gerar aleatoriamente...</button>
+    <button onclick="gerar()">Gerar aleatoriamente…</button>
 
 </div>
 <div class="section">
@@ -141,7 +141,7 @@
       <input type="number" id="cos" value="0"/>
     </div>
 
-  <h2>Competencias</h2>
+  <h2>Competências</h2>
     <label id="labelCompetencias">pontos restantes</label>
     <div class="campo">
       <label>Socos:</label>
@@ -166,10 +166,10 @@
   <h2>Naturezas</h2>
     <label id="labelNaturezas">...</label>
     <select id="selecNaturezas">
-      <option value="">-- escolha --</option>
+      <option value="">— Escolha —</option>
       <option value="calor">Calor</option>
       <option value="frio">Frio</option>
-      <option value="relampago">Relampago</option>
+      <option value="relampago">Relâmpago</option>
       <option value="agua">Água</option>
       <option value="terra">Terra</option>
       <option value="ar">Ar</option>
@@ -191,6 +191,12 @@
     "70": 50,  // Milagre
     "200": 70  // Deus
   };
+  const maxComp = {
+    "20": 2,
+    "50": 4,
+    "70": 5,
+    "200":5
+  }
 
   let atrFor = Number(document.getElementById("for")?.value || 1);
   let atrRes = Number(document.getElementById("res")?.value || 1);
@@ -300,10 +306,65 @@
         Object.keys(valores).forEach(a => {
           document.getElementById(a).value = valores[a];
         });
-
         update(document.body);
       });
     }
+    // gera fatores aleatórios mantendo a proporção
+    const fatores = classes[classe]["proporcaoCompNatArtes"].map(p => p * Math.random());
+
+    // soma total
+    const total = fatores.reduce((a, b) => a + b, 0);
+
+    // gera valores inteiros (floor)
+    let comp  = Math.min(Math.floor((fatores[0] / total) * ptsIntRestantes), 25);
+    let nat   = Math.floor((fatores[1] / total) * ptsIntRestantes);
+    let artes = Math.floor((fatores[2] / total) * ptsIntRestantes);
+
+    // ajustar diferença causada pelos floors
+    let soma = comp + nat + artes;
+    let diff = ptsIntRestantes - soma;
+    const vars = ["comp", "nat", "artes"];
+
+    while (diff > 0) {
+        const v = vars[Math.floor(Math.random() * vars.length)];
+        if (v === "comp" & comp < 25) comp++;
+        if (v === "nat") nat++;
+        if (v === "artes") artes++;
+        diff--;
+    }
+
+    function aplicarComp(qtd) {
+      const fatores = classes[classe]["proporcaoComp"].map(p => p * Math.random());
+      const total = fatores.reduce((a, b) => a + b, 0);
+
+      armso = Math.min(Math.floor((fatores[0] / total) * qtd), maxComp[rank]);
+      socos = Math.min(Math.floor((fatores[1] / total) * qtd), maxComp[rank]);
+      chute = Math.min(Math.floor((fatores[2] / total) * qtd), maxComp[rank]);
+      armas = Math.min(Math.floor((fatores[3] / total) * qtd), maxComp[rank]);
+      psque = Math.min(Math.floor((fatores[4] / total) * qtd), maxComp[rank]);
+
+      let soma = armso + socos + chute + armas + psque;
+      let diff = qtd - soma;
+      const vars = ["armso", "socos", "chute", "armas", "psque"];
+
+      while (diff > 0) {
+        const v = vars[Math.floor(Math.random() * vars.length)];
+        if (v === "armso") armso = Math.min(armso + 1, maxComp[rank]); 
+        if (v === "socos") socos = Math.min(socos + 1, maxComp[rank]);
+        if (v === "chute") chute = Math.min(chute + 1, maxComp[rank]); 
+        if (v === "armas") armas = Math.min(armas + 1, maxComp[rank]);
+        if (v === "psque") psque = Math.min(psque + 1, maxComp[rank]);
+        soma = armso + socos + chute + armas + psque;
+        diff = qtd - soma;
+      }
+      document.getElementById("socos").value = socos;
+      document.getElementById("chute").value = chute;
+      document.getElementById("armso").value = armso;
+      document.getElementById("armas").value = armas;
+      document.getElementById("psque").value = psque;
+      update(document.body);
+    }
+    aplicarComp(comp);
   }
 
   function update(alvo) {
