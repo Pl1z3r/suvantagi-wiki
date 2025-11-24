@@ -61,7 +61,7 @@
     .button-container {
       display: flex;
       justify-content: space-between;
-      padding: 10px;
+      padding: 0px;
       width: 100%;
     }
 
