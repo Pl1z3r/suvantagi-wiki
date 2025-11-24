@@ -175,11 +175,17 @@
       <input type="number" id="psque" min="0" max="5" value="0"/>
     </div>
   <h2>Naturezas</h2>
-    <label id="labelNaturezas">...</label>
-    <select id="selecNaturezas">
+    <label id="label-naturezas">...</label>
+    <select id="select-naturezas">
       <option value="">— Escolha —</option>
     </select>
     <div id="lista-naturezas"></div>
+  <h2>Treinamentos</h2>
+    <label id="label-treinamentos">...</label>
+    <select id="select-treinamentos">
+      <option value="">— Escolha —</option>
+    </select>
+    <div id="lista-treinamentos"></div>
 </div>
 
 <script>
@@ -250,239 +256,222 @@
   let atrRestantes = Math.min(Math.max(((rank-minAtr[rank])*9*subrank)+minAtr[rank]*9, minAtr[rank]*9), rank*9)-atrTotal;
   let ptsIntRestantes = Math.floor(atrInt/2) - ptsIntTotal;
 
-  let naturezas = {};
+  let posses = {
+    "naturezas": {},
+    "treinamentos": {}
+  };
   // TODO: Separar os treinamentos e capacidades dessa lista de Naturezas, aproveitar para adcionar as capacidades genericas de sentido, cosmo e etc.
   // TODO: Adcionar as caracteristicas às naturezas, em preparação para a adição da geração de tecnicas
-  const dictNaturezas = {
-    "Calor": {
-      "requesito": () => true,
-      "rankPorNv": [20,20,20],
-      "dependentes": ["Cosmo Ardente"]
+  const dict = {
+    "naturezas": {
+      "Calor": {
+        "requesito": () => true,
+        "rankPorNv": [20,20,20],
+        "caracteristicas": ["Atravessar Armadura", "Dano Contínuo"]
+      },
+      "Frio": {
+        "requesito": () => true,
+        "rankPorNv": [20,20,20],
+        "caracteristicas": ["Atravessar Armadura", "Congelamento"]
+      },
+      "Raio": {
+        "requesito": () => true,
+        "rankPorNv": [20,20,20],
+        "caracteristicas": ["Atravessar Armadura", "Ricochete", "Paralisia"]
+      },
+      "Vento": {
+        "requesito": () => true,
+        "rankPorNv": [20,20,20],
+        "caracteristicas": ["Barreira"]
+      },
+      "Água": {
+        "requesito": () => true,
+        "rankPorNv": [20,20,20],
+        "caracteristicas": ["Barreira"]
+      },
+      "Terra": {
+        "requesito": () => true,
+        "rankPorNv": [20,20,20],
+        "caracteristicas": ["Barreira"]
+      },
+      "Luz": {
+        "requesito": () => true,
+        "rankPorNv": [20,20,20],
+        "caracteristicas": ["Atravessar Armadura", "Camuflagem"]
+      },
+      "Sombra": {
+        "requesito": () => true,
+        "rankPorNv": [20,20,20],
+        "caracteristicas": ["Atravessar Armadura", "Camuflagem", "Paralisia"]
+      },
+      "Ondas de Choque": {
+        "requesito": () => true,
+        "rankPorNv": [20,20,50],
+        "caracteristicas": ["Melhoria Contínua"]
+      },
+      "Cosmo Ardente": {
+        "requesito": () => posses["naturezas"]["Calor"] === 3,
+        "rankPorNv": [20,50,70],
+        "caracteristicas": []
+      },
+      "Cosmo Glacial": {
+        "requesito": () => posses["naturezas"]["Frio"] === 3,
+        "rankPorNv": [20,50,70],
+        "caracteristicas": []
+      },
+      "Cosmo Trovejante": {
+        "requesito": () => posses["naturezas"]["Raio"] === 3,
+        "rankPorNv": [20,50,70],
+        "caracteristicas": []
+      },
+      "Cosmo Tempestuoso": {
+        "requesito": () => posses["naturezas"]["Vento"] === 3,
+        "rankPorNv": [20,50,70],
+        "caracteristicas": []
+      },
+      "Cosmo Hídrico": {
+        "requesito": () => posses["naturezas"]["Água"] === 3,
+        "rankPorNv": [20,50,70],
+        "caracteristicas": []
+      },
+      "Cosmo Térreo": {
+        "requesito": () => posses["naturezas"]["Terra"] === 3,
+        "rankPorNv": [20,50,70],
+        "caracteristicas": []
+      },
+      "Cosmo Luminoso": {
+        "requesito": () => posses["naturezas"]["Luz"] === 3,
+        "rankPorNv": [20,50,70],
+        "caracteristicas": []
+      },
+      "Cosmo Obscuro": {
+        "requesito": () => posses["naturezas"]["Sombra"] === 3,
+        "rankPorNv": [20,50,70],
+        "caracteristicas": []
+      },
+      "Sekishiki": {
+        "requesito": () => true,
+        "rankPorNv": [20,50,70],
+        "caracteristicas": []
+      },
+      "Ilusão": {
+        "requesito": () => true,
+        "rankPorNv": [20,50,70],
+        "caracteristicas": []
+      },
+      "Som": {
+        "requesito": () => true,
+        "rankPorNv": [20,50,70],
+        "caracteristicas": []
+      },
+      "Gravidade": {
+        "requesito": () => valores["sen"] >= 50,
+        "rankPorNv": [20,50,70],
+        "caracteristicas": []
+      },
+      "Cosmo Puro": {
+        "requesito": () => posses["treinamentos"]["Destruição Perfeita"] === 3 && valores["sen"] >= 50,
+        "rankPorNv": [20,50,70],
+        "caracteristicas": []
+      }
     },
-    "Frio": {
-      "requesito": () => true,
-      "rankPorNv": [20,20,20],
-      "dependentes": ["Cosmo Glacial"]
-    },
-    "Raio": {
-      "requesito": () => true,
-      "rankPorNv": [20,20,20],
-      "dependentes": ["Cosmo Trovejante"]
-    },
-    "Vento": {
-      "requesito": () => true,
-      "rankPorNv": [20,20,20],
-      "dependentes": ["Cosmo Tempestuoso"]
-    },
-    "Água": {
-      "requesito": () => true,
-      "rankPorNv": [20,20,20],
-      "dependentes": ["Cosmo Hídrico"]
-    },
-    "Terra": {
-      "requesito": () => true,
-      "rankPorNv": [20,20,20],
-      "dependentes": ["Cosmo Térreo"]
-    },
-    "Luz": {
-      "requesito": () => true,
-      "rankPorNv": [20,20,20],
-      "dependentes": ["Cosmo Luminoso"]
-    },
-    "Sombra": {
-      "requesito": () => true,
-      "rankPorNv": [20,20,20],
-      "dependentes": ["Cosmo Obscuro"]
-    },
-    "Posição de Iai": {
-      "requesito": () => true,
-      "rankPorNv": [20,20,50],
-      "dependentes": []
-    },
-    "Morte Negra": {
-      "requesito": () => true,
-      "rankPorNv": [20,20,50],
-      "dependentes": []
-    },
-    "Ondas de Choque": {
-      "requesito": () => true,
-      "rankPorNv": [20,20,50],
-      "dependentes": []
-    },
-    "Tatuagem Taonia": {
-      "requesito": () => true,
-      "rankPorNv": [20,20,50],
-      "dependentes": []
-    },
-    "Pontos Cósmicos": {
-      "requesito": () => true,
-      "rankPorNv": [20,20,50],
-      "dependentes": []
-    },
-    "Clarividência": {
-      "requesito": () => true,
-      "rankPorNv": [20,20,50],
-      "dependentes": []
-    },
-    "Cosmo Ardente": {
-      "requesito": () => naturezas["Calor"] === 3,
-      "rankPorNv": [20,50,70],
-      "dependentes": ["Poder Solar"]
-    },
-    "Cosmo Glacial": {
-      "requesito": () => naturezas["Frio"] === 3,
-      "rankPorNv": [20,50,70],
-      "dependentes": ["Zero Absoluto"]
-    },
-    "Cosmo Trovejante": {
-      "requesito": () => naturezas["Raio"] === 3,
-      "rankPorNv": [20,50,70],
-      "dependentes": ["Corrente Eterna"]
-    },
-    "Cosmo Tempestuoso": {
-      "requesito": () => naturezas["Vento"] === 3,
-      "rankPorNv": [20,50,70],
-      "dependentes": ["Colapso Atmosférico"]
-    },
-    "Cosmo Hídrico": {
-      "requesito": () => naturezas["Água"] === 3,
-      "rankPorNv": [20,50,70],
-      "dependentes": ["Fúria Diluviana"]
-    },
-    "Cosmo Térreo": {
-      "requesito": () => naturezas["Terra"] === 3,
-      "rankPorNv": [20,50,70],
-      "dependentes": ["Cataclismo Titânico"]
-    },
-    "Cosmo Luminoso": {
-      "requesito": () => naturezas["Luz"] === 3,
-      "rankPorNv": [20,50,70],
-      "dependentes": ["Brilho Estelar"]
-    },
-    "Cosmo Obscuro": {
-      "requesito": () => naturezas["Sombra"] === 3,
-      "rankPorNv": [20,50,70],
-      "dependentes": ["Abismo Infinito"]
-    },
-    "Sekishiki": {
-      "requesito": () => true,
-      "rankPorNv": [20,50,70],
-      "dependentes": ["Fogo Fátuo", "Manipulação de Almas"]
-    },
-    "Ilusão": {
-      "requesito": () => true,
-      "rankPorNv": [20,50,70],
-      "dependentes": []
-    },
-    "Som": {
-      "requesito": () => true,
-      "rankPorNv": [20,50,70],
-      "dependentes": []
-    },
-    "Destruição Imperfeita": {
-      "requesito": () => true,
-      "rankPorNv": [20,50,70],
-      "dependentes": ["Destruição Perfeita"]
-    },
-    "Cura": {
-      "requesito": () => true,
-      "rankPorNv": [20,50,70],
-      "dependentes": ["Cura Mental", "Cura Espiritual"]
-    },
-    "Cura Mental": {
-      "requesito": () => naturezas["cura"] > 0,
-      "rankPorNv": [20,50,70],
-      "dependentes": []
-    },
-    "Cura Espiritual": {
-      "requesito": () => naturezas["cura"] > 0,
-      "rankPorNv": [20,50,70],
-      "dependentes": []
-    },
-    "Controlar Animais": {
-      "requesito": () => true,
-      "rankPorNv": [20,50,70],
-      "dependentes": []
-    },
-    "Controlar Plantas": {
-      "requesito": () => true,
-      "rankPorNv": [20,50,70],
-      "dependentes": []
-    },
-    "Força Cósmica": {
-      "requesito": () => true,
-      "rankPorNv": [20,50,70],
-      "dependentes": []
-    },
-    "Manipulação de Almas": {
-      "requesito": () => naturezas["sekishiki"] === 3,
-      "rankPorNv": [20,50,70],
-      "dependentes": []
-    },
-    "Leitura de Mentes": {
-      "requesito": () => true,
-      "rankPorNv": [20,50,70],
-      "dependentes": []
-    },
-    "Poder Solar": {
-      "requesito": () => naturezas["Cosmo Ardente"] === 3 && valores["sen"] >= 50,
-      "rankPorNv": [20,50,70],
-      "dependentes": []
-    },
-    "Zero Absoluto": {
-      "requesito": () => naturezas["Cosmo Glacial"] === 3 && valores["sen"] >= 50,
-      "rankPorNv": [20,50,70],
-      "dependentes": []
-    },
-    "Corrente Eterna": {
-      "requesito": () => naturezas["Cosmo Trovejante"] === 3 && valores["sen"] >= 50,
-      "rankPorNv": [20,50,70],
-      "dependentes": []
-    },
-    "Colapso Atmosférico": {
-      "requesito": () => naturezas["Cosmo Tempestuoso"] === 3 && valores["sen"] >= 50,
-      "rankPorNv": [20,50,70],
-      "dependentes": []
-    },
-    "Fúria Diluviana": {
-      "requesito": () => naturezas["Cosmo Hídrico"] === 3 && valores["sen"] >= 50,
-      "rankPorNv": [20,50,70],
-      "dependentes": []
-    },
-    "Cataclismo Titânico": {
-      "requesito": () => naturezas["Cosmo Térreo"] === 3 && valores["sen"] >= 50,
-      "rankPorNv": [20,50,70],
-      "dependentes": []
-    },
-    "Brilho Estelar": {
-      "requesito": () => naturezas["Cosmo Luminoso"] === 3 && valores["sen"] >= 50,
-      "rankPorNv": [20,50,70],
-      "dependentes": []
-    },
-    "Abismo Infinito": {
-      "requesito": () => naturezas["Cosmo Obscuro"] === 3 && valores["sen"] >= 50,
-      "rankPorNv": [20,50,70],
-      "dependentes": []
-    },
-    "Gravidade": {
-      "requesito": () => valores["sen"] >= 50,
-      "rankPorNv": [20,50,70],
-      "dependentes": []
-    },
-    "Fogo Fátuo": {
-      "requesito": () => naturezas["Sekishiki"] === 3 && valores["sen"] >= 50,
-      "rankPorNv": [20,50,70],
-      "dependentes": []
-    },
-    "Destruição Perfeita": {
-      "requesito": () => naturezas["Destruição Imperfeita"] === 3 && valores["sen"] >= 50,
-      "rankPorNv": [20,50,70],
-      "dependentes": []
-    },
-    "Cosmo Puro": {
-      "requesito": () => naturezas["Destruição Perfeita"] === 3 && valores["sen"] >= 50,
-      "rankPorNv": [20,50,70],
-      "dependentes": []
+    "treinamentos": {
+      "Posição de Iai": {
+        "requesito": () => true,
+        "rankPorNv": [20,20,50]
+      },
+      "Morte Negra": {
+        "requesito": () => true,
+        "rankPorNv": [20,20,50]
+      },
+      "Tatuagem Taonia": {
+        "requesito": () => true,
+        "rankPorNv": [20,20,50]
+      },
+      "Pontos Cósmicos": {
+        "requesito": () => true,
+        "rankPorNv": [20,20,50]
+      },
+      "Clarividência": {
+        "requesito": () => true,
+        "rankPorNv": [20,20,50]
+      },
+      "Destruição Imperfeita": {
+        "requesito": () => true,
+        "rankPorNv": [20,50,70]
+      },
+      "Cura": {
+        "requesito": () => true,
+        "rankPorNv": [20,50,70]
+      },
+      "Cura Mental": {
+        "requesito": () => posses["treinamentos"]["cura"] > 0,
+        "rankPorNv": [20,50,70]
+      },
+      "Cura Espiritual": {
+        "requesito": () => posses["treinamentos"]["cura"] > 0,
+        "rankPorNv": [20,50,70]
+      },
+      "Controlar Animais": {
+        "requesito": () => true,
+        "rankPorNv": [20,50,70]
+      },
+      "Controlar Plantas": {
+        "requesito": () => true,
+        "rankPorNv": [20,50,70]
+      },
+      "Força Cósmica": {
+        "requesito": () => true,
+        "rankPorNv": [20,50,70]
+      },
+      "Manipulação de Almas": {
+        "requesito": () => posses["naturezas"]["sekishiki"] === 3,
+        "rankPorNv": [20,50,70]
+      },
+      "Leitura de Mentes": {
+        "requesito": () => true,
+        "rankPorNv": [20,50,70]
+      },
+      "Poder Solar": {
+        "requesito": () => posses["naturezas"]["Cosmo Ardente"] === 3 && valores["sen"] >= 50,
+        "rankPorNv": [20]
+      },
+      "Zero Absoluto": {
+        "requesito": () => posses["naturezas"]["Cosmo Glacial"] === 3 && valores["sen"] >= 50,
+        "rankPorNv": [20]
+      },
+      "Corrente Eterna": {
+        "requesito": () => posses["naturezas"]["Cosmo Trovejante"] === 3 && valores["sen"] >= 50,
+        "rankPorNv": [20]
+      },
+      "Colapso Atmosférico": {
+        "requesito": () => posses["naturezas"]["Cosmo Tempestuoso"] === 3 && valores["sen"] >= 50,
+        "rankPorNv": [20]
+      },
+      "Fúria Diluviana": {
+        "requesito": () => posses["naturezas"]["Cosmo Hídrico"] === 3 && valores["sen"] >= 50,
+        "rankPorNv": [20]
+      },
+      "Cataclismo Titânico": {
+        "requesito": () => posses["naturezas"]["Cosmo Térreo"] === 3 && valores["sen"] >= 50,
+        "rankPorNv": [20]
+      },
+      "Brilho Estelar": {
+        "requesito": () => posses["naturezas"]["Cosmo Luminoso"] === 3 && valores["sen"] >= 50,
+        "rankPorNv": [20]
+      },
+      "Abismo Infinito": {
+        "requesito": () => posses["naturezas"]["Cosmo Obscuro"] === 3 && valores["sen"] >= 50,
+        "rankPorNv": [20]
+      },
+      "Fogo Fátuo": {
+        "requesito": () => posses["naturezas"]["Sekishiki"] === 3 && valores["sen"] >= 50,
+        "rankPorNv": [20,50,70]
+      },
+      "Destruição Perfeita": {
+        "requesito": () => posses["treinamentos"]["Destruição Imperfeita"] === 3 && valores["sen"] >= 50,
+        "rankPorNv": [20,50,70]
+      }
     }
   };
 
@@ -496,7 +485,7 @@
   const classes = {
     "brutamontes": {
       "ordemAtr": ["for", "res", "vel", "von", "men", "esp", "int", "cos"],
-      "proporcaoCompNatArtes": [5,1,3],
+      "proporcaoCompNatTreArtes": [5,1,2,3],
       "proporcaoComp": [3,3,2,1,1],
       "naturezas": { // TODO: pesos do elemental, colocado aq só para teste
         "Calor": comum,
@@ -507,12 +496,7 @@
         "Terra": comum,
         "Luz": comum,
         "Sombra": comum,
-        "Posição de Iai": incomum,
-        "Morte Negra": incomum,
         "Ondas de Choque": incomum,
-        "Tatuagem Taonia": incomum,
-        "Pontos Cósmicos": incomum,
-        "Clarividência": incomum,
         "Cosmo Ardente": evoluçãoDireta,
         "Cosmo Glacial": evoluçãoDireta,
         "Cosmo Trovejante": evoluçãoDireta,
@@ -524,6 +508,15 @@
         "Sekishiki": raro,
         "Ilusão": raro,
         "Som": incomum,
+        "Gravidade": incomum,
+        "Cosmo Puro": raro,
+      },
+      "treinamentos": {
+        "Posição de Iai": incomum,
+        "Morte Negra": incomum,
+        "Tatuagem Taonia": incomum,
+        "Pontos Cósmicos": incomum,
+        "Clarividência": incomum,
         "Destruição Imperfeita": comum,
         "Cura": incomum,
         "Cura Mental": evoluçãoDireta,
@@ -541,15 +534,13 @@
         "Cataclismo Titânico": evoluçãoDireta,
         "Brilho Estelar": evoluçãoDireta,
         "Abismo Infinito": evoluçãoDireta,
-        "Gravidade": incomum,
         "Fogo Fátuo": evoluçãoDireta,
         "Destruição Perfeita": evoluçãoDireta,
-        "Cosmo Puro": raro,
       }
     },
     "artistaMarcial": {
       "ordemAtr": ["vel", "for", "int", "res", "von", "men", "esp", "cos"],
-      "proporcaoCompNatArtes": [3,1,5],
+      "proporcaoCompNatTreArtes": [3,1,3,5],
       "proporcaoComp": [2,2,1,2,1],
       "naturezas": { // TODO: pesos do elemental, colocado aq só para teste
         "Calor": comum,
@@ -560,12 +551,7 @@
         "Terra": comum,
         "Luz": comum,
         "Sombra": comum,
-        "Posição de Iai": incomum,
-        "Morte Negra": incomum,
         "Ondas de Choque": incomum,
-        "Tatuagem Taonia": incomum,
-        "Pontos Cósmicos": incomum,
-        "Clarividência": incomum,
         "Cosmo Ardente": evoluçãoDireta,
         "Cosmo Glacial": evoluçãoDireta,
         "Cosmo Trovejante": evoluçãoDireta,
@@ -577,6 +563,15 @@
         "Sekishiki": raro,
         "Ilusão": raro,
         "Som": incomum,
+        "Gravidade": incomum,
+        "Cosmo Puro": raro,
+      },
+      "treinamentos": {
+        "Posição de Iai": incomum,
+        "Morte Negra": incomum,
+        "Tatuagem Taonia": incomum,
+        "Pontos Cósmicos": incomum,
+        "Clarividência": incomum,
         "Destruição Imperfeita": comum,
         "Cura": incomum,
         "Cura Mental": evoluçãoDireta,
@@ -594,17 +589,15 @@
         "Cataclismo Titânico": evoluçãoDireta,
         "Brilho Estelar": evoluçãoDireta,
         "Abismo Infinito": evoluçãoDireta,
-        "Gravidade": incomum,
         "Fogo Fátuo": evoluçãoDireta,
         "Destruição Perfeita": evoluçãoDireta,
-        "Cosmo Puro": raro,
       }
     },
     "elemental": {
       "ordemAtr": ["cos", "von", "int", "res", "vel", "men", "esp", "for"],
-      "proporcaoCompNatArtes": [3,5,1],
+      "proporcaoCompNatTreArtes": [3,5,3,1],
       "proporcaoComp": [1,1,1,1,3],
-      "naturezas": {
+      "naturezas": { // TODO: pesos do elemental, colocado aq só para teste
         "Calor": comum,
         "Frio": comum,
         "Raio": comum,
@@ -613,12 +606,7 @@
         "Terra": comum,
         "Luz": comum,
         "Sombra": comum,
-        "Posição de Iai": incomum,
-        "Morte Negra": incomum,
         "Ondas de Choque": incomum,
-        "Tatuagem Taonia": incomum,
-        "Pontos Cósmicos": incomum,
-        "Clarividência": incomum,
         "Cosmo Ardente": evoluçãoDireta,
         "Cosmo Glacial": evoluçãoDireta,
         "Cosmo Trovejante": evoluçãoDireta,
@@ -630,6 +618,15 @@
         "Sekishiki": raro,
         "Ilusão": raro,
         "Som": incomum,
+        "Gravidade": incomum,
+        "Cosmo Puro": raro,
+      },
+      "treinamentos": {
+        "Posição de Iai": incomum,
+        "Morte Negra": incomum,
+        "Tatuagem Taonia": incomum,
+        "Pontos Cósmicos": incomum,
+        "Clarividência": incomum,
         "Destruição Imperfeita": comum,
         "Cura": incomum,
         "Cura Mental": evoluçãoDireta,
@@ -647,15 +644,13 @@
         "Cataclismo Titânico": evoluçãoDireta,
         "Brilho Estelar": evoluçãoDireta,
         "Abismo Infinito": evoluçãoDireta,
-        "Gravidade": incomum,
         "Fogo Fátuo": evoluçãoDireta,
         "Destruição Perfeita": evoluçãoDireta,
-        "Cosmo Puro": raro,
       }
     },
     "espiritualista": {
       "ordemAtr": ["cos", "esp", "von", "men", "int", "res", "vel", "for"],
-      "proporcaoCompNatArtes": [5,3,1],
+      "proporcaoCompNatTreArtes": [5,3,2,1],
       "proporcaoComp": [1,1,1,1,3],
       "naturezas": { // TODO: pesos do elemental, colocado aq só para teste
         "Calor": comum,
@@ -666,12 +661,7 @@
         "Terra": comum,
         "Luz": comum,
         "Sombra": comum,
-        "Posição de Iai": incomum,
-        "Morte Negra": incomum,
         "Ondas de Choque": incomum,
-        "Tatuagem Taonia": incomum,
-        "Pontos Cósmicos": incomum,
-        "Clarividência": incomum,
         "Cosmo Ardente": evoluçãoDireta,
         "Cosmo Glacial": evoluçãoDireta,
         "Cosmo Trovejante": evoluçãoDireta,
@@ -683,6 +673,15 @@
         "Sekishiki": raro,
         "Ilusão": raro,
         "Som": incomum,
+        "Gravidade": incomum,
+        "Cosmo Puro": raro,
+      },
+      "treinamentos": {
+        "Posição de Iai": incomum,
+        "Morte Negra": incomum,
+        "Tatuagem Taonia": incomum,
+        "Pontos Cósmicos": incomum,
+        "Clarividência": incomum,
         "Destruição Imperfeita": comum,
         "Cura": incomum,
         "Cura Mental": evoluçãoDireta,
@@ -700,15 +699,13 @@
         "Cataclismo Titânico": evoluçãoDireta,
         "Brilho Estelar": evoluçãoDireta,
         "Abismo Infinito": evoluçãoDireta,
-        "Gravidade": incomum,
         "Fogo Fátuo": evoluçãoDireta,
         "Destruição Perfeita": evoluçãoDireta,
-        "Cosmo Puro": raro,
       }
     },
     "ilusionista": {
       "ordemAtr": ["int", "men", "esp", "von", "res", "vel", "cos", "for"],
-      "proporcaoCompNatArtes": [5,3,1],
+      "proporcaoCompNatTreArtes": [5,3,2,1],
       "proporcaoComp": [1,1,1,1,3],
       "naturezas": { // TODO: pesos do elemental, colocado aq só para teste
         "Calor": comum,
@@ -719,12 +716,7 @@
         "Terra": comum,
         "Luz": comum,
         "Sombra": comum,
-        "Posição de Iai": incomum,
-        "Morte Negra": incomum,
         "Ondas de Choque": incomum,
-        "Tatuagem Taonia": incomum,
-        "Pontos Cósmicos": incomum,
-        "Clarividência": incomum,
         "Cosmo Ardente": evoluçãoDireta,
         "Cosmo Glacial": evoluçãoDireta,
         "Cosmo Trovejante": evoluçãoDireta,
@@ -736,6 +728,15 @@
         "Sekishiki": raro,
         "Ilusão": raro,
         "Som": incomum,
+        "Gravidade": incomum,
+        "Cosmo Puro": raro,
+      },
+      "treinamentos": {
+        "Posição de Iai": incomum,
+        "Morte Negra": incomum,
+        "Tatuagem Taonia": incomum,
+        "Pontos Cósmicos": incomum,
+        "Clarividência": incomum,
         "Destruição Imperfeita": comum,
         "Cura": incomum,
         "Cura Mental": evoluçãoDireta,
@@ -753,10 +754,8 @@
         "Cataclismo Titânico": evoluçãoDireta,
         "Brilho Estelar": evoluçãoDireta,
         "Abismo Infinito": evoluçãoDireta,
-        "Gravidade": incomum,
         "Fogo Fátuo": evoluçãoDireta,
         "Destruição Perfeita": evoluçãoDireta,
-        "Cosmo Puro": raro,
       }
     }
   };
@@ -765,42 +764,42 @@
     document.querySelectorAll("input").forEach(el => {
       
       el.value = 0;
-      if (el.id.startsWith("nivel-")) {
-        const nomeNat = el.id.replace("nivel-", "");
-        atualizarNatureza(nomeNat, 0);
+      if (el.id.startsWith("nivel-")) { // aqui
+        const nome = el.id.replace("nivel-", "");
+        atualizarNTA(el.parentElement.id.split("-")[0], nome, 0);
       }
     });
     update(document.body);
   }
 
-  function atualizarNatureza(nome, nivel = 1) {
-    const container = document.getElementById("lista-naturezas");
+  function atualizarNTA(dictName, nome, nivel = 1) {
+    const container = document.getElementById(`lista-${dictName}`);
 
     if (nivel <= 0) {
-      delete naturezas[nome];
-      const old = document.getElementById("nat-" + nome);
+      delete posses[dictName][nome];
+      const old = document.getElementById(`${dictName}-` + nome);
       if (old) old.remove();
       return;
     }
 
-    naturezas[nome] = nivel;
+    posses[dictName][nome] = nivel;
 
-    if (!document.getElementById("nat-" + nome)) {
+    if (!document.getElementById(`${dictName}-` + nome)) {
       const div = document.createElement("div");
       div.className = "campo";
-      div.id = "nat-" + nome;
+      div.id = `${dictName}-` + nome;
 
       div.innerHTML = `
         <label>${nome}:</label>
-        <input type="number" min="0" max="3" value="${nivel}" id="nivel-${nome}">
+        <input type="number" min="0" max="${dict[dictName][nome]["rankPorNv"].length}" value="${nivel}" id="nivel-${nome}">
       `;
 
       container.appendChild(div);
 
       div.querySelector("input").addEventListener("change", (ev) => {
         let v = Number(ev.target.value);
-        if (v <= 0) atualizarNatureza(nome, 0);
-        else naturezas[nome] = Math.min(3, v);
+        if (v <= 0) atualizarNTA(dictName, nome, 0);
+        else posses[dictName][nome] = Math.min(3, v);
 
         update(ev.target);
       });
@@ -810,21 +809,23 @@
     }
   }
 
-  function atualizarSelectNaturezas() {
-    const select = document.getElementById("selecNaturezas");
-    const selecionadas = Object.keys(naturezas);
+  function atualizarSelectNTA() {
+    Object.keys(posses).forEach(dictName => {
+      const select = document.getElementById(`select-${dictName}`);
+      const selecionadas = Object.keys(posses[dictName]);
 
-    select.innerHTML = `<option value="">— Escolha —</option>`;
+      select.innerHTML = `<option value="">— Escolha —</option>`;
 
-    Object.keys(dictNaturezas).forEach(nome => {
-      if (selecionadas.includes(nome)) return;
-      const req = dictNaturezas[nome]["requesito"]();
-      if (req) {
-        const opt = document.createElement("option");
-        opt.value = nome;
-        opt.textContent = nome;
-        select.appendChild(opt);
-      }
+      Object.keys(dict[dictName]).forEach(nome => {
+        if (selecionadas.includes(nome)) return;
+        const req = dict[dictName][nome]["requesito"]();
+        if (req) {
+          const opt = document.createElement("option");
+          opt.value = nome;
+          opt.textContent = nome;
+          select.appendChild(opt);
+        }
+      });
     });
   }
 
@@ -844,7 +845,6 @@
       return true;
     }
     let rand = 1 + (Math.random() * 9);
-    console.log(rand);
     while (atrRestantes > 0)
     {
       ordem.forEach(atr => {
@@ -861,7 +861,7 @@
       });
     }
     // gera fatores aleatórios mantendo a proporção
-    const fatores = classes[classe]["proporcaoCompNatArtes"].map(p => p * Math.random());
+    const fatores = classes[classe]["proporcaoCompNatTreArtes"].map(p => p * Math.random());
 
     // soma total
     const total = fatores.reduce((a, b) => a + b, 0);
@@ -869,17 +869,19 @@
     // gera valores inteiros (floor)
     let comp  = Math.min(Math.floor((fatores[0] / total) * ptsIntRestantes), 25);
     let nat   = Math.floor((fatores[1] / total) * ptsIntRestantes);
-    let artes = Math.floor((fatores[2] / total) * ptsIntRestantes);
+    let tre   = Math.floor((fatores[2] / total) * ptsIntRestantes);
+    let artes = Math.floor((fatores[3] / total) * ptsIntRestantes);
 
     // ajustar diferença causada pelos floors
     let soma = comp + nat + artes;
     let diff = ptsIntRestantes - soma;
-    const vars = ["comp", "nat", "artes"];
+    const vars = ["comp", "nat", "tre", "artes"];
 
     while (diff > 0) {
         const v = vars[Math.floor(Math.random() * vars.length)];
         if (v === "comp" && comp < 25) comp++;
         if (v === "nat") nat++;
+        if (v === "tre") tre++;
         if (v === "artes") artes++;
         diff--;
     }
@@ -917,97 +919,108 @@
     }
     aplicarComp(comp);
 
-    if (nat > 0) {
-      let nRest = nat;
+    function aplicarNTA(dictName, qtd) {
+      if (qtd > 0) {
+        let nRest = qtd;
 
-      while (nRest > 0) {
-        atualizarSelectNaturezas();
-        // recalcula todas as opções e seus pesos a cada iteração
-        const todasOpcoes = [
-          ...Array.from(document.querySelectorAll("#selecNaturezas option")).map(o => o.value),
-          ...Object.keys(naturezas)
-        ].filter(v => v && v !== ""); // remove valores vazios
+        while (nRest > 0) {
+          atualizarSelectNTA();
+          // recalcula todas as opções e seus pesos a cada iteração
+          const todasOpcoes = [
+            ...Array.from(document.querySelectorAll(`#select-${dictName} option`)).map(o => o.value),
+            ...Object.keys(posses[dictName])
+          ].filter(v => v && v !== ""); // remove valores vazios
 
-        let listaPesada = [];
-        todasOpcoes.forEach(nome => {
-          let peso = classes[classe]["naturezas"][nome] || 0;
+          let listaPesada = [];
+          todasOpcoes.forEach(nome => {
+            let peso = classes[classe][dictName][nome] || 0;
 
-          // aumenta peso se já existe na variavel naturezas
-          if (Object.keys(naturezas).includes(nome)) peso = peso * multiplicadorRaridade;
+            // aumenta peso se já existe na variavel naturezas
+            if (Object.keys(posses[dictName]).includes(nome)) peso = peso * multiplicadorRaridade;
 
-          for (let i = 0; i < peso; i++) listaPesada.push(nome);
-        });
+            for (let i = 0; i < peso; i++) listaPesada.push(nome);
+          });
 
-        if (listaPesada.length === 0) break; // evita loop infinito
+          if (listaPesada.length === 0) break; // evita loop infinito
 
-        // escolhe uma natureza aleatoriamente da lista pesada
-        const index = Math.floor(Math.random() * listaPesada.length);
-        const natEscolhida = listaPesada[index];
+          // escolhe uma natureza aleatoriamente da lista pesada
+          const index = Math.floor(Math.random() * listaPesada.length);
+          const NTAEscolhida = listaPesada[index];
 
-        if (!naturezas[natEscolhida]) naturezas[natEscolhida] = 0;
-
-        if (naturezas[natEscolhida] < 3) {
-          naturezas[natEscolhida]++;
-          atualizarNatureza(natEscolhida, naturezas[natEscolhida]);
-          nRest--;
+          if (!posses[dictName][NTAEscolhida]) posses[dictName][NTAEscolhida] = 0;
+          if (posses[dictName][NTAEscolhida] < dict[dictName][NTAEscolhida]["rankPorNv"].length) {
+            posses[dictName][NTAEscolhida]++;
+            atualizarNTA(dictName, NTAEscolhida, posses[dictName][NTAEscolhida]);
+            nRest--;
+          }
         }
       }
     }
+    aplicarNTA("naturezas", nat);
+    aplicarNTA("treinamentos", tre);
+    // aplicarNTA("artesMarciais", artes); TODO
+    
     update(document.body);
   }
 
   function copiarFicha() {
-    // Coleta as informações do formulário
-    const classe = document.getElementById("classe").value;
-    const rank = document.getElementById("rank").value;
-    const subrank = document.getElementById("subrank").value;
-    
-    // Atributos
-    const forca = document.getElementById("for").value;
-    const resis = document.getElementById("res").value;
-    const velocidade = document.getElementById("vel").value;
-    const inteligencia = document.getElementById("int").value;
-    const vontade = document.getElementById("von").value;
-    const mente = document.getElementById("men").value;
-    const espirito = document.getElementById("esp").value;
-    const sentido = document.getElementById("sen").value;
-    const cosmo = document.getElementById("cos").value;
+    // Classe, Rank e Subrank já estão nas variáveis globais
+    const classeNome =
+      classe.charAt(0).toUpperCase() + classe.slice(1);
 
-    // Naturezas Cósmicas
-    let naturezasTexto = '';
-    Object.keys(naturezas).forEach(natureza => {
-      naturezasTexto += `- ${natureza}: ${naturezas[natureza]}\n`;
-    });
+    const rankNome =
+      rank === 20 ? "Sobrehumano" :
+      rank === 50 ? "Superhumano" :
+      rank === 70 ? "Milagre" : "Deus";
 
-    // Formatar a ficha
+    const subrankNome =
+      subrank === 1.0 ? "Perfeito" :
+      subrank === 0.6 ? "Alto" :
+      subrank === 0.4 ? "Médio" : "Baixo";
+
+    // Naturezas
+    let naturezasTexto = "";
+    for (const n in posses.naturezas) {
+      naturezasTexto += `- ${n}: ${posses.naturezas[n]}\n`;
+    }
+
+    // Treinamentos
+    let treinamentosTexto = "";
+    for (const t in posses.treinamentos) {
+      treinamentosTexto += `- ${t}: ${posses.treinamentos[t]}\n`;
+    }
+
+    // Ficha formatada
     let ficha = `*[FICHA DE INIMIGO]*\n\n`;
 
-    ficha += `*Classe:*\n- ${classe.charAt(0).toUpperCase() + classe.slice(1)}\n`;
-    ficha += `*Rank:*\n- ${rank === "20" ? "Sobrehumano" : rank === "50" ? "Superhumano" : rank === "70" ? "Milagre" : "Deus"} ${subrank === "1.0" ? "Perfeito" : subrank === "0.6" ? "Alto" : subrank === "0.4" ? "Médio" : "Baixo"}\n\n`;
+    ficha += `*Classe:*\n- ${classeNome}\n`;
+    ficha += `*Rank:*\n- ${rankNome} ${subrankNome}\n\n`;
 
     ficha += `*Atributos:*\n\`\`\`\n`;
-    ficha += `- Força: ${forca}\n`;
-    ficha += `- Resis: ${resis}\n`;
-    ficha += `- Veloc: ${velocidade}\n`;
-    ficha += `- Intel: ${inteligencia}\n`;
-    ficha += `- Vntad: ${vontade}\n`;
-    ficha += `- Mente: ${mente}\n`;
-    ficha += `- Spirt: ${espirito}\n`;
-    ficha += `- Sentd: ${sentido}\n`;
-    ficha += `- Cosmo: ${cosmo}\n`;
+    ficha += `- Força: ${atrFor}\n`;
+    ficha += `- Resis: ${atrRes}\n`;
+    ficha += `- Veloc: ${atrVel}\n`;
+    ficha += `- Intel: ${atrInt}\n`;
+    ficha += `- Vntad: ${atrVon}\n`;
+    ficha += `- Mente: ${atrMen}\n`;
+    ficha += `- Spirt: ${atrEsp}\n`;
+    ficha += `- Sentd: ${atrSen}\n`;
+    ficha += `- Cosmo: ${atrCos}\n`;
     ficha += `\`\`\`\n`;
 
     if (naturezasTexto) {
-      ficha += `*Naturezas Cósmicas:*\n${naturezasTexto}`;
+      ficha += `*Naturezas Cósmicas:*\n${naturezasTexto}\n`;
     }
 
-    // Copiar para a área de transferência
-    navigator.clipboard.writeText(ficha).then(() => {
-      alert('Ficha copiada para a área de transferência!');
-    }).catch((error) => {
-      console.error('Erro ao copiar a ficha: ', error);
-    });
+    if (treinamentosTexto) {
+      ficha += `*Treinamentos:*\n${treinamentosTexto}\n`;
+    }
+
+    navigator.clipboard.writeText(ficha)
+      .then(() => alert('Ficha copiada para a área de transferência!'))
+      .catch(err => console.error("Erro ao copiar ficha: ", err));
   }
+
 
   function update(alvo) {
     if (document.getElementById("classe").value == "aleatorio") {
@@ -1052,12 +1065,20 @@
     document.getElementById("psque").value = psque;
 
     atrTotal = atrFor + atrRes + atrVel + atrInt + atrVon + atrMen + atrEsp + atrSen +  atrCos;
-    ptsIntTotal = socos + chute + armso + armas + psque + Object.values(naturezas).reduce((acc, val) => acc + val, 0);
+
+    let somaNTA = 0;
+    Object.keys(posses).forEach(dictName => {
+      somaNTA += Object.values(posses[dictName]).reduce((acc, val) => acc + val, 0);
+    });
+    ptsIntTotal = socos + chute + armso + armas + psque + somaNTA;
 
     atrRestantes = Math.min(Math.max(((rank-minAtr[rank])*9*subrank)+minAtr[rank]*9, minAtr[rank]*9), rank*9)-atrTotal;
     ptsIntRestantes = Math.floor(atrInt/2) - ptsIntTotal;
 
-    document.getElementById("selecNaturezas").disabled = ptsIntRestantes <= 0;
+    Object.keys(posses).forEach(dictName => {
+      document.getElementById(`select-${dictName}`).disabled = ptsIntRestantes <= 0;
+    });
+    
     if (atrRestantes < 0) {
       alvo.value = Number(alvo.value) + atrRestantes;
       atrRestantes = 0;
@@ -1066,25 +1087,26 @@
     if (ptsIntRestantes < 0) {
       alvo.value = Number(alvo.value) + ptsIntRestantes;
       if (alvo.id.startsWith("nivel-")) {
-        const nomeNat = alvo.id.replace("nivel-", "");
-        naturezas[nomeNat] = Number(naturezas[nomeNat]) + ptsIntRestantes;
+        const nome = alvo.id.replace("nivel-", "");
+        posses[alvo.parentElement.id.split("-")[0]][nome] = Number(posses[alvo.parentElement.id.split("-")[0]][nome]) + ptsIntRestantes;
       }
       ptsIntRestantes = 0;
     }
     document.getElementById("labelAtributos").textContent =  atrRestantes+" pontos de atributos restantes";
     document.getElementById("labelCompetencias").textContent = ptsIntRestantes+" pontos de aprendizagem restantes";
-    document.getElementById("labelNaturezas").textContent = ptsIntRestantes+" pontos de aprendizagem restantes";
+    document.getElementById("label-treinamentos").textContent = ptsIntRestantes+" pontos de aprendizagem restantes";
+    document.getElementById("label-naturezas").textContent = ptsIntRestantes+" pontos de aprendizagem restantes";
     
-    atualizarSelectNaturezas();
+    atualizarSelectNTA();
   }
   document.addEventListener("change", function(event) {
     if (event.target.id == "rank" | event.target.id == "subrank" | event.target.id == "classe") clear();
-    if (event.target.id === "selecNaturezas") {
+    if (event.target.id.startsWith("select-")) {
       const val = event.target.value;
       if (val === "") return;
 
-      if (!naturezas[val]) {
-        atualizarNatureza(val, 1); // nível inicial
+      if (!posses[event.target.id.split("-")[1]][val]) {
+        atualizarNTA(event.target.id.split("-")[1], val, 1); // nível inicial
         event.target.value = "";
       }
     }
