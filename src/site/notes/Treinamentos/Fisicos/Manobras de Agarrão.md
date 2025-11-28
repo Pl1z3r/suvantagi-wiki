@@ -1,7 +1,6 @@
 ---
-{"dg-publish":true,"permalink":"/treinamentos/fisicos/manobras-de-agarrao/"}
+dg-publish: true
 ---
-
 ARM/WRIST LOCK (Trava de Pulso)
 Custo de Fôlego:
 Aikidô, Jiu Jitsu 1; Forças Especiais, Kabaddi, Krav Maga 2; Outros 3.

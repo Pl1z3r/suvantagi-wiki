@@ -1,7 +1,6 @@
 ---
-{"dg-publish":true,"permalink":"/treinamentos/cosmicos/caracteristicas-especiais/"}
+dg-publish: true
 ---
-
 ### Atravessar Armadura
 
 Metade do dano ignora a proteção da armadura.

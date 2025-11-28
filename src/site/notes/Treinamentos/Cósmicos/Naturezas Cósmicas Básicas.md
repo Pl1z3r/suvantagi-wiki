@@ -1,7 +1,6 @@
 ---
-{"dg-publish":true,"permalink":"/treinamentos/cosmicos/naturezas-cosmicas-basicas/"}
+dg-publish: true
 ---
-
 Naturezas de simples entendimento e treinamento. Podem ser aprendidas sem nenhum tipo de requisito especial.
 
 [[Treinamentos/Cósmicos/Características Genéricas\|Características Genéricas]]

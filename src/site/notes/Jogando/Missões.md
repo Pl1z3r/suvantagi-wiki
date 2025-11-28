@@ -1,7 +1,6 @@
 ---
-{"dg-publish":true,"permalink":"/jogando/missoes/"}
+dg-publish: true
 ---
-
 São diversos eventos com objetivos a serem cumpridos, que são informados previamente ao guerreiro que irá se encarregar deste.
 
 ## Missões Genéricas

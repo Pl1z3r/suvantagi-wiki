@@ -1,7 +1,6 @@
 ---
-{"dg-publish":true,"permalink":"/treinamentos/fisicos/manobras-de-arremesso/"}
+dg-publish: true
 ---
-
 AIR THROW (Lançamento Aéreo)
 
 Pré-Requisitos: Jump, Throw

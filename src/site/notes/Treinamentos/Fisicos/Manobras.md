@@ -1,7 +1,6 @@
 ---
-{"dg-publish":true,"permalink":"/treinamentos/fisicos/manobras/"}
+dg-publish: true
 ---
-
 São os atos que sua postura de arte marcial permite usar, cada uma com suas variações e seus resultados.
 
 

@@ -1,7 +1,6 @@
 ---
-{"dg-publish":true,"permalink":"/jogando/ficha-de-personagem/"}
+dg-publish: true
 ---
-
 ## Nome:
 * `...`
 

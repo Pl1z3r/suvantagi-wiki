@@ -1,7 +1,6 @@
 ---
-{"dg-publish":true,"permalink":"/treinamentos/fisicos/combos/"}
+dg-publish: true
 ---
-
 A função dos combos é juntar uma série de movimentos físicos com o intuito de atacar o oponente, cada golpe possui suas mecânicas próprias que serão mais detalhadas a frente, entretanto, dentro de um combo, esses movimentos são considerados como um único ataque, desta forma, todos os modificadores dos golpes presentes no combo, são somados e computados na ficha do jogador.
 
 O tamanho máximo dos combos é determinado pelo nível da arte marcial que está utilizando para realizar seus golpes físicos.

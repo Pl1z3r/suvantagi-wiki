@@ -1,7 +1,6 @@
 ---
-{"dg-publish":true,"permalink":"/treinamentos/especial/renome-e-prestigio/"}
+dg-publish: true
 ---
-
 Os feitos de um indivíduo ao longo da história têm significado mesmo após a morte, podendo fazê-lo reconhecido e lembrado como uma lenda entre aqueles que repassam sua história, e mais, podem lhe conceder tesouros inestimáveis para a próxima vida.
 
 ## Renome

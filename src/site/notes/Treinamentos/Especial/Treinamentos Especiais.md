@@ -1,7 +1,6 @@
 ---
-{"dg-publish":true,"permalink":"/treinamentos/especial/treinamentos-especiais/"}
+dg-publish: true
 ---
-
 São treinamentos únicos de capacidades extremas e específicas, são raros e difíceis de serem desenvolvidos, dependendo unicamente de seu esforço próprio e experiência de vida.
 
 *{Controlar Animais}*

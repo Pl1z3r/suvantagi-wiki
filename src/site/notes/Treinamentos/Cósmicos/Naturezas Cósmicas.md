@@ -1,7 +1,6 @@
 ---
-{"dg-publish":true,"permalink":"/treinamentos/cosmicos/naturezas-cosmicas/"}
+dg-publish: true
 ---
-
 São manifestações do seu Cosmo, que permitem que ele seja usado para influenciar na Natureza.
 
 Características relacionadas à duração ou valores semelhantes se baseiam no nível do que foi usado, seja técnica ou natureza pura. Mas há exceções que serão sinalizadas.

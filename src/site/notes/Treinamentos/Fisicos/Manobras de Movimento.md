@@ -1,7 +1,6 @@
 ---
-{"dg-publish":true,"permalink":"/treinamentos/fisicos/manobras-de-movimento/"}
+dg-publish: true
 ---
-
 Backflip
 +0 de Dano, +4 de Agilidade.
 Uma sequência de saltos para trás, alternando entre pousar com as mãos ou os pés, anula ambos os combos.

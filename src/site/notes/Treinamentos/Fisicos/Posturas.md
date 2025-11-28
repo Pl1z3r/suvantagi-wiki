@@ -1,7 +1,6 @@
 ---
-{"dg-publish":true,"permalink":"/treinamentos/fisicos/posturas/"}
+dg-publish: true
 ---
-
 ### Aikido
 
   

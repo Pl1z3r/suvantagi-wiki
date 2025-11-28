@@ -1,7 +1,6 @@
 ---
-{"dg-publish":true,"permalink":"/treinamentos/fisicos/manobras-de-chute/"}
+dg-publish: true
 ---
-
 BACKFLIP KICK
 
 +2 de Dano, +0 de Agilidade.

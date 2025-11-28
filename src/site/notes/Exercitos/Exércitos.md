@@ -1,7 +1,6 @@
 ---
-{"dg-publish":true,"permalink":"/exercitos/exercitos/"}
+dg-publish: true
 ---
-
 ## Aspirando uma [[Exercitos/Vestes\|Veste]]
 
 Cada exército possui sua armadura e seu sistema próprio, as armaduras, além de servirem como hierarquias e tipos, são proteções importantes que salvarão os cavaleiros de perecer facilmente em uma luta.

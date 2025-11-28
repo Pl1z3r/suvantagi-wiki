@@ -1,7 +1,6 @@
 ---
-{"dg-publish":true,"permalink":"/jogando/acoes-diarias/"}
+dg-publish: true
 ---
-
 Todo dia, como um jogador, você pode fazer uma cena descrevendo uma ação mecânica para aquele dia. Porém, apenas uma, então fica a cargo do jogador escolher no que usar seu tempo. Caso um personagem esteja ferido gravemente, fazer uma ação diária, que não um descanso, é perigoso. Cheque a seção sobre combate para mais informações sobre ferimentos.
 
 ## Treinar
