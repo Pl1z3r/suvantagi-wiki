@@ -1,6 +1,7 @@
 ---
-dg-publish: true
+{"dg-publish":true,"permalink":"/exercitos/armaduras/"}
 ---
+
 A maior proteção dos cavaleiros é sua armadura, os corpos humanos são geralmente muito frágeis se comparados com a força destrutiva dos cavaleiros, devido a isso, a armadura é uma proteção crucial para lutar.
 
 ## Proteção

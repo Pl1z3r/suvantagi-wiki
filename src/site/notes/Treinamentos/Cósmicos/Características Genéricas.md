@@ -1,6 +1,7 @@
 ---
-dg-publish: true
+{"dg-publish":true,"permalink":"/treinamentos/cosmicos/caracteristicas-genericas/"}
 ---
+
 ### Restrição
 
 O dano é causado direto nos pontos de esquiva, sem reduções por Agilidade.

@@ -1,6 +1,7 @@
 ---
-dg-publish: true
+{"dg-publish":true,"permalink":"/treinamentos/fisicos/manobras-genericas/"}
 ---
+
 ### Block (Bloqueio)
 
 +4 de Agilidade

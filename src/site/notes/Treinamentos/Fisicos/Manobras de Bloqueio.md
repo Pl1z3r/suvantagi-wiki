@@ -1,6 +1,7 @@
 ---
-dg-publish: true
+{"dg-publish":true,"permalink":"/treinamentos/fisicos/manobras-de-bloqueio/"}
 ---
+
 #### Counter Attack (Contra-Ataque)
 
 Custo de Fôlego:

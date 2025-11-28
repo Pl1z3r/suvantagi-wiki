@@ -1,6 +1,7 @@
 ---
-dg-publish: true
+{"dg-publish":true,"permalink":"/exercitos/vestes/"}
 ---
+
 Cada exército tem sua veste, com suas próprias atribuições e qualidades.
 ## [[Exercitos/Exércitos#Exército de Deuses Athena Athena\|Cavaleiros]]
 

@@ -1,6 +1,7 @@
 ---
-dg-publish: true
+{"dg-publish":true,"permalink":"/jogando/combate/"}
 ---
+
 ## Rodadas
 
 Uma rodada se configura pela junção de turnos, cada lutador terá um turno para agir enquanto os outros terão direito a uma reação. Quando todos terminarem seus turnos, a rodada é dada como terminada. Ao fim da rodada todos os efeitos contínuos são resolvidos, assim como todos os pontos de esquiva e proteção restaurados a seus valores devidos.

@@ -1,6 +1,7 @@
 ---
-dg-publish: true
+{"dg-publish":true,"permalink":"/treinamentos/cosmicos/naturezas-cosmicas-intermediarias/"}
 ---
+
 As Limitações Especiais dão detalhes sobre o uso e interações das naturezas cósmicas.
 
 [[Treinamentos/Cósmicos/Características Genéricas\|Características Genéricas]]

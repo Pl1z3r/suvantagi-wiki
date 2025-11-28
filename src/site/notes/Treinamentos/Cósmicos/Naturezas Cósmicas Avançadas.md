@@ -1,6 +1,7 @@
 ---
-dg-publish: true
+{"dg-publish":true,"permalink":"/treinamentos/cosmicos/naturezas-cosmicas-avancadas/"}
 ---
+
 Todas as naturezas aqui descritas só estão disponíveis para serem aprendidas por aqueles que já tenham despertado o 7º sentido completo.
 
 Os Requisitos Especiais podem ser outras naturezas iniciais, atributos ou conquistas em lore, obter um desses requisitos anula a necessidade dos outros.

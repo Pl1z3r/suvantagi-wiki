@@ -1,6 +1,7 @@
 ---
-dg-publish: true
+{"dg-publish":true,"permalink":"/treinamentos/fisicos/manobras-de-soco/"}
 ---
+
 BANISHING FLAT (Banimento Planar)
 
 Pré-Requisitos: Spinning Back Fist  

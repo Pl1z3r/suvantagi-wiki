@@ -1,6 +1,7 @@
 ---
-dg-publish: true
+{"dg-publish":true,"permalink":"/treinamentos/fisicos/artes-marciais/"}
 ---
+
 ## Estilo de Luta
 
 Nada define mais um lutador do que seus movimentos durante a luta. O estilo de luta determina como ele luta e qual conhecimento marcial ele adquiriu. Alguns lutadores treinam vários estilos ao mesmo tempo, mas eles raramente chegam a se destacar como artista marcial.

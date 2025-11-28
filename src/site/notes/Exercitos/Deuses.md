@@ -1,6 +1,7 @@
 ---
-dg-publish: true
+{"dg-publish":true,"permalink":"/exercitos/deuses/"}
 ---
+
 Aqui serão apresentados os deuses, os exércitos que governam, e as bênçãos especiais que são fornecidas aos mais devotos servos, de acordo com seu nível de [[Exercitos/Devoção\|Devoção]]. Alguns níveis fornecem objetos como recompensa, estes, se forem perdidos, precisam ser recuperados, repetindo o requisito.
 
 ## Athena
