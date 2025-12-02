@@ -1211,20 +1211,17 @@
       }
     });
 
-    // cria técnica quando seleciona
     select.onchange = () => {
       const natureza = select.value;
       if (!natureza) return;
 
-      // já existe?
-      if (!posses.tecnicas.find(t => t.natureza === natureza)) {
-        posses.tecnicas.push({
-          natureza,
-          grau: 1,
-          caracteristicas: []
-        });
-        renderTecnicas();
-      }
+      posses.tecnicas.push({
+        natureza,
+        grau: 1,
+        caracteristicas: []
+      });
+      renderTecnicas();
+      
       select.value = "";
     };
   }
