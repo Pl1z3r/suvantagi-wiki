@@ -153,7 +153,7 @@
     </div>
 
   <h2>Competências</h2>
-    <label id="labelCompetencias">pontos restantes</label>
+    <label id="label-competencias">pontos restantes</label>
     <div class="campo">
       <label>Socos:</label>
       <input type="number" id="socos" min="0" max="5" value="0"/>
@@ -174,18 +174,36 @@
       <label>Psque:</label>
       <input type="number" id="psque" min="0" max="5" value="0"/>
     </div>
-  <h2>Naturezas</h2>
+  <h2>Naturezas Cósmicas</h2>
     <label id="label-naturezas">...</label>
     <select id="select-naturezas">
       <option value="">— Escolha —</option>
     </select>
     <div id="lista-naturezas"></div>
+  <h2>Artes Marciais</h2>
+    <label id="label-artes">...</label>
+    <select id="select-artes">
+      <option value="">— Escolha —</option>
+    </select>
+    <div id="lista-artes"></div>
   <h2>Treinamentos</h2>
     <label id="label-treinamentos">...</label>
     <select id="select-treinamentos">
       <option value="">— Escolha —</option>
     </select>
     <div id="lista-treinamentos"></div>
+  <h2>Técnicas</h2>
+    <label id="label-tecnicas">...</label>
+    <select id="select-tecnicas">
+      <option value="">— Escolha —</option>
+    </select>
+    <div id="lista-tecnicas"></div>
+  <h2>Combos</h2>
+    <label id="label-combos">...</label>
+    <select id="select-combos">
+      <option value="">— Escolha —</option>
+    </select>
+    <div id="lista-combos"></div>
 </div>
 
 <script>
@@ -251,17 +269,24 @@
   let psque = Number(document.getElementById("psque")?.value || 0);
   
   let atrTotal = atrFor + atrRes + atrVel + atrInt + atrVon + atrMen + atrEsp + atrSen +  atrCos;
-  let ptsIntTotal = socos + chute + armso + armas + psque;
+  let ptsIntTotal = 0;
 
   let atrRestantes = Math.min(Math.max(((rank-minAtr[rank])*9*subrank)+minAtr[rank]*9, minAtr[rank]*9), rank*9)-atrTotal;
-  let ptsIntRestantes = Math.floor(atrInt/2) - ptsIntTotal;
+  let ptsIntRestantes = 1;
+  let ptsTecTotal = 0;
+  let ptsTecRestantes = 1;
 
   let posses = {
     "naturezas": {},
-    "treinamentos": {}
+    "treinamentos": {},
+    "artes": {},
+    "tecnicas": [],
+    "combos": []
   };
-  // TODO: Separar os treinamentos e capacidades dessa lista de Naturezas, aproveitar para adcionar as capacidades genericas de sentido, cosmo e etc.
-  // TODO: Adcionar as caracteristicas às naturezas, em preparação para a adição da geração de tecnicas
+
+  const caracteristicasGenericas = ["Restrição", "Efeito Contínuo", "Poder Passivo", "Destruição de Durabilidade", "Ataque Múltiplo", "Ataque em Área", "Energizar", "Dano Aumentado"]
+  const caracteristicasEspeciais = ["Atravessar Armadura", "Dano Contínuo", "Congelamento", "Ricochete", "Paralisia", "Barreira", "Fortalecer", "Camuflagem", "Melhoria Contínua", "Ataque Espiritual", "Ataque Mental", "Enfraquecer"]
+  // TODO: Adcionar as capacidades genericas de sentido, cosmo e etc.
   const dict = {
     "naturezas": {
       "Calor": {
@@ -312,67 +337,67 @@
       "Cosmo Ardente": {
         "requesito": () => posses["naturezas"]["Calor"] === 3,
         "rankPorNv": [20,50,70],
-        "caracteristicas": []
+        "caracteristicas": ["Atravessar Armadura", "Dano Contínuo"]
       },
       "Cosmo Glacial": {
         "requesito": () => posses["naturezas"]["Frio"] === 3,
         "rankPorNv": [20,50,70],
-        "caracteristicas": []
+        "caracteristicas": ["Atravessar Armadura", "Congelamento"]
       },
       "Cosmo Trovejante": {
         "requesito": () => posses["naturezas"]["Raio"] === 3,
         "rankPorNv": [20,50,70],
-        "caracteristicas": []
+        "caracteristicas": ["Atravessar Armadura", "Ricochete", "Paralisia"]
       },
       "Cosmo Tempestuoso": {
         "requesito": () => posses["naturezas"]["Vento"] === 3,
         "rankPorNv": [20,50,70],
-        "caracteristicas": []
+        "caracteristicas": ["Barreira"]
       },
       "Cosmo Hídrico": {
         "requesito": () => posses["naturezas"]["Água"] === 3,
         "rankPorNv": [20,50,70],
-        "caracteristicas": []
+        "caracteristicas": ["Barreira"]
       },
       "Cosmo Térreo": {
         "requesito": () => posses["naturezas"]["Terra"] === 3,
         "rankPorNv": [20,50,70],
-        "caracteristicas": []
+        "caracteristicas": ["Barreira"]
       },
       "Cosmo Luminoso": {
         "requesito": () => posses["naturezas"]["Luz"] === 3,
         "rankPorNv": [20,50,70],
-        "caracteristicas": []
+        "caracteristicas": ["Atravessar Armadura", "Camuflagem"]
       },
       "Cosmo Obscuro": {
         "requesito": () => posses["naturezas"]["Sombra"] === 3,
         "rankPorNv": [20,50,70],
-        "caracteristicas": []
+        "caracteristicas": ["Atravessar Armadura", "Ricochete", "Paralisia"]
       },
       "Sekishiki": {
         "requesito": () => true,
         "rankPorNv": [20,50,70],
-        "caracteristicas": []
+        "caracteristicas": ["Ataque Espiritual"]
       },
       "Ilusão": {
         "requesito": () => true,
         "rankPorNv": [20,50,70],
-        "caracteristicas": []
+        "caracteristicas": ["Ataque Mental", "Congelamento"]
       },
       "Som": {
         "requesito": () => true,
         "rankPorNv": [20,50,70],
-        "caracteristicas": []
+        "caracteristicas": ["Atravessar Armadura", "Congelamento", "Enfraquecer"]
       },
       "Gravidade": {
         "requesito": () => valores["sen"] >= 50,
         "rankPorNv": [20,50,70],
-        "caracteristicas": []
+        "caracteristicas": ["Potencializar", "Enfraquecer", "Paralisia"]
       },
       "Cosmo Puro": {
         "requesito": () => posses["treinamentos"]["Destruição Perfeita"] === 3 && valores["sen"] >= 50,
         "rankPorNv": [20,50,70],
-        "caracteristicas": []
+        "caracteristicas": [...caracteristicasEspeciais]
       }
     },
     "treinamentos": {
@@ -472,6 +497,164 @@
         "requesito": () => posses["treinamentos"]["Destruição Imperfeita"] === 3 && valores["sen"] >= 50,
         "rankPorNv": [20,50,70]
       }
+    },
+    "artes": {
+      "Aikidô": {
+        "requesito": () => true,
+        "rankPorNv": [20, 20, 50, 50, 70]
+      },
+      "Baraqah": {
+        "requesito": () => true,
+        "rankPorNv": [20, 20, 50, 50, 70]
+      },
+      "Bojutsu": {
+        "requesito": () => true,
+        "rankPorNv": [20, 20, 50, 50, 70]
+      },
+      "Boxe": {
+        "requesito": () => true,
+        "rankPorNv": [20, 20, 50, 50, 70]
+      },
+      "Capoeira": {
+        "requesito": () => true,
+        "rankPorNv": [20, 20, 50, 50, 70]
+      },
+     "Forças Especiais": {
+        "requesito": () => true,
+        "rankPorNv": [20, 20, 50, 50, 70]
+      },
+      "Glimae": {
+        "requesito": () => true,
+        "rankPorNv": [20, 20, 50, 50, 70]
+      },
+      "Hsing Yi Chuan": {
+        "requesito": () => true,
+        "rankPorNv": [20, 20, 50, 50, 70]
+      },
+      "Jeet Kune Do": {
+        "requesito": () => true,
+        "rankPorNv": [20, 20, 50, 50, 70]
+      },
+      "Jiu-Jitsu": {
+        "requesito": () => true,
+        "rankPorNv": [20, 20, 50, 50, 70]
+      },
+      "Kabaddi": {
+        "requesito": () => true,
+        "rankPorNv": [20, 20, 50, 50, 70]
+      },
+      "Kalaripayt": {
+        "requesito": () => true,
+        "rankPorNv": [20, 20, 50, 50, 70]
+      },
+      "Karatê Rindoukan": {
+        "requesito": () => true,
+        "rankPorNv": [20, 20, 50, 50, 70]
+      },
+      "Karatê Shotokan": {
+        "requesito": () => true,
+        "rankPorNv": [20, 20, 50, 50, 70]
+      },
+      "Kempo": {
+        "requesito": () => true,
+        "rankPorNv": [20, 20, 50, 50, 70]
+      },
+      "Kenjutsu": {
+        "requesito": () => true,
+        "rankPorNv": [20, 20, 50, 50, 70]
+      },
+      "Kickboxe": {
+        "requesito": () => true,
+        "rankPorNv": [20, 20, 50, 50, 70]
+      },
+      "Krav Maga": {
+        "requesito": () => true,
+        "rankPorNv": [20, 20, 50, 50, 70]
+      },
+      "Kung Fu": {
+        "requesito": () => true,
+        "rankPorNv": [20, 20, 50, 50, 70]
+      },
+      "Ler Drit": {
+        "requesito": () => true,
+        "rankPorNv": [20, 20, 50, 50, 70]
+      },
+      "Lua": {
+        "requesito": () => true,
+        "rankPorNv": [20, 20, 50, 50, 70]
+      },
+      "Lucha Libre": {
+        "requesito": () => true,
+        "rankPorNv": [20, 20, 50, 50, 70]
+      },
+      "Luta-Livre": {
+        "requesito": () => true,
+        "rankPorNv": [20, 20, 50, 50, 70]
+      },
+      "Luta-Livre Nativo Americana": {
+        "requesito": () => true,
+        "rankPorNv": [20, 20, 50, 50, 70]
+      },
+      "Ninjitsu": {
+        "requesito": () => true,
+        "rankPorNv": [20, 20, 50, 50, 70]
+      },
+      "Ninjitsu Espanhol": {
+        "requesito": () => true,
+        "rankPorNv": [20, 20, 50, 50, 70]
+      },
+      "Pankration": {
+        "requesito": () => true,
+        "rankPorNv": [20, 20, 50, 50, 70]
+      },
+      "Sanbo": {
+        "requesito": () => true,
+        "rankPorNv": [20, 20, 50, 50, 70]
+      },
+      "Savate": {
+        "requesito": () => true,
+        "rankPorNv": [20, 20, 50, 50, 70]
+      },
+      "Silat": {
+        "requesito": () => true,
+        "rankPorNv": [20, 20, 50, 50, 70]
+      },
+      "Soul Power": {
+        "requesito": () => true,
+        "rankPorNv": [20, 20, 50, 50, 70]
+      },
+      "Sumô": {
+        "requesito": () => true,
+        "rankPorNv": [20, 20, 50, 50, 70]
+      },
+      "Tae Kwon Dô": {
+        "requesito": () => true,
+        "rankPorNv": [20, 20, 50, 50, 70]
+      },
+      "Tai Chi Chuan": {
+        "requesito": () => true,
+        "rankPorNv": [20, 20, 50, 50, 70]
+      },
+      "Pegazzani": {
+        "requesito": () => true,
+        "rankPorNv": [20, 20, 50, 50, 70]
+      },
+      "Thai Kickboxe": {
+        "requesito": () => true,
+        "rankPorNv": [20, 20, 50, 50, 70]
+      },
+      "Wu Shu": {
+        "requesito": () => true,
+        "rankPorNv": [20, 20, 50, 50, 70]
+      },
+      "Vale-Tudo": {
+        "requesito": () => true,
+        "rankPorNv": [20, 20, 50, 50, 70]
+      },
+      "Yagli Gures": {
+        "requesito": () => true,
+        "rankPorNv": [20, 20, 50, 50, 70]
+      }
     }
   };
 
@@ -536,6 +719,47 @@
         "Abismo Infinito": evoluçãoDireta,
         "Fogo Fátuo": evoluçãoDireta,
         "Destruição Perfeita": evoluçãoDireta,
+      },
+      "artes": {
+        "Aikidô": comum,
+        "Baraqah": comum,
+        "Bojutsu": comum,
+        "Boxe": comum,
+        "Capoeira": comum,
+        "Forças Especiais": comum,
+        "Glimae": comum,
+        "Hsing Yi Chuan": comum,
+        "Jeet Kune Do": comum,
+        "Jiu-Jitsu": comum,
+        "Kabaddi": comum,
+        "Kalaripayt": comum,
+        "Karatê Rindoukan": comum,
+        "Karatê Shotokan": comum,
+        "Kempo": comum,
+        "Kenjutsu": comum,
+        "Kickboxe": comum,
+        "Krav Maga": comum,
+        "Kung Fu": comum,
+        "Ler Drit": comum,
+        "Lua": comum,
+        "Lucha Libre": comum,
+        "Luta-Livre": comum,
+        "Luta-Livre Nativo Americana": comum,
+        "Ninjitsu": comum,
+        "Ninjitsu Espanhol": comum,
+        "Pankration": comum,
+        "Sanbo": comum,
+        "Savate": comum,
+        "Silat": comum,
+        "Soul Power": comum,
+        "Sumô": comum,
+        "Tae Kwon Dô": comum,
+        "Tai Chi Chuan": comum,
+        "Pegazzani": comum,
+        "Thai Kickboxe": comum,
+        "Wu Shu": comum,
+        "Vale-Tudo": comum,
+        "Yagli Gures": comum
       }
     },
     "artistaMarcial": {
@@ -591,6 +815,47 @@
         "Abismo Infinito": evoluçãoDireta,
         "Fogo Fátuo": evoluçãoDireta,
         "Destruição Perfeita": evoluçãoDireta,
+      },
+      "artes": {
+        "Aikidô": comum,
+        "Baraqah": comum,
+        "Bojutsu": comum,
+        "Boxe": comum,
+        "Capoeira": comum,
+        "Forças Especiais": comum,
+        "Glimae": comum,
+        "Hsing Yi Chuan": comum,
+        "Jeet Kune Do": comum,
+        "Jiu-Jitsu": comum,
+        "Kabaddi": comum,
+        "Kalaripayt": comum,
+        "Karatê Rindoukan": comum,
+        "Karatê Shotokan": comum,
+        "Kempo": comum,
+        "Kenjutsu": comum,
+        "Kickboxe": comum,
+        "Krav Maga": comum,
+        "Kung Fu": comum,
+        "Ler Drit": comum,
+        "Lua": comum,
+        "Lucha Libre": comum,
+        "Luta-Livre": comum,
+        "Luta-Livre Nativo Americana": comum,
+        "Ninjitsu": comum,
+        "Ninjitsu Espanhol": comum,
+        "Pankration": comum,
+        "Sanbo": comum,
+        "Savate": comum,
+        "Silat": comum,
+        "Soul Power": comum,
+        "Sumô": comum,
+        "Tae Kwon Dô": comum,
+        "Tai Chi Chuan": comum,
+        "Pegazzani": comum,
+        "Thai Kickboxe": comum,
+        "Wu Shu": comum,
+        "Vale-Tudo": comum,
+        "Yagli Gures": comum
       }
     },
     "elemental": {
@@ -646,6 +911,47 @@
         "Abismo Infinito": evoluçãoDireta,
         "Fogo Fátuo": evoluçãoDireta,
         "Destruição Perfeita": evoluçãoDireta,
+      },
+      "artes": {
+        "Aikidô": comum,
+        "Baraqah": comum,
+        "Bojutsu": comum,
+        "Boxe": comum,
+        "Capoeira": comum,
+        "Forças Especiais": comum,
+        "Glimae": comum,
+        "Hsing Yi Chuan": comum,
+        "Jeet Kune Do": comum,
+        "Jiu-Jitsu": comum,
+        "Kabaddi": comum,
+        "Kalaripayt": comum,
+        "Karatê Rindoukan": comum,
+        "Karatê Shotokan": comum,
+        "Kempo": comum,
+        "Kenjutsu": comum,
+        "Kickboxe": comum,
+        "Krav Maga": comum,
+        "Kung Fu": comum,
+        "Ler Drit": comum,
+        "Lua": comum,
+        "Lucha Libre": comum,
+        "Luta-Livre": comum,
+        "Luta-Livre Nativo Americana": comum,
+        "Ninjitsu": comum,
+        "Ninjitsu Espanhol": comum,
+        "Pankration": comum,
+        "Sanbo": comum,
+        "Savate": comum,
+        "Silat": comum,
+        "Soul Power": comum,
+        "Sumô": comum,
+        "Tae Kwon Dô": comum,
+        "Tai Chi Chuan": comum,
+        "Pegazzani": comum,
+        "Thai Kickboxe": comum,
+        "Wu Shu": comum,
+        "Vale-Tudo": comum,
+        "Yagli Gures": comum
       }
     },
     "espiritualista": {
@@ -701,6 +1007,47 @@
         "Abismo Infinito": evoluçãoDireta,
         "Fogo Fátuo": evoluçãoDireta,
         "Destruição Perfeita": evoluçãoDireta,
+      },
+      "artes": {
+        "Aikidô": comum,
+        "Baraqah": comum,
+        "Bojutsu": comum,
+        "Boxe": comum,
+        "Capoeira": comum,
+        "Forças Especiais": comum,
+        "Glimae": comum,
+        "Hsing Yi Chuan": comum,
+        "Jeet Kune Do": comum,
+        "Jiu-Jitsu": comum,
+        "Kabaddi": comum,
+        "Kalaripayt": comum,
+        "Karatê Rindoukan": comum,
+        "Karatê Shotokan": comum,
+        "Kempo": comum,
+        "Kenjutsu": comum,
+        "Kickboxe": comum,
+        "Krav Maga": comum,
+        "Kung Fu": comum,
+        "Ler Drit": comum,
+        "Lua": comum,
+        "Lucha Libre": comum,
+        "Luta-Livre": comum,
+        "Luta-Livre Nativo Americana": comum,
+        "Ninjitsu": comum,
+        "Ninjitsu Espanhol": comum,
+        "Pankration": comum,
+        "Sanbo": comum,
+        "Savate": comum,
+        "Silat": comum,
+        "Soul Power": comum,
+        "Sumô": comum,
+        "Tae Kwon Dô": comum,
+        "Tai Chi Chuan": comum,
+        "Pegazzani": comum,
+        "Thai Kickboxe": comum,
+        "Wu Shu": comum,
+        "Vale-Tudo": comum,
+        "Yagli Gures": comum
       }
     },
     "ilusionista": {
@@ -756,6 +1103,47 @@
         "Abismo Infinito": evoluçãoDireta,
         "Fogo Fátuo": evoluçãoDireta,
         "Destruição Perfeita": evoluçãoDireta,
+      },
+      "artes": {
+        "Aikidô": comum,
+        "Baraqah": comum,
+        "Bojutsu": comum,
+        "Boxe": comum,
+        "Capoeira": comum,
+        "Forças Especiais": comum,
+        "Glimae": comum,
+        "Hsing Yi Chuan": comum,
+        "Jeet Kune Do": comum,
+        "Jiu-Jitsu": comum,
+        "Kabaddi": comum,
+        "Kalaripayt": comum,
+        "Karatê Rindoukan": comum,
+        "Karatê Shotokan": comum,
+        "Kempo": comum,
+        "Kenjutsu": comum,
+        "Kickboxe": comum,
+        "Krav Maga": comum,
+        "Kung Fu": comum,
+        "Ler Drit": comum,
+        "Lua": comum,
+        "Lucha Libre": comum,
+        "Luta-Livre": comum,
+        "Luta-Livre Nativo Americana": comum,
+        "Ninjitsu": comum,
+        "Ninjitsu Espanhol": comum,
+        "Pankration": comum,
+        "Sanbo": comum,
+        "Savate": comum,
+        "Silat": comum,
+        "Soul Power": comum,
+        "Sumô": comum,
+        "Tae Kwon Dô": comum,
+        "Tai Chi Chuan": comum,
+        "Pegazzani": comum,
+        "Thai Kickboxe": comum,
+        "Wu Shu": comum,
+        "Vale-Tudo": comum,
+        "Yagli Gures": comum
       }
     }
   };
@@ -809,8 +1197,40 @@
     }
   }
 
+  function atualizarSelectTecnicas() {
+    const select = document.getElementById("select-tecnicas");
+    select.innerHTML = `<option value="">— Escolha —</option>`;
+
+    Object.keys(posses.naturezas).forEach(natureza => {
+      const nivel = posses.naturezas[natureza];
+      if (nivel > 0) {
+        const opt = document.createElement("option");
+        opt.value = natureza;
+        opt.textContent = `${natureza} (nível ${nivel})`;
+        select.appendChild(opt);
+      }
+    });
+
+    // cria técnica quando seleciona
+    select.onchange = () => {
+      const natureza = select.value;
+      if (!natureza) return;
+
+      // já existe?
+      if (!posses.tecnicas.find(t => t.natureza === natureza)) {
+        posses.tecnicas.push({
+          natureza,
+          grau: 1,
+          caracteristicas: []
+        });
+        renderTecnicas();
+      }
+      select.value = "";
+    };
+  }
+
   function atualizarSelectNTA() {
-    Object.keys(posses).forEach(dictName => {
+    ["naturezas", "treinamentos", "artes"].forEach(dictName => {
       const select = document.getElementById(`select-${dictName}`);
       const selecionadas = Object.keys(posses[dictName]);
 
@@ -827,6 +1247,93 @@
         }
       });
     });
+  }
+
+  function renderTecnicas() {
+    const box = document.getElementById("lista-tecnicas");
+    box.innerHTML = "";
+
+    posses.tecnicas.forEach((tec, i) => {
+      const div = document.createElement("div");
+      div.className = "tecnica";
+
+      div.innerHTML = `
+        <div class="campo">
+          <label>${tec.natureza}</label>
+          <input type="number" min="0" max="${posses.naturezas[tec.natureza]}" value="${tec.grau}" id="tec-grau-${i}">
+        </div>
+        <div id="tec-caracts-${i}"></div>
+        <hr>
+      `;
+
+      box.appendChild(div);
+
+      // altera grau
+      document.getElementById(`tec-grau-${i}`).addEventListener("change", e => {
+        let nv = Number(e.target.value);
+        const max = posses.naturezas[tec.natureza];
+
+        nv = Math.max(0, Math.min(max, nv));
+        if (nv === 0) {
+          posses.tecnicas.pop(i);
+          renderTecnicas();
+          return;
+        }
+        posses.tecnicas[i].grau = nv;
+        // resize buffer de características
+        posses.tecnicas[i].caracteristicas = (posses.tecnicas[i].caracteristicas || []).slice(0, nv + 2);
+
+        renderTecnicas(); // rerender
+      });
+
+      renderSlotsTecnica(i);
+    });
+  }
+
+
+  function renderSlotsTecnica(i) {
+    const tec = posses.tecnicas[i];
+    const qtd = 2 + tec.grau;
+    const box = document.getElementById(`tec-caracts-${i}`);
+
+    box.innerHTML = "";
+
+    const genericas = caracteristicasGenericas || [];
+    const especificas = dict.naturezas[tec.natureza]?.caracteristicas || [];
+    const escolhasAtuais = tec.caracteristicas || [];
+
+    for (let s = 0; s < qtd; s++) {
+      const select = document.createElement("select");
+      const valorSalvo = escolhasAtuais[s] || "";
+
+      // placeholder
+      select.insertAdjacentHTML(
+        "beforeend",
+        `<option value="" ${valorSalvo === "" ? "selected" : ""}>— Escolha —</option>`
+      );
+
+      [...genericas, ...especificas].forEach(opcao => {
+        const podeRepetir = opcao === "Dano Aumentado";
+        const jaEscolhida = escolhasAtuais.includes(opcao);
+
+        // filtro simples e direto
+        if (!podeRepetir && jaEscolhida && opcao !== valorSalvo) {
+          return; // não cria option
+        }
+
+        select.insertAdjacentHTML(
+          "beforeend",
+          `<option value="${opcao}" ${valorSalvo === opcao ? "selected" : ""}>${opcao}</option>`
+        );
+      });
+
+      select.onchange = e => {
+        tec.caracteristicas[s] = e.target.value;
+        renderSlotsTecnica(i);
+      };
+      box.appendChild(select);
+      update(document.body);
+    }
   }
 
   function gerar() {
@@ -873,13 +1380,13 @@
     let artes = Math.floor((fatores[3] / total) * ptsIntRestantes);
 
     // ajustar diferença causada pelos floors
-    let soma = comp + nat + artes;
+    let soma = comp + nat + tre + artes;
     let diff = ptsIntRestantes - soma;
     const vars = ["comp", "nat", "tre", "artes"];
 
     while (diff > 0) {
         const v = vars[Math.floor(Math.random() * vars.length)];
-        if (v === "comp" && comp < 25) comp++;
+        if (v === "comp" && comp < maxComp[rank] * 5) comp++;
         if (v === "nat") nat++;
         if (v === "tre") tre++;
         if (v === "artes") artes++;
@@ -958,8 +1465,7 @@
     }
     aplicarNTA("naturezas", nat);
     aplicarNTA("treinamentos", tre);
-    // aplicarNTA("artesMarciais", artes); TODO
-    
+    aplicarNTA("artes", artes);
     update(document.body);
   }
 
@@ -982,6 +1488,12 @@
     let naturezasTexto = "";
     for (const n in posses.naturezas) {
       naturezasTexto += `- ${n}: ${posses.naturezas[n]}\n`;
+    }
+
+    // Artes Marciais
+    let ArtesTexto = "";
+    for (const t in posses.artes) {
+      artesTexto += `- ${t}: ${posses.treinamentos[t]}\n`;
     }
 
     // Treinamentos
@@ -1010,6 +1522,10 @@
 
     if (naturezasTexto) {
       ficha += `*Naturezas Cósmicas:*\n${naturezasTexto}\n`;
+    }
+  
+    if (naturezasTexto) {
+      ficha += `*Artes Marciais:*\n${artesTexto}\n`;
     }
 
     if (treinamentosTexto) {
@@ -1067,16 +1583,23 @@
     atrTotal = atrFor + atrRes + atrVel + atrInt + atrVon + atrMen + atrEsp + atrSen +  atrCos;
 
     let somaNTA = 0;
-    Object.keys(posses).forEach(dictName => {
+    ["naturezas", "treinamentos", "artes"].forEach(dictName => {
       somaNTA += Object.values(posses[dictName]).reduce((acc, val) => acc + val, 0);
     });
     ptsIntTotal = socos + chute + armso + armas + psque + somaNTA;
 
     atrRestantes = Math.min(Math.max(((rank-minAtr[rank])*9*subrank)+minAtr[rank]*9, minAtr[rank]*9), rank*9)-atrTotal;
-    ptsIntRestantes = Math.floor(atrInt/2) - ptsIntTotal;
+    ptsIntRestantes = Math.floor(atrInt/2) - ptsIntTotal + 1;
 
-    Object.keys(posses).forEach(dictName => {
+    ptsTecTotal = posses.tecnicas.length;
+    ptsTecRestantes = Math.floor(atrInt/10) - ptsTecTotal + 1;
+
+    ["naturezas", "treinamentos", "artes"].forEach(dictName => {
       document.getElementById(`select-${dictName}`).disabled = ptsIntRestantes <= 0;
+    });
+
+    ["tecnicas", "combos"].forEach(dictName => {
+      document.getElementById(`select-${dictName}`).disabled = ptsTecRestantes <= 0;
     });
     
     if (atrRestantes < 0) {
@@ -1093,10 +1616,20 @@
       ptsIntRestantes = 0;
     }
     document.getElementById("labelAtributos").textContent =  atrRestantes+" pontos de atributos restantes";
-    document.getElementById("labelCompetencias").textContent = ptsIntRestantes+" pontos de aprendizagem restantes";
-    document.getElementById("label-treinamentos").textContent = ptsIntRestantes+" pontos de aprendizagem restantes";
-    document.getElementById("label-naturezas").textContent = ptsIntRestantes+" pontos de aprendizagem restantes";
-    
+    const ids = [
+      "label-competencias",
+      "label-treinamentos",
+      "label-naturezas",
+      "label-artes"
+    ];
+
+    ids.forEach(id => {
+      document.getElementById(id).textContent =
+        `${ptsIntRestantes} pontos de aprendizagem restantes`;
+    });
+    document.getElementById("label-tecnicas").textContent = `${ptsTecRestantes} slots restantes`;
+
+    atualizarSelectTecnicas();
     atualizarSelectNTA();
   }
   document.addEventListener("change", function(event) {
@@ -1104,8 +1637,20 @@
     if (event.target.id.startsWith("select-")) {
       const val = event.target.value;
       if (val === "") return;
+      if ("tecnicas" === event.target.id.split("-")[1]) {
+        const natureza = event.target.value;
+        if (!natureza) return;
+        posses.tecnicas.push({
+            "natureza": natureza,
+            "grau": 1,
+            "caracteristicas": []
+        });
 
-      if (!posses[event.target.id.split("-")[1]][val]) {
+        event.target.value = "";
+
+        renderTecnicas();
+      }
+      if (["naturezas", "artes", "treinamentos"].includes(event.target.id.split("-")[1]) && !posses[event.target.id.split("-")[1]][val]) {
         atualizarNTA(event.target.id.split("-")[1], val, 1); // nível inicial
         event.target.value = "";
       }
