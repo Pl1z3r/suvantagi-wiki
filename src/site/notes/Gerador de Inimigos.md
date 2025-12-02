@@ -1488,9 +1488,9 @@
     }
 
     // Artes Marciais
-    let ArtesTexto = "";
-    for (const t in posses.artes) {
-      artesTexto += `- ${t}: ${posses.treinamentos[t]}\n`;
+    let artesTexto = "";
+    for (const a in posses.artes) {
+      artesTexto += `- ${a}: ${posses.artes[a]}\n`;
     }
 
     // Treinamentos
@@ -1498,6 +1498,18 @@
     for (const t in posses.treinamentos) {
       treinamentosTexto += `- ${t}: ${posses.treinamentos[t]}\n`;
     }
+
+	// Técnicas
+	let tecnicasTexto = "";
+	posses.tecnicas.forEach(tec => {
+	const listaCaracts = tec.caracteristicas
+		.filter(c => c && c !== "") // remove vazios
+	     .map(c => `  - ${c}`)
+		.join("\n");
+	
+		tecnicasTexto += `\n- ${tec.natureza} (Grau ${tec.grau})\n`;
+		tecnicasTexto += listaCaracts ? listaCaracts + "\n" : "  - \n";
+	  });
 
     // Ficha formatada
     let ficha = `*[FICHA DE INIMIGO]*\n\n`;
@@ -1518,16 +1530,20 @@
     ficha += `\`\`\`\n`;
 
     if (naturezasTexto) {
-      ficha += `*Naturezas Cósmicas:*\n${naturezasTexto}\n`;
+      ficha += `*Naturezas Cósmicas:*\n\`\`\`${naturezasTexto}\n\`\`\``;
     }
   
     if (naturezasTexto) {
-      ficha += `*Artes Marciais:*\n${artesTexto}\n`;
+      ficha += `*Artes Marciais:*\n\`\`\`${artesTexto}\n\`\`\``;
     }
 
     if (treinamentosTexto) {
-      ficha += `*Treinamentos:*\n${treinamentosTexto}\n`;
+      ficha += `*Treinamentos:*\n\`\`\`${treinamentosTexto}\n\`\`\``;
     }
+
+	if (tecnicasTexto) {
+	    ficha += `*Técnicas:*\n\`\`\`${tecnicasTexto}\n\`\`\``;
+	  }
 
     navigator.clipboard.writeText(ficha)
       .then(() => alert('Ficha copiada para a área de transferência!'))
