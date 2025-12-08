@@ -49,4 +49,10 @@ Regras especiais se aplicam se um movimento com esta característica for usado e
 
 **Combo:** Terminal
 
-**Descrição:** Este movimento afeta todos os oponentes imediatamente ao redor do atacante. Todos os personagens (amigos ou inimigos, exceto o próprio atacante) que estiverem a Alcance 0 ou 1 do atacante são atingidos simultaneamente por este ataque. Cada inimigo recebe o dano 
+**Descrição:** Este movimento afeta todos os oponentes imediatamente ao redor do atacante. Todos os personagens (amigos ou inimigos, exceto o próprio atacante) que estiverem a Alcance 0 ou 1 do atacante são atingidos simultaneamente por este ataque. Cada inimigo recebe o dano individualmente e deve reagir a ele normalmente. Cada alvo pode escolher sua própria ação defensiva contra o ataque, e o usuário do ataque pode estar sujeito a múltiplas Respostas Defensivas. Nesse caso, todos os efeitos dessas Respostas (por exemplo, Repulsão, Derrubada) entram em vigor após todos os cálculos de dano. No caso de múltiplas instâncias de Repulsão, o Lutador é Repelido na direção da maior quantidade de Repulsão.
+
+O dano desse Movimento pode ser determinado pela Força ou pelo Cosmo, isso deve ser definido na criação do Movimento. 
+
+Se o Movimento também possuir a Característica Á Distância, esta Característica conta como custo 5 e deve obrigatoriamente usar Cosmo para determinar o dano e deve ser selecionado um ponto especifico para iniciar a expansão do ataque.
+
+Se este Movimento também possuir a Palavra-chave Sem Dano provinda por qualquer outra Característica, o Efeito em Área custa uma Característica Adicional.
