@@ -1,7 +1,6 @@
 ---
-{"dg-publish":true,"permalink":"/treinamentos/caracteristicas-positivas/"}
+dg-publish: true
 ---
-
 ## Absorver Ataque (1)
 	Requisito: Interrupção
 
@@ -139,3 +138,59 @@ Se mais de uma bomba tiver como alvo o mesmo oponente, cada uma será calculada 
 
 **Descrição:** Este Movimento não é afetado pela Característica Invulnerabilidade Temporária. Isso significa que, se o oponente estiver sob o efeito da Característica Invulnerabilidade Temporária, um movimento com Quebra Guarda ainda causará dano, Repulsão, Derrubada (se aplicável), Atordoamento por Impacto, Atordoamento e aplicará todos os efeitos Ao Acertar. Um movimento com Quebra Guarda não pode afetar a Invulnerabilidade Temporária de Técnicas. Uma Técnica com Quebra Guarda pode afetar todos os tipos de movimentos.
 
+## Buff (1 ou Mais)
+
+[[Treinamentos/Palavras-Chave\|Palavras-Chave]]: Utilitário, Contadores de Tempo
+
+**Combo:** Os efeitos de Buff se aplicam a todos os movimentos realizados após o Buff. Se o Buff alterar a Força, os ataques subsequentes serão modificados de acordo. Se o Buff conceder novos Movimentos, estes podem ser adicionados a descrição do Combo. Se um Buff permitir apenas um Movimento, ele receberá a palavra-chave Terminal. Se um Buff restringir o movimento, nenhum movimento será possivel após o Combo.
+
+**Descrição:** Um Buff é uma ação que altera a natureza de um lutador, geralmente de forma significativa, tornando-o mais forte, mais rápido ou mudando o funcionamento de seus Movimentos por um período limitado. Esta é uma Característica de custo váriavel. Custa uma Característica, e cada benefício que ela proporciona custa Características adicionais. Esse custo alto torna esta característica mais adequada para Técnicas, mas ela também pode ser aplicada a Habilidades.
+
+Este Movimento altera o personagem durante um periodo de dez contadores de tempo. As três opções a seguir estão disponíveis, e qualquer uma delas, ou todas elas, podem estar contidas no mesmo Buff. Todas as adições e alterações devem ser feitas em Movimentos especificos ja existentes e devem ser definidas durante a criação do Buff, não podendo ser alteradas posteriormente.
+
+Qualquer um dos movimentos do personagem pode receber características adicionais ao custo de uma característica para cada duas características adicionais adicionados (arredondado para cima). No entanto, a própria característica de Buff nunca pode ser adicionada a um movimento como resultado de um Buff, nem qualquer outra característica que tenha como efeito a adição de mais características a um movimento existente.
+
+É possivel trocar as Características dos movimentos existentes por outros diferentes (por exemplo, remover uma característica de Recarga existente e adicionar Aumento de Dano em seu lugar). Isso não custa nada além de uma Característica da própria Característica de Buff. 
+
+Os Atributos do personagem podem ser modificados ao custo de três características. Um dos atributos do lutador é aumentado em 10 pontos.
+
+### Medidor de Buff (-1)
+	Requisito: Buff
+
+**Descrição:** Essa característica exige que o lutador acompanhe uma nova barra chamada "Barra de Buff". O lutador ganha Barra de Buff a cada turno, semelhante aos Pontos de Movimento. Quando uma Habilidade é usada, o efeito dura um tempo igual ao da Barra de Buff. O Valor máximo da Barra de Buff é 10.
+
+### Duração Reduzida (-1)
+	Requisito: Buff
+
+**Descrição:** A duração do Buff é reduzida para 5 contadores de tempo ao invés de 10.
+
+### Desvantagem Defensiva (-1)
+	Resquisito: Buff
+
+**Descrição:** Enquanto um Buff estiver ativo, o lutador perde 4 pontos de Defesa Total ao usar Habilidades de Defesa.
+
+### Finalização Antecipada (1)
+	Requisito: Buff
+
+[[Treinamentos/Palavras-Chave\|Palavras-Chave]]: Condição
+
+**Descrição:** O Buff pode ser finalizado antecipadamente, mas somente se uma Habilidade com a Característica Finalizar Buff for usado. Isso finaliza o Buff ao final do turno em que a Habilidade for usada. Caso contrário, o Buff termina após a contagem de contadores de tempo terminar.
+
+### Duração Aumentada (3)
+	Requisito: Buff
+
+[[Treinamentos/Palavras-Chave\|Palavras-Chave]]: Muda Contadores de Tempo para Ilimitado
+
+**Descrição:** Os efeitos do Buff duram pelo resto da luta. Um Buff que dura pelo resto da luta também custa 1 Ponto de Movimento por turno para ser mantido. Se o Lutador ficar sem Pontos de Movimento, no entanto, o Buff ainda permanece em efeito até o final do combate.
+
+### Nocivo (-2)
+	Requisito: Buff
+
+**Descrição:** Ao fim de cada rodada em que o efeito estiver ativo, o Lutador recebe um Ferimento Leve.
+
+### Atributo Reduzido (-1)
+	Requisito: Buff
+
+**Instâncias:** Especial
+
+**Descrição:** Cada repetição dessa característica reduz um atributo em 5 pontos. Essa característicar assumida várias vezes e aplicada sob o mesmo atributo ou atributos diferentes.
