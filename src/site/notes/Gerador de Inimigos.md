@@ -1150,13 +1150,21 @@
 
   function clear() {
     document.querySelectorAll("input").forEach(el => {
-      
       el.value = 0;
-      if (el.id.startsWith("nivel-")) { // aqui
+      if (el.id.startsWith("nivel-")) {
         const nome = el.id.replace("nivel-", "");
         atualizarNTA(el.parentElement.id.split("-")[0], nome, 0);
       }
     });
+    posses = {
+      "naturezas": {},
+      "treinamentos": {},
+      "artes": {},
+      "tecnicas": [],
+      "combos": []
+    };
+    document.getElementById("lista-tecnicas").innerHTML = "";
+    document.getElementById("lista-combos").innerHTML = "";
     update(document.body);
   }
 
@@ -1498,18 +1506,21 @@
     for (const t in posses.treinamentos) {
       treinamentosTexto += `- ${t}: ${posses.treinamentos[t]}\n`;
     }
+    
+    // Técnicas
+    let tecnicasTexto = "";
+    posses.tecnicas.forEach(tec => {
+      const listaCaracts = tec.caracteristicas
+        .filter(c => c && c !== "") // remove vazios
+        .map(c => `  - ${c}`)
+        .join("\n");
 
-	// Técnicas
-	let tecnicasTexto = "";
-	posses.tecnicas.forEach(tec => {
-	const listaCaracts = tec.caracteristicas
-		.filter(c => c && c !== "") // remove vazios
-	     .map(c => `  - ${c}`)
-		.join("\n");
-	
-		tecnicasTexto += `\n- ${tec.natureza} (Grau ${tec.grau})\n`;
-		tecnicasTexto += listaCaracts ? listaCaracts + "\n" : "  - \n";
-	  });
+      tecnicasTexto += `\n- ${tec.natureza} (Grau ${tec.grau})\n`;
+      tecnicasTexto += listaCaracts ? listaCaracts + "\n" : "  -\n";
+    });
+
+    // Combos
+    let combosTexto = "";
 
     // Ficha formatada
     let ficha = `*[FICHA DE INIMIGO]*\n\n`;
@@ -1529,21 +1540,23 @@
     ficha += `- Cosmo: ${atrCos}\n`;
     ficha += `\`\`\`\n`;
 
-    if (naturezasTexto) {
-      ficha += `*Naturezas Cósmicas:*\n\`\`\`${naturezasTexto}\n\`\`\``;
-    }
+    ficha += `*Competências:*\n\`\`\`\n`;
+    ficha += `- Socos: ${socos}\n`;
+    ficha += `- Chute: ${chute}\n`;
+    ficha += `- Armas: ${armas}\n`;
+    ficha += `- Armso: ${armso}\n`;
+    ficha += `- Psque: ${psque}\n`;
+    ficha += `\`\`\`\n`;
+
+    if (naturezasTexto) ficha += `*Naturezas Cósmicas:*\n\`\`\`${naturezasTexto}\n\`\`\``;
   
-    if (naturezasTexto) {
-      ficha += `*Artes Marciais:*\n\`\`\`${artesTexto}\n\`\`\``;
-    }
+    if (naturezasTexto) ficha += `*Artes Marciais:*\n\`\`\`${artesTexto}\n\`\`\``;
 
-    if (treinamentosTexto) {
-      ficha += `*Treinamentos:*\n\`\`\`${treinamentosTexto}\n\`\`\``;
-    }
+    if (treinamentosTexto) ficha += `*Treinamentos:*\n\`\`\`${treinamentosTexto}\n\`\`\``;
 
-	if (tecnicasTexto) {
-	    ficha += `*Técnicas:*\n\`\`\`${tecnicasTexto}\n\`\`\``;
-	  }
+    if (tecnicasTexto) ficha += `*Técnicas:\n\`\`\`${tecnicasTexto}\n\`\`\``;
+
+    if (combosTexto) ficha += `*Combos:*\n\`\`\`${combosTexto}\n\`\`\``;
 
     navigator.clipboard.writeText(ficha)
       .then(() => alert('Ficha copiada para a área de transferência!'))
