@@ -286,6 +286,49 @@
 
   const caracteristicasGenericas = ["Restrição", "Efeito Contínuo", "Poder Passivo", "Destruição de Durabilidade", "Ataque Múltiplo", "Ataque em Área", "Energizar", "Dano Aumentado"]
   const caracteristicasEspeciais = ["Atravessar Armadura", "Dano Contínuo", "Congelamento", "Ricochete", "Paralisia", "Barreira", "Fortalecer", "Camuflagem", "Melhoria Contínua", "Ataque Espiritual", "Ataque Mental", "Enfraquecer"]
+
+  const treinamentosGenericos = {
+    "Explosão Cósmica": {
+      "requesito": () => valores["sen"] >= 5,
+      "rankPorNv": [20]
+    },
+    "Implacabilidade": {
+      "requesito": () => valores["sen"] >= 10,
+      "rankPorNv": [20]
+    },
+    "Premonição": {
+      "requesito": () => valores["sen"] >= 20,
+      "rankPorNv": [20]
+    },
+    "Lampejo (velicidade da Luz)": {
+      "requesito": () => valores["sen"] >= 40,
+      "rankPorNv": [20]
+    },
+    "Superioridade": {
+      "requesito": () => valores["sen"] >= 50,
+      "rankPorNv": [20]
+    },
+    "Milagre": {
+      "requesito": () => valores["sen"] >= 60,
+      "rankPorNv": [20]
+    },
+    "Quebra de Lei Divina": {
+      "requesito": () => valores["sen"] >= 70,
+      "rankPorNv": [20]
+    },
+    "Percepção Divina": {
+      "requesito": () => valores["sen"] >= 80,
+      "rankPorNv": [20]
+    },
+    "Criação de Lei Divina": {
+      "requesito": () => valores["sen"] >= 90,
+      "rankPorNv": [20]
+    },
+    "Grande Vontade": {
+      "requesito": () => valores["sen"] >= 100,
+      "rankPorNv": [20]
+    }
+  };
   // TODO: Adcionar as capacidades genericas de sentido, cosmo e etc.
   const dict = {
     "naturezas": {
@@ -662,7 +705,7 @@
   const comum = 15;
   const incomum = 8;
   const raro = 3;
-  const evoluçãoDireta = comum * multiplicadorRaridade;
+  const evolucaoDireta = comum * multiplicadorRaridade;
 
 
   const classes = {
@@ -680,14 +723,14 @@
         "Luz": comum,
         "Sombra": comum,
         "Ondas de Choque": incomum,
-        "Cosmo Ardente": evoluçãoDireta,
-        "Cosmo Glacial": evoluçãoDireta,
-        "Cosmo Trovejante": evoluçãoDireta,
-        "Cosmo Tempestuoso": evoluçãoDireta,
-        "Cosmo Hídrico": evoluçãoDireta,
-        "Cosmo Térreo": evoluçãoDireta,
-        "Cosmo Luminoso": evoluçãoDireta,
-        "Cosmo Obscuro": evoluçãoDireta,
+        "Cosmo Ardente": evolucaoDireta,
+        "Cosmo Glacial": evolucaoDireta,
+        "Cosmo Trovejante": evolucaoDireta,
+        "Cosmo Tempestuoso": evolucaoDireta,
+        "Cosmo Hídrico": evolucaoDireta,
+        "Cosmo Térreo": evolucaoDireta,
+        "Cosmo Luminoso": evolucaoDireta,
+        "Cosmo Obscuro": evolucaoDireta,
         "Sekishiki": raro,
         "Ilusão": raro,
         "Som": incomum,
@@ -702,23 +745,23 @@
         "Clarividência": incomum,
         "Destruição Imperfeita": comum,
         "Cura": incomum,
-        "Cura Mental": evoluçãoDireta,
-        "Cura Espiritual": evoluçãoDireta,
+        "Cura Mental": evolucaoDireta,
+        "Cura Espiritual": evolucaoDireta,
         "Controlar Animais": incomum,
         "Controlar Plantas": incomum,
         "Força Cósmica": incomum,
-        "Manipulação de Almas": evoluçãoDireta,
+        "Manipulação de Almas": evolucaoDireta,
         "Leitura de Mentes": incomum,
-        "Poder Solar": evoluçãoDireta,
-        "Zero Absoluto": evoluçãoDireta,
-        "Corrente Eterna": evoluçãoDireta,
-        "Colapso Atmosférico": evoluçãoDireta,
-        "Fúria Diluviana": evoluçãoDireta,
-        "Cataclismo Titânico": evoluçãoDireta,
-        "Brilho Estelar": evoluçãoDireta,
-        "Abismo Infinito": evoluçãoDireta,
-        "Fogo Fátuo": evoluçãoDireta,
-        "Destruição Perfeita": evoluçãoDireta,
+        "Poder Solar": evolucaoDireta,
+        "Zero Absoluto": evolucaoDireta,
+        "Corrente Eterna": evolucaoDireta,
+        "Colapso Atmosférico": evolucaoDireta,
+        "Fúria Diluviana": evolucaoDireta,
+        "Cataclismo Titânico": evolucaoDireta,
+        "Brilho Estelar": evolucaoDireta,
+        "Abismo Infinito": evolucaoDireta,
+        "Fogo Fátuo": evolucaoDireta,
+        "Destruição Perfeita": evolucaoDireta,
       },
       "artes": {
         "Aikidô": comum,
@@ -776,14 +819,14 @@
         "Luz": comum,
         "Sombra": comum,
         "Ondas de Choque": incomum,
-        "Cosmo Ardente": evoluçãoDireta,
-        "Cosmo Glacial": evoluçãoDireta,
-        "Cosmo Trovejante": evoluçãoDireta,
-        "Cosmo Tempestuoso": evoluçãoDireta,
-        "Cosmo Hídrico": evoluçãoDireta,
-        "Cosmo Térreo": evoluçãoDireta,
-        "Cosmo Luminoso": evoluçãoDireta,
-        "Cosmo Obscuro": evoluçãoDireta,
+        "Cosmo Ardente": evolucaoDireta,
+        "Cosmo Glacial": evolucaoDireta,
+        "Cosmo Trovejante": evolucaoDireta,
+        "Cosmo Tempestuoso": evolucaoDireta,
+        "Cosmo Hídrico": evolucaoDireta,
+        "Cosmo Térreo": evolucaoDireta,
+        "Cosmo Luminoso": evolucaoDireta,
+        "Cosmo Obscuro": evolucaoDireta,
         "Sekishiki": raro,
         "Ilusão": raro,
         "Som": incomum,
@@ -798,23 +841,23 @@
         "Clarividência": incomum,
         "Destruição Imperfeita": comum,
         "Cura": incomum,
-        "Cura Mental": evoluçãoDireta,
-        "Cura Espiritual": evoluçãoDireta,
+        "Cura Mental": evolucaoDireta,
+        "Cura Espiritual": evolucaoDireta,
         "Controlar Animais": incomum,
         "Controlar Plantas": incomum,
         "Força Cósmica": incomum,
-        "Manipulação de Almas": evoluçãoDireta,
+        "Manipulação de Almas": evolucaoDireta,
         "Leitura de Mentes": incomum,
-        "Poder Solar": evoluçãoDireta,
-        "Zero Absoluto": evoluçãoDireta,
-        "Corrente Eterna": evoluçãoDireta,
-        "Colapso Atmosférico": evoluçãoDireta,
-        "Fúria Diluviana": evoluçãoDireta,
-        "Cataclismo Titânico": evoluçãoDireta,
-        "Brilho Estelar": evoluçãoDireta,
-        "Abismo Infinito": evoluçãoDireta,
-        "Fogo Fátuo": evoluçãoDireta,
-        "Destruição Perfeita": evoluçãoDireta,
+        "Poder Solar": evolucaoDireta,
+        "Zero Absoluto": evolucaoDireta,
+        "Corrente Eterna": evolucaoDireta,
+        "Colapso Atmosférico": evolucaoDireta,
+        "Fúria Diluviana": evolucaoDireta,
+        "Cataclismo Titânico": evolucaoDireta,
+        "Brilho Estelar": evolucaoDireta,
+        "Abismo Infinito": evolucaoDireta,
+        "Fogo Fátuo": evolucaoDireta,
+        "Destruição Perfeita": evolucaoDireta,
       },
       "artes": {
         "Aikidô": comum,
@@ -872,14 +915,14 @@
         "Luz": comum,
         "Sombra": comum,
         "Ondas de Choque": incomum,
-        "Cosmo Ardente": evoluçãoDireta,
-        "Cosmo Glacial": evoluçãoDireta,
-        "Cosmo Trovejante": evoluçãoDireta,
-        "Cosmo Tempestuoso": evoluçãoDireta,
-        "Cosmo Hídrico": evoluçãoDireta,
-        "Cosmo Térreo": evoluçãoDireta,
-        "Cosmo Luminoso": evoluçãoDireta,
-        "Cosmo Obscuro": evoluçãoDireta,
+        "Cosmo Ardente": evolucaoDireta,
+        "Cosmo Glacial": evolucaoDireta,
+        "Cosmo Trovejante": evolucaoDireta,
+        "Cosmo Tempestuoso": evolucaoDireta,
+        "Cosmo Hídrico": evolucaoDireta,
+        "Cosmo Térreo": evolucaoDireta,
+        "Cosmo Luminoso": evolucaoDireta,
+        "Cosmo Obscuro": evolucaoDireta,
         "Sekishiki": raro,
         "Ilusão": raro,
         "Som": incomum,
@@ -894,23 +937,23 @@
         "Clarividência": incomum,
         "Destruição Imperfeita": comum,
         "Cura": incomum,
-        "Cura Mental": evoluçãoDireta,
-        "Cura Espiritual": evoluçãoDireta,
+        "Cura Mental": evolucaoDireta,
+        "Cura Espiritual": evolucaoDireta,
         "Controlar Animais": incomum,
         "Controlar Plantas": incomum,
         "Força Cósmica": incomum,
-        "Manipulação de Almas": evoluçãoDireta,
+        "Manipulação de Almas": evolucaoDireta,
         "Leitura de Mentes": incomum,
-        "Poder Solar": evoluçãoDireta,
-        "Zero Absoluto": evoluçãoDireta,
-        "Corrente Eterna": evoluçãoDireta,
-        "Colapso Atmosférico": evoluçãoDireta,
-        "Fúria Diluviana": evoluçãoDireta,
-        "Cataclismo Titânico": evoluçãoDireta,
-        "Brilho Estelar": evoluçãoDireta,
-        "Abismo Infinito": evoluçãoDireta,
-        "Fogo Fátuo": evoluçãoDireta,
-        "Destruição Perfeita": evoluçãoDireta,
+        "Poder Solar": evolucaoDireta,
+        "Zero Absoluto": evolucaoDireta,
+        "Corrente Eterna": evolucaoDireta,
+        "Colapso Atmosférico": evolucaoDireta,
+        "Fúria Diluviana": evolucaoDireta,
+        "Cataclismo Titânico": evolucaoDireta,
+        "Brilho Estelar": evolucaoDireta,
+        "Abismo Infinito": evolucaoDireta,
+        "Fogo Fátuo": evolucaoDireta,
+        "Destruição Perfeita": evolucaoDireta,
       },
       "artes": {
         "Aikidô": comum,
@@ -968,15 +1011,15 @@
         "Luz": comum,
         "Sombra": comum,
         "Ondas de Choque": incomum,
-        "Cosmo Ardente": evoluçãoDireta,
-        "Cosmo Glacial": evoluçãoDireta,
-        "Cosmo Trovejante": evoluçãoDireta,
-        "Cosmo Tempestuoso": evoluçãoDireta,
-        "Cosmo Hídrico": evoluçãoDireta,
-        "Cosmo Térreo": evoluçãoDireta,
-        "Cosmo Luminoso": evoluçãoDireta,
-        "Cosmo Obscuro": evoluçãoDireta,
-        "Sekishiki": raro,
+        "Cosmo Ardente": evolucaoDireta,
+        "Cosmo Glacial": evolucaoDireta,
+        "Cosmo Trovejante": evolucaoDireta,
+        "Cosmo Tempestuoso": evolucaoDireta,
+        "Cosmo Hídrico": evolucaoDireta,
+        "Cosmo Térreo": evolucaoDireta,
+        "Cosmo Luminoso": evolucaoDireta,
+        "Cosmo Obscuro": evolucaoDireta,
+        "Sekishiki": evolucaoDireta,
         "Ilusão": raro,
         "Som": incomum,
         "Gravidade": incomum,
@@ -990,23 +1033,23 @@
         "Clarividência": incomum,
         "Destruição Imperfeita": comum,
         "Cura": incomum,
-        "Cura Mental": evoluçãoDireta,
-        "Cura Espiritual": evoluçãoDireta,
+        "Cura Mental": evolucaoDireta,
+        "Cura Espiritual": evolucaoDireta,
         "Controlar Animais": incomum,
         "Controlar Plantas": incomum,
         "Força Cósmica": incomum,
-        "Manipulação de Almas": evoluçãoDireta,
+        "Manipulação de Almas": evolucaoDireta,
         "Leitura de Mentes": incomum,
-        "Poder Solar": evoluçãoDireta,
-        "Zero Absoluto": evoluçãoDireta,
-        "Corrente Eterna": evoluçãoDireta,
-        "Colapso Atmosférico": evoluçãoDireta,
-        "Fúria Diluviana": evoluçãoDireta,
-        "Cataclismo Titânico": evoluçãoDireta,
-        "Brilho Estelar": evoluçãoDireta,
-        "Abismo Infinito": evoluçãoDireta,
-        "Fogo Fátuo": evoluçãoDireta,
-        "Destruição Perfeita": evoluçãoDireta,
+        "Poder Solar": evolucaoDireta,
+        "Zero Absoluto": evolucaoDireta,
+        "Corrente Eterna": evolucaoDireta,
+        "Colapso Atmosférico": evolucaoDireta,
+        "Fúria Diluviana": evolucaoDireta,
+        "Cataclismo Titânico": evolucaoDireta,
+        "Brilho Estelar": evolucaoDireta,
+        "Abismo Infinito": evolucaoDireta,
+        "Fogo Fátuo": evolucaoDireta,
+        "Destruição Perfeita": evolucaoDireta,
       },
       "artes": {
         "Aikidô": comum,
@@ -1064,16 +1107,16 @@
         "Luz": comum,
         "Sombra": comum,
         "Ondas de Choque": incomum,
-        "Cosmo Ardente": evoluçãoDireta,
-        "Cosmo Glacial": evoluçãoDireta,
-        "Cosmo Trovejante": evoluçãoDireta,
-        "Cosmo Tempestuoso": evoluçãoDireta,
-        "Cosmo Hídrico": evoluçãoDireta,
-        "Cosmo Térreo": evoluçãoDireta,
-        "Cosmo Luminoso": evoluçãoDireta,
-        "Cosmo Obscuro": evoluçãoDireta,
+        "Cosmo Ardente": evolucaoDireta,
+        "Cosmo Glacial": evolucaoDireta,
+        "Cosmo Trovejante": evolucaoDireta,
+        "Cosmo Tempestuoso": evolucaoDireta,
+        "Cosmo Hídrico": evolucaoDireta,
+        "Cosmo Térreo": evolucaoDireta,
+        "Cosmo Luminoso": evolucaoDireta,
+        "Cosmo Obscuro": evolucaoDireta,
         "Sekishiki": raro,
-        "Ilusão": raro,
+        "Ilusão": evolucaoDireta,
         "Som": incomum,
         "Gravidade": incomum,
         "Cosmo Puro": raro,
@@ -1086,23 +1129,23 @@
         "Clarividência": incomum,
         "Destruição Imperfeita": comum,
         "Cura": incomum,
-        "Cura Mental": evoluçãoDireta,
-        "Cura Espiritual": evoluçãoDireta,
+        "Cura Mental": evolucaoDireta,
+        "Cura Espiritual": evolucaoDireta,
         "Controlar Animais": incomum,
         "Controlar Plantas": incomum,
         "Força Cósmica": incomum,
-        "Manipulação de Almas": evoluçãoDireta,
+        "Manipulação de Almas": evolucaoDireta,
         "Leitura de Mentes": incomum,
-        "Poder Solar": evoluçãoDireta,
-        "Zero Absoluto": evoluçãoDireta,
-        "Corrente Eterna": evoluçãoDireta,
-        "Colapso Atmosférico": evoluçãoDireta,
-        "Fúria Diluviana": evoluçãoDireta,
-        "Cataclismo Titânico": evoluçãoDireta,
-        "Brilho Estelar": evoluçãoDireta,
-        "Abismo Infinito": evoluçãoDireta,
-        "Fogo Fátuo": evoluçãoDireta,
-        "Destruição Perfeita": evoluçãoDireta,
+        "Poder Solar": evolucaoDireta,
+        "Zero Absoluto": evolucaoDireta,
+        "Corrente Eterna": evolucaoDireta,
+        "Colapso Atmosférico": evolucaoDireta,
+        "Fúria Diluviana": evolucaoDireta,
+        "Cataclismo Titânico": evolucaoDireta,
+        "Brilho Estelar": evolucaoDireta,
+        "Abismo Infinito": evolucaoDireta,
+        "Fogo Fátuo": evolucaoDireta,
+        "Destruição Perfeita": evolucaoDireta,
       },
       "artes": {
         "Aikidô": comum,
@@ -1149,6 +1192,13 @@
   };
 
   function clear() {
+    posses = {
+      "naturezas": {},
+      "treinamentos": {},
+      "artes": {},
+      "tecnicas": [],
+      "combos": []
+    };
     document.querySelectorAll("input").forEach(el => {
       el.value = 0;
       if (el.id.startsWith("nivel-")) {
@@ -1185,9 +1235,10 @@
       div.className = "campo";
       div.id = `${dictName}-` + nome;
 
+      const fonte = dict[dictName][nome] ?? treinamentosGenericos[nome]; // TODO: "...??..." armengue temporario, melhor refatorar?
       div.innerHTML = `
         <label>${nome}:</label>
-        <input type="number" min="0" max="${dict[dictName][nome]["rankPorNv"].length}" value="${nivel}" id="nivel-${nome}">
+        <input type="number" min="0" max="${fonte["rankPorNv"]}" value="${nivel}" id="nivel-${nome}">
       `;
 
       container.appendChild(div);
@@ -1337,7 +1388,6 @@
         renderSlotsTecnica(i);
       };
       box.appendChild(select);
-      update(document.body);
     }
   }
 
@@ -1472,6 +1522,111 @@
     aplicarNTA("treinamentos", tre);
     aplicarNTA("artes", artes);
     update(document.body);
+
+    function obterOpcoesValidasTecnica(natureza, escolhidas = []) {
+      const genericas = caracteristicasGenericas || [];
+      const exclusivas = dict.naturezas[natureza]?.caracteristicas || [];
+
+      return [...genericas, ...exclusivas].filter(opcao => {
+        if (opcao === "Dano Aumentado") return true;
+        return !escolhidas.includes(opcao);
+      });
+    }
+
+    function gerarCaracteristicasAleatorias(natureza, qtd) {
+      const resultado = [];
+
+      while (resultado.length < qtd) {
+        const opcoes = obterOpcoesValidasTecnica(natureza, resultado);
+
+        if (opcoes.length === 0) break;
+
+        // peso maior para exclusivas
+        const pesos = {};
+        opcoes.forEach(op => {
+          if (dict.naturezas[natureza]?.caracteristicas?.includes(op)) {
+            pesos[op] = 3; // prioridade
+          } else {
+            pesos[op] = 1;
+          }
+        });
+
+        const escolhida = escolherPonderado(pesos);
+        resultado.push(escolhida);
+      }
+
+      return resultado;
+    }
+
+    function escolherPonderado(pesos) {
+      const lista = [];
+      Object.entries(pesos).forEach(([k, v]) => {
+        for (let i = 0; i < v; i++) lista.push(k);
+      });
+      return lista[Math.floor(Math.random() * lista.length)];
+    }
+
+
+    function escolherNaturezaParaTecnica() {
+      const pesos = {};
+
+      Object.keys(posses.naturezas).forEach(n => {
+        // natureza base
+        pesos[n] = comum * posses.naturezas[n];
+
+        // se for evolução direta, ganha peso enorme
+        if (n.startsWith("Cosmo")) {
+          pesos[n] = comum * 2 * posses.naturezas[n];
+        }
+      });
+
+      return escolherPonderado(pesos);
+    }
+
+
+    function gerarTecnicasAleatorias() {
+      let slots = ptsTecRestantes;
+      if (Object.keys(posses.naturezas).length === 0) return;
+
+      while (slots > 0) {
+        const natureza = escolherNaturezaParaTecnica();
+        const maxGrau = posses.naturezas[natureza] || 1;
+
+        let grau;
+
+        if (subrank >= 1.0) {
+          // Perfeito: sempre no máximo
+          grau = maxGrau;
+        } else {
+          const expoente = 1 / subrank;
+
+          grau = Math.min(
+            Math.ceil(Math.pow(Math.random(), expoente) * maxGrau),
+            maxGrau
+          );
+        }
+
+        const qtdCaracts = 2 + grau;
+
+        const caracteristicas = gerarCaracteristicasAleatorias(
+          natureza,
+          qtdCaracts
+        );
+
+        posses.tecnicas.push({
+          natureza,
+          grau,
+          caracteristicas
+        });
+
+        slots--;
+      }
+
+      renderTecnicas();
+    }
+
+    gerarTecnicasAleatorias();
+    update(document.body)
   }
 
   function copiarFicha() {
@@ -1497,8 +1652,8 @@
 
     // Artes Marciais
     let artesTexto = "";
-    for (const a in posses.artes) {
-      artesTexto += `- ${a}: ${posses.artes[a]}\n`;
+    for (const t in posses.artes) {
+      artesTexto += `- ${t}: ${posses.artes[t]}\n`;
     }
 
     // Treinamentos
@@ -1515,7 +1670,7 @@
         .map(c => `  - ${c}`)
         .join("\n");
 
-      tecnicasTexto += `\n- ${tec.natureza} (Grau ${tec.grau})\n`;
+      tecnicasTexto += `- ${tec.natureza} (Grau ${tec.grau})\n`;
       tecnicasTexto += listaCaracts ? listaCaracts + "\n" : "  -\n";
     });
 
@@ -1548,21 +1703,38 @@
     ficha += `- Psque: ${psque}\n`;
     ficha += `\`\`\`\n`;
 
-    if (naturezasTexto) ficha += `*Naturezas Cósmicas:*\n\`\`\`${naturezasTexto}\n\`\`\``;
+    if (naturezasTexto) ficha += `*Naturezas Cósmicas:*\n\`\`\`\n${naturezasTexto}\`\`\`\n`;
   
-    if (naturezasTexto) ficha += `*Artes Marciais:*\n\`\`\`${artesTexto}\n\`\`\``;
+    if (artesTexto) ficha += `*Artes Marciais:*\n\`\`\`\n${artesTexto}\`\`\`\n`;
 
-    if (treinamentosTexto) ficha += `*Treinamentos:*\n\`\`\`${treinamentosTexto}\n\`\`\``;
+    if (treinamentosTexto) ficha += `*Treinamentos:*\n\`\`\`\n${treinamentosTexto}\`\`\`\n`;
 
-    if (tecnicasTexto) ficha += `*Técnicas:\n\`\`\`${tecnicasTexto}\n\`\`\``;
+    if (tecnicasTexto) ficha += `*Técnicas:*\n\`\`\`\n${tecnicasTexto}\`\`\`\n`;
 
-    if (combosTexto) ficha += `*Combos:*\n\`\`\`${combosTexto}\n\`\`\``;
+    if (combosTexto) ficha += `*Combos:*\n\`\`\`\n${combosTexto}\`\`\`\n`;
 
     navigator.clipboard.writeText(ficha)
       .then(() => alert('Ficha copiada para a área de transferência!'))
       .catch(err => console.error("Erro ao copiar ficha: ", err));
   }
 
+  function sincronizarTreinamentosGenericos() {
+    Object.entries(treinamentosGenericos).forEach(([nome, dados]) => {
+      const ativo = dados.requesito();
+
+      if (ativo) {
+        // adiciona se ainda não existir
+        if (!(nome in posses.treinamentos)) {
+          atualizarNTA("treinamentos", nome, 1); // temporario, mudar caso treinamentos genericos com niveis
+        }
+      } else {
+        // remove se existir
+        if (nome in posses.treinamentos) {
+          atualizarNTA("treinamentos", nome, 0);
+        }
+      }
+    });
+  }
 
   function update(alvo) {
     if (document.getElementById("classe").value == "aleatorio") {
@@ -1610,7 +1782,18 @@
 
     let somaNTA = 0;
     ["naturezas", "treinamentos", "artes"].forEach(dictName => {
-      somaNTA += Object.values(posses[dictName]).reduce((acc, val) => acc + val, 0);
+      somaNTA += Object.entries(posses[dictName]).reduce((acc, [nome, val]) => {
+
+        // ignora treinamentos genéricos
+        if (
+          dictName === "treinamentos" &&
+          nome in treinamentosGenericos
+        ) {
+          return acc;
+        }
+
+        return acc + val;
+      }, 0);
     });
     ptsIntTotal = socos + chute + armso + armas + psque + somaNTA;
 
@@ -1657,6 +1840,8 @@
 
     atualizarSelectTecnicas();
     atualizarSelectNTA();
+    sincronizarTreinamentosGenericos();
+    renderTecnicas()
   }
   document.addEventListener("change", function(event) {
     if (event.target.id == "rank" | event.target.id == "subrank" | event.target.id == "classe") clear();
