@@ -1,0 +1,74 @@
+name: Deploy to Tacok Pages
+
+on:
+  push:
+    branches:
+      - "main"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: tacok-pages-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Install
+        run: |
+          npm ci
+
+      - name: Build
+        run: |
+          npm run build
+
+      - name: Package site
+        env:
+          TACOK_OUTPUT: "dist"
+          TACOK_ARCHIVE: ${{ runner.temp }}/tacok-site.zip
+        run: |
+          python - <<'PY'
+          import os
+          import pathlib
+          import zipfile
+
+          root = pathlib.Path(os.environ['TACOK_OUTPUT']).resolve()
+          if not root.is_dir():
+              raise SystemExit(f'output directory not found: {root}')
+          if not (root / 'index.html').is_file():
+              raise SystemExit(f'index.html not found in: {root}')
+
+          skip = {'.git', '.github', 'node_modules'} if os.environ['TACOK_OUTPUT'] in {'.', './'} else set()
+          archive = pathlib.Path(os.environ['TACOK_ARCHIVE'])
+          with zipfile.ZipFile(archive, 'w', compression=zipfile.ZIP_DEFLATED) as zf:
+              for path in sorted(root.rglob('*')):
+                  if not path.is_file():
+                      continue
+                  rel = path.relative_to(root)
+                  if rel.parts and rel.parts[0] in skip:
+                      continue
+                  zf.write(path, rel.as_posix())
+          PY
+
+      - name: Deploy to Tacok Pages
+        env:
+          TACOK_DEPLOY_TOKEN: ${{ secrets.TACOK_DEPLOY_TOKEN }}
+          TACOK_ARCHIVE: ${{ runner.temp }}/tacok-site.zip
+        run: |
+          curl --fail --show-error --silent \
+            -X POST \
+            -H "Authorization: Bearer ${TACOK_DEPLOY_TOKEN}" \
+            -H "Content-Type: application/zip" \
+            --data-binary @"${TACOK_ARCHIVE}" \
+            "https://pages.tacoknadamains.org/api/deploy/v1/artifact?source_ref=${GITHUB_SHA}"
