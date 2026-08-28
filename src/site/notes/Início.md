@@ -20,5 +20,5 @@
 > [!FAQ]- Perguntas Frequentes
 > Pergunta valida?
 > >Resposta valida, checar [[Jogando/Ações Diárias\|Ações diarias]] para mais informações
-
+> ...
 [[Gerador de Inimigos\|Gerador de Inimigos]]
